@@ -1,0 +1,327 @@
+doctype html
+//if lt IE 7
+//if IE 7
+//if IE 8
+// [if gt IE 8] <!
+// <![endif]
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  title Generate Polymorphic Blog
+  meta(name='description', content='Generate Polymorphic Blog')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(rel='apple-touch-icon', href='/dashboard/apple-icon.png')
+  link(rel='shortcut icon', href='/dashboard/favicon.ico')
+  link(rel='stylesheet', href='/dashboard/vendors/bootstrap/dist/css/bootstrap.min.css')
+  link(rel='stylesheet', href='/dashboard/vendors/font-awesome/css/font-awesome.min.css')
+  link(rel='stylesheet', href='/dashboard/vendors/themify-icons/css/themify-icons.css')
+  link(rel='stylesheet', href='/dashboard/vendors/flag-icon-css/css/flag-icon.min.css')
+  link(rel='stylesheet', href='/dashboard/vendors/selectFX/css/cs-skin-elastic.css')
+  link(rel='stylesheet', href='/dashboard/vendors/jqvmap/dist/jqvmap.min.css')
+  link(rel='stylesheet', href='/dashboard/assets/css/style.css')
+  link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800', rel='stylesheet', type='text/css')
+// Left Panel
+aside#left-panel.left-panel
+  nav.navbar.navbar-expand-sm.navbar-default
+    .navbar-header
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#main-menu', aria-controls='main-menu', aria-expanded='false', aria-label='Toggle navigation')
+        i.fa.fa-bars
+      //a.navbar-brand(href='./')
+        img(src='/dashboard/images/logo.png', alt='Logo')
+      //a.navbar-brand.hidden(href='./')
+        img(src='/dashboard/images/logo2.png', alt='Logo')
+    #main-menu.main-menu.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.active
+          a(href='/')
+            i.menu-icon.fa.fa-github
+            | Hello, #{user.id}          !
+        h3.menu-title Projects
+        // /.menu-title
+        li.menu-item-has-children.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            i.menu-icon.fa.fa-laptop
+            | Ngang Bang
+          ul.sub-menu.children.dropdown-menu
+            //li
+              i.fa.fa-puzzle-piece
+              a(href='/dashboard/ui-buttons.html') Buttons
+            //li
+              i.fa.fa-id-badge
+              a(href='/dashboard/ui-badges.html') Badges
+            li
+              i.fa.fa-bars
+              a(href='#') Activities
+            li
+              i.fa.fa-bars
+              a(href='#') Product
+            //li
+              i.fa.fa-share-square-o
+              a(href='/dashboard/ui-social-buttons.html') Social Buttons
+            li
+              i.fa.fa-id-card-o
+              a(href='#') About us
+            li
+              i.fa.fa-comments-o
+              a(href='#') Contact
+            li
+              i.fa.fa-cogs
+              a(href='#') New tab
+            li
+              i.fa.fa-cloud-download
+              a(href='#') Download source
+        li.menu-item-has-children.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            i.menu-icon.fa.fa-laptop
+            | Crawl Data
+          ul.sub-menu.children.dropdown-menu
+            li
+              i.fa.fa-bars
+              a(href='#') Technology
+            li
+              i.fa.fa-bars
+              a(href='#') Product
+            li
+              i.fa.fa-bars
+              a(href='#') Picture
+            li
+              i.fa.fa-bars
+              a(href='#') Usage
+            li
+              i.fa.fa-id-card-o
+              a(href='#') About us
+            li
+              i.fa.fa-comments-o
+              a(href='#') Contact
+            li
+              i.fa.fa-cogs
+              a(href='#') New tab
+            li
+              i.fa.fa-cloud-download
+              a(href='#') Download source
+        li
+          a(href='/project/create', aria-haspopup='true', aria-expanded='false')
+            i.menu-icon.ti.ti-upload
+            | Create new project
+            //li
+              i.fa.fa-exclamation-triangle
+              a(href='/dashboard/ui-alerts.html') Alerts
+            //li
+              i.fa.fa-spinner
+              a(href='/dashboard/ui-progressbar.html') Progress Bars
+            //li
+              i.fa.fa-fire
+              a(href='/dashboard/ui-modals.html') Modals
+            //li
+              i.fa.fa-book
+              a(href='/dashboard/ui-switches.html') Switches
+            //li
+              i.fa.fa-th
+              a(href='/dashboard/ui-grids.html') Grids
+            //li
+              i.fa.fa-file-word-o
+              a(href='/dashboard/ui-typgraphy.html') Typography
+        //li.menu-item-has-children.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            i.menu-icon.fa.fa-table
+            | Tables
+          ul.sub-menu.children.dropdown-menu
+            li
+              i.fa.fa-table
+              a(href='/dashboard/tables-basic.html') Basic Table
+            li
+              i.fa.fa-table
+              a(href='/dashboard/tables-data.html') Data Table
+        //li.menu-item-has-children.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            i.menu-icon.fa.fa-th
+            | Forms
+          ul.sub-menu.children.dropdown-menu
+            li
+              i.menu-icon.fa.fa-th
+              a(href='/dashboard/forms-basic.html') Basic Form
+            li
+              i.menu-icon.fa.fa-th
+              a(href='/dashboard/forms-advanced.html') Advanced Form
+        //h3.menu-title Icons
+        // /.menu-title
+        //li.menu-item-has-children.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            i.menu-icon.fa.fa-tasks
+            | Icons
+          ul.sub-menu.children.dropdown-menu
+            li
+              i.menu-icon.fa.fa-fort-awesome
+              a(href='/dashboard/font-fontawesome.html') Font Awesome
+            li
+              i.menu-icon.ti-themify-logo
+              a(href='/dashboard/font-themify.html') Themefy Icons
+        //li
+          a(href='/dashboard/widgets.html')
+            i.menu-icon.ti-email
+            | Widgets
+        //li.menu-item-has-children.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            i.menu-icon.fa.fa-bar-chart
+            | Charts
+          ul.sub-menu.children.dropdown-menu
+            li
+              i.menu-icon.fa.fa-line-chart
+              a(href='/dashboard/charts-chartjs.html') Chart JS
+            li
+              i.menu-icon.fa.fa-area-chart
+              a(href='/dashboard/charts-flot.html') Flot Chart
+            li
+              i.menu-icon.fa.fa-pie-chart
+              a(href='/dashboard/charts-peity.html') Peity Chart
+        //li.menu-item-has-children.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            i.menu-icon.fa.fa-area-chart
+            | Maps
+          ul.sub-menu.children.dropdown-menu
+            li
+              i.menu-icon.fa.fa-map-o
+              a(href='/dashboard/maps-gmap.html') Google Maps
+            li
+              i.menu-icon.fa.fa-street-view
+              a(href='/dashboard/maps-vector.html') Vector Maps
+        //h3.menu-title Extras
+        // /.menu-title
+        //li.menu-item-has-children.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            i.menu-icon.fa.fa-glass
+            | Pages
+          ul.sub-menu.children.dropdown-menu
+            li
+              i.menu-icon.fa.fa-sign-in
+              a(href='/dashboard/page-login.html') Login
+            li
+              i.menu-icon.fa.fa-sign-in
+              a(href='/dashboard//dashboard/page-register.html') Register
+            li
+              i.menu-icon.fa.fa-paper-plane
+              a(href='/dashboard/pages-forget.html') Forget Pass
+    // /.navbar-collapse
+// /#left-panel
+// Left Panel
+// Right Panel
+#right-panel.right-panel
+  // Header
+  header#header.header
+    .header-menu
+      .col-sm-7
+        a#menuToggle.menutoggle.pull-left
+          i.fa.fa.fa-tasks
+        .header-left
+          //.dropdown.for-notification
+            button#notification.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              i.fa.fa-bell
+              span.count.bg-danger 5
+            .dropdown-menu(aria-labelledby='notification')
+              p.red You have 3 Notification
+              a.dropdown-item.media.bg-flat-color-1(href='#')
+                i.fa.fa-check
+                p Server #1 overloaded.
+              a.dropdown-item.media.bg-flat-color-4(href='#')
+                i.fa.fa-info
+                p Server #2 overloaded.
+              a.dropdown-item.media.bg-flat-color-5(href='#')
+                i.fa.fa-warning
+                p Server #3 overloaded.
+          //.dropdown.for-message
+            button#message.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              i.ti-email
+              span.count.bg-primary 9
+            .dropdown-menu(aria-labelledby='message')
+              p.red You have 4 Mails
+              a.dropdown-item.media.bg-flat-color-1(href='#')
+                span.photo.media-left
+                  img(alt='avatar', src='/dashboard/images/avatar/1.jpg')
+                span.message.media-body
+                  span.name.float-left Jonathan Smith
+                  span.time.float-right Just now
+                  p Hello, this is an example msg
+              a.dropdown-item.media.bg-flat-color-4(href='#')
+                span.photo.media-left
+                  img(alt='avatar', src='/dashboard/images/avatar/2.jpg')
+                span.message.media-body
+                  span.name.float-left Jack Sanders
+                  span.time.float-right 5 minutes ago
+                  p Lorem ipsum dolor sit amet, consectetur
+              a.dropdown-item.media.bg-flat-color-5(href='#')
+                span.photo.media-left
+                  img(alt='avatar', src='/dashboard/images/avatar/3.jpg')
+                span.message.media-body
+                  span.name.float-left Cheryl Wheeler
+                  span.time.float-right 10 minutes ago
+                  p Hello, this is an example msg
+              a.dropdown-item.media.bg-flat-color-3(href='#')
+                span.photo.media-left
+                  img(alt='avatar', src='/dashboard/images/avatar/4.jpg')
+                span.message.media-body
+                  span.name.float-left Rachel Santos
+                  span.time.float-right 15 minutes ago
+                  p Lorem ipsum dolor sit amet, consectetur
+      .col-sm-5
+        .user-area.dropdown.float-right
+          a.nav-link(href='/user/logout')
+              i.fa.fa-power-off
+              |  Logout
+          //a.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            img.user-avatar.rounded-circle(src='/dashboard/images/admin.jpg', alt='User Avatar')
+          //.user-menu.dropdown-menu
+            a.nav-link(href='#')
+              i.fa.fa-user
+              |  My Profile
+            a.nav-link(href='#')
+              i.fa.fa-user
+              |  Notifications 
+              span.count 13
+            a.nav-link(href='#')
+              i.fa.fa-cog
+              |  Settings
+        //#language-select.language-select.dropdown
+          a#language.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+            i.flag-icon.flag-icon-us
+          .dropdown-menu(aria-labelledby='language')
+            .dropdown-item
+              span.flag-icon.flag-icon-fr
+            .dropdown-item
+              i.flag-icon.flag-icon-es
+            .dropdown-item
+              i.flag-icon.flag-icon-us
+            .dropdown-item
+              i.flag-icon.flag-icon-it
+  // /header
+  // Header
+      // /# card
+  // .content
+// /#right-panel
+// Right Panel
+script(src='/dashboard/vendors/jquery/dist/jquery.min.js')
+script(src='/dashboard/vendors/popper.js/dist/umd/popper.min.js')
+script(src='/dashboard/vendors/bootstrap/dist/js/bootstrap.min.js')
+script(src='/dashboard/assets/js/main.js')
+script(src='/dashboard/vendors/chart.js/dist/Chart.bundle.min.js')
+script(src='/dashboard/assets/js/dashboard.js')
+script(src='/dashboard/assets/js/widgets.js')
+script(src='/dashboard/vendors/jqvmap/dist/jquery.vmap.min.js')
+script(src='/dashboard/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')
+script(src='/dashboard/vendors/jqvmap/dist/maps/jquery.vmap.world.js')
+script.
+  (function($) {
+  "use strict";
+  jQuery('#vmap').vectorMap({
+  map: 'world_en',
+  backgroundColor: null,
+  color: '#ffffff',
+  hoverOpacity: 0.7,
+  selectedColor: '#1de9b6',
+  enableZoom: true,
+  showTooltip: true,
+  values: sample_data,
+  scaleColors: ['#1de9b6', '#03a9f5'],
+  normalizeFunction: 'polynomial'
+  });
+  })(jQuery);
+block content

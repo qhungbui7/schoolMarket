@@ -1,0 +1,107 @@
+doctype html
+html(lang='en')
+  head
+    title Polymorphic blog
+    | &#x9;
+    meta(charset='UTF-8')
+    | &#x9;
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // ===============================================================================================
+    link(rel='icon', type='image/png', href='/newdeleteProject/images/icons/favicon.ico')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='/newdeleteProject/vendor/bootstrap/css/bootstrap.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='/newdeleteProject/fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='/newdeleteProject/vendor/animate/animate.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='/newdeleteProject/vendor/css-hamburgers/hamburgers.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='/newdeleteProject/vendor/animsition/css/animsition.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='/newdeleteProject/vendor/select2/select2.min.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='/newdeleteProject/vendor/daterangepicker/daterangepicker.css')
+    // ===============================================================================================
+    link(rel='stylesheet', type='text/css', href='/newdeleteProject/css/util.css')
+    | &#x9;
+    link(rel='stylesheet', type='text/css', href='/newdeleteProject/css/main.css')
+    // ===============================================================================================
+  body
+    .container-contact100
+      .wrap-contact100
+        form.contact100-form.validate-form(action = '/user/requestAdmin' method = 'POST')
+          span.contact100-form-title
+            | Create project
+          | &#x9;&#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;&#x9;
+          .wrap-input100.validate-input(data-validate='Password is required')
+            span.label-input100 Name project
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            input.input100(type='text', name='name', placeholder='Enter project name' required)
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            span.focus-input100
+          .wrap-input100.validate-input(data-validate='Description is required')
+            span.label-input100 Description
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            textarea.input100(name='des', placeholder='Your description here...' required)
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            span.focus-input100
+          | &#x9;&#x9;&#x9;&#x9;
+          .wrap-input100.input100-select
+            span.label-input100 Yêu cầu
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            div
+              select.selection-2(name='budget')
+                option Bán
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                option Mua
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+          .wrap-input100.validate-input(data-validate='Password is required')
+            span.label-input100 Password
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            input.input100(type='password', name='pass', placeholder='Enter your password' required)
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            span.focus-input100
+          | &#x9;&#x9;&#x9;&#x9;
+          .container-contact100-form-btn
+            .wrap-contact100-form-btn
+              .contact100-form-bgbtn
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              button.contact100-form-btn
+                span
+                  | Submit
+                  i.fa.fa-long-arrow-right.m-l-7(aria-hidden='true')
+    | &#x9;
+    #dropDownSelect1
+    // ===============================================================================================
+    script(src='/newdeleteProject/vendor/jquery/jquery-3.2.1.min.js')
+    // ===============================================================================================
+    script(src='/newdeleteProject/vendor/animsition/js/animsition.min.js')
+    // ===============================================================================================
+    script(src='/newdeleteProject/vendor/bootstrap/js/popper.js')
+    | &#x9;
+    script(src='/newdeleteProject/vendor/bootstrap/js/bootstrap.min.js')
+    // ===============================================================================================
+    script(src='/newdeleteProject/vendor/select2/select2.min.js')
+    | &#x9;
+    script.
+      $(".selection-2").select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $('#dropDownSelect1')
+      });
+    // ===============================================================================================
+    script(src='/newdeleteProject/vendor/daterangepicker/moment.min.js')
+    | &#x9;
+    script(src='/newdeleteProject/vendor/daterangepicker/daterangepicker.js')
+    // ===============================================================================================
+    script(src='/newdeleteProject/vendor/countdowntime/countdowntime.js')
+    // ===============================================================================================
+    script(src='/newdeleteProject/js/main.js')
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-23581568-13')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-23581568-13');

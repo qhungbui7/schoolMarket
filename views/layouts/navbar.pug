@@ -1,0 +1,40 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(rel='stylesheet', href='/navbar/styles.css')
+  script(src='http://code.jquery.com/jquery-latest.min.js', type='text/javascript')
+  title Dashboard
+#cssmenu
+  ul
+    li.active
+      a(href='#')
+        span Home
+    li.has-sub
+      a(href='#')
+        span Products
+      ul
+        li
+          a(href='#')
+            span Product 1
+        li
+          a(href='#')
+            span Product 2
+        li.last
+          a(href='#')
+            span Product 3
+    li.has-sub
+      a(href='#')
+        span About
+      ul
+        li
+          a(href='#')
+            span Company
+        li.last
+          a(href='#')
+            span Contact
+    li.last
+      a(href='#')
+        span Contact
+block content

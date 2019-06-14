@@ -1,0 +1,89 @@
+doctype html
+head
+  title School market
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  // ===============================================================================================
+  link(rel='icon', type='image/png', href='/loginreg/images/icons/favicon.ico')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/bootstrap/css/bootstrap.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/fonts/iconic/css/material-design-iconic-font.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/animate/animate.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/css-hamburgers/hamburgers.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/animsition/css/animsition.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/select2/select2.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/daterangepicker/daterangepicker.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/css/util.css')
+  link(rel='stylesheet', type='text/css', href='/loginreg/css/main.css')
+  // ===============================================================================================
+.limiter
+  .container-login100(style="background-image: url('/loginreg/images/bg-01.jpg');")
+    .wrap-login100.p-l-55.p-r-55.p-t-65.p-b-54
+      form.login100-form.validate-form(action = '/user/register' , method = 'POST')
+        span.login100-form-title.p-b-49
+          | Register
+        .wrap-input100.validate-input.m-b-23(data-validate='Username is required')
+          span.label-input100 Username
+          input.input100(type='text', name='id', placeholder='Type your username', minlength ='6', maxlength ='16' required)
+          span.focus-input100(data-symbol='')
+        .wrap-input100.validate-input.m-b-23(data-validate='Username is required')
+          span.label-input100 Name
+          input.input100(type='text', name='name', placeholder='Type your full name' required)
+          span.focus-input100(data-symbol='')
+        .wrap-input100.validate-input.m-b-23(data-validate='Class is required')
+          span.label-input100 Class
+          input.input100(type='text', name='class', placeholder='Type your class name' required)
+          span.focus-input100(data-symbol='')
+        .wrap-input100.validate-input(data-validate='Password is required')
+          span.label-input100 Password
+          input.input100(type='password', id = 'pass' ,name='pass', placeholder='Type your password',minlength ='6', maxlength ='16' required)
+          span.focus-input100(data-symbol='')
+        .wrap-input100.validate-input(data-validate='Re-type password is required')
+          span.label-input100 Re-type password
+          input.input100(type='password', name='repass', id = 'repass' ,  placeholder='Re-type your password' required)
+          span.focus-input100(data-symbol='')
+        .text-right.p-t-8.p-b-31
+          a(href='login')
+            | Already have a account ? Sign In here
+        .container-login100-form-btn
+          .wrap-login100-form-btn
+            .login100-form-bgbtn
+            button.login100-form-btn
+              | Register
+#dropDownSelect1
+// ===============================================================================================
+script(src='/loginreg/vendor/jquery/jquery-3.2.1.min.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/animsition/js/animsition.min.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/bootstrap/js/popper.js')
+script(src='/loginreg/vendor/bootstrap/js/bootstrap.min.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/select2/select2.min.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/daterangepicker/moment.min.js')
+script(src='/loginreg/vendor/daterangepicker/daterangepicker.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/countdowntime/countdowntime.js')
+// ===============================================================================================
+script.
+  var password = document.getElementById("pass")
+  , confirm_password = document.getElementById("repass");
+  function validatePassword(){
+  if(password.value != confirm_password.value) {
+  confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+  confirm_password.setCustomValidity('');
+  }
+  }
+  password.onchange = validatePassword;
+  confirm_password.onkeyup = validatePassword;

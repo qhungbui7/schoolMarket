@@ -1,0 +1,15 @@
+html
+    head
+    body
+        h1 xd
+        script(src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js') ; 
+        script(src = '/socket.io/socket.io.js') 
+        script.
+            var socket = io.connect('http://localhost') ; //event connection bat cai nay
+            $(document).ready(function(){
+                // name value 
+                socket.emit('clientSendData','XD')
+                socket.on('serverSendData',function(data){
+                    console.log(data) ; 
+                });
+            });            
