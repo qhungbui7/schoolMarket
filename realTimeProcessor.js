@@ -8,9 +8,13 @@ module.exports = function(io){
         console.log(`${socket.id} da thoat`) ; 
         });
         
-        socket.on('adminRenderIndex',function(){
+        /*socket.on('adminRenderIndex',function(){
             let data = db.get('items').value() ; 
             socket.emit('sendAdminDataItem',data) ; 
+        });*/
+
+        socket.on('updateStatusItem',function(){
+            socket.emit('marketChangeStatus') ; 
         });
     });
 }

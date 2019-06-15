@@ -6,7 +6,7 @@ var shortid = require('shortid') ;
 router.get('/',controllers.index);
 router.get('/logout',controllers.logout) ; 
 router.get('/accept/:id',controllers.acptItem) ; 
-//router.get('/decline/:index',controllers.decItem) ; 
+router.get('/decline/:index',controllers.decItem) ; 
 
 
 

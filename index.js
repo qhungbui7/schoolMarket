@@ -19,10 +19,14 @@ var bodyParser = require('body-parser') ;
 var cookieParser = require('cookie-parser') ; 
 
 
-
+//REQUIRE ROUTES
 var userRoute = require('./routes/user.route') ; 
 var adminRoute = require('./routes/admin.route') ; 
+var marketRoute = require('./routes/market.route') ; 
+//
 
+
+//MIDDLEWARES
 var authMiddleware = require('./middlewares/auth.middleware') ; 
 
 
@@ -36,7 +40,7 @@ var authMiddleware = require('./middlewares/auth.middleware') ;
     
     app.use('/user',userRoute) ;
     app.use('/admin',authMiddleware.authAdmin,adminRoute) ; 
-
+    app.use('/market',authMiddleware.reqAuth,marketRoute) ; 
 
 app.get('/',function(req,res){
     res.render('index.pug') ; 
