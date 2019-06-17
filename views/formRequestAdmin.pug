@@ -49,11 +49,18 @@ html(lang='en')
             | &#x9;&#x9;&#x9;&#x9;&#x9;
             div
               select.selection-2(style="font-family: 'Montserrat', sans-serif;" ,name='type')
-                option Bán
-                option Mua
+                option Thực phẩm
+                option Trang trí
+                option Thời trang
+                option Thiết bị điện tử
+                option Khác
           .wrap-input100.validate-input()
             span.label-input100(style="font-family: 'Montserrat', sans-serif;") Tên mặt hàng
             input.input100(style="font-family: 'Montserrat', sans-serif;" ,type='text', name='nameItem', placeholder='' required)
+            span.focus-input100
+          .wrap-input100.validate-input()
+            span.label-input100(style="font-family: 'Montserrat', sans-serif;") Giá
+            textarea.input100(style="font-family: 'Montserrat', sans-serif;",name='priceItem', placeholder='VNĐ' required)
             span.focus-input100
           .wrap-input100.validate-input()
             span.label-input100(style="font-family: 'Montserrat', sans-serif;") Mô tả

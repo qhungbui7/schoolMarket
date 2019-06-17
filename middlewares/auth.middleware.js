@@ -24,6 +24,7 @@ module.exports.authAdmin = function(req,res,next){
         res.redirect('/user/login') ; 
         return ; 
     }
+    delete cmp.pass ; 
     res.locals.user = cmp ; 
     next() ; 
 }
