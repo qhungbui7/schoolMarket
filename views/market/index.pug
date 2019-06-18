@@ -182,7 +182,7 @@ html
                         br
                         | Người đăng : #{element.owner}
                         br
-                        | Thời hạn : #{element.dataItem}                                   
+                        | Thời hạn : #{element.dateItem}                                   
                       .t776__price-wrapper
                         .t776__price.t776__price-item.t-name.t-name_xs(style='font-weight:400;')
                           .t776__price-currency &#x20AB;
@@ -471,3 +471,9 @@ html
       f();
       }
       })(document, window, '589de8118390cf06dce5be0604916d94', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script(src = '/socket.io/socket.io.js') 
+    script.
+        var socket = io.connect('http://localhost') ; //event connection bat cai nay
+        $(document).ready(function(){
+            
+        }); 

@@ -4,7 +4,8 @@
   "description": "INSTALL REDIS \r Windows : https://github.com/dmajkic/redis/downloads\r Linux : sudo apt install redis-server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "express": "^4.17.1",
     "lowdb": "^1.0.0",
     "md5": "^2.2.1",
+    "nodemon": "^1.19.1",
     "pug": "^2.0.3",
     "redis": "^2.8.0",
     "redis-server": "^1.2.2",

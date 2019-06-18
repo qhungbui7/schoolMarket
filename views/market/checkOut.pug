@@ -186,16 +186,24 @@ html
           .t-container
             .t-col.t-col_6.t-prefix_3
               .t-animate(data-animate-style='fadeinleft', data-animate-group='yes', data-animate-order='1')
-                form(name='form110776990', role='form', action='/checkOutForm', method='POST', data-formactiontype='0', data-inputbox='.t-input-group', data-success-callback='t678_onSuccess')
+                form(name='form110776990', role='form', action='/market/checkOut/' + item.idItem , method='POST', data-formactiontype='0', data-inputbox='.t-input-group', data-success-callback='t678_onSuccess')
                   // NO ONE SERVICES CONNECTED
                   .js-successbox.t-form__successbox.t-text.t-text_md(style='display:none;')
                   |                                 
                   .t-form__inputsbox
+                    .t-input-group.t-input-group_em(data-input-lid='1493283059688')
+                      .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', type ='hidden' field='li_title__1493283059688', style='') Id (Không thể chỉnh sửa ô này)
+                      |                                         
+                      .t-input-block
+                        input.t-input.js-tilda-rule.t-input_bbonly(required type='hidden', id = 'id', name='id', value=customer.id, data-tilda-req='1', data-tilda-rule='email', style='color:#000000; border:1px solid #000000; ')
+                        |                                             
+                        .t-input-error
+                    |        
                     .t-input-group.t-input-group_in(data-input-lid='1500477820459')
                       .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1500477820459', style='') H&#x1ECD; t&ecirc;n
                       |                                         
                       .t-input-block
-                        input.t-input.js-tilda-rule.t-input_bbonly(required type='text', name='name', value=customer.name, data-tilda-req='1', style='color:#000000; border:1px solid #000000; ')
+                        input.t-input.js-tilda-rule.t-input_bbonly(required type='text', id = 'name' ,  name='name', value=customer.name, data-tilda-req='1', style='color:#000000; border:1px solid #000000; ')
                         |                                             
                         .t-input-error
                     |                                     
@@ -203,7 +211,7 @@ html
                       .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1493283059688', style='') E-mail
                       |                                         
                       .t-input-block
-                        input.t-input.js-tilda-rule.t-input_bbonly(required type='text', name='email', value=customer.email, placeholder='example@site.com', data-tilda-req='1', data-tilda-rule='email', style='color:#000000; border:1px solid #000000; ')
+                        input.t-input.js-tilda-rule.t-input_bbonly(required type='text', id = 'email', name='email', value=customer.email, placeholder='example@site.com', data-tilda-req='1', data-tilda-rule='email', style='color:#000000; border:1px solid #000000; ')
                         |                                             
                         .t-input-error
                     |                                     
@@ -211,14 +219,14 @@ html
                       .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1495040492013', style='') Phone
                       |                                         
                       .t-input-block
-                        input.t-input.js-tilda-rule.t-input_bbonly(required type='text', name='phone', value=customer.phone, data-tilda-req='1', style='color:#000000; border:1px solid #000000; ')
+                        input.t-input.js-tilda-rule.t-input_bbonly(required type='text',  id = 'phone', value=customer.phone, data-tilda-req='1', style='color:#000000; border:1px solid #000000; ')
                         |                                             
                         .t-input-error
                     .t-input-group.t-input-group_in(data-input-lid='1495040492013')
                       .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1495040492013', style='') Địa chỉ facebook
                       |                                         
                       .t-input-block
-                        input.t-input.js-tilda-rule.t-input_bbonly(required type='text', name='facebook', value=customer.fb, data-tilda-req='1', style='color:#000000; border:1px solid #000000; ')
+                        input.t-input.js-tilda-rule.t-input_bbonly(required type='text',  id = 'fb', name='fb', value=customer.fb, data-tilda-req='1', style='color:#000000; border:1px solid #000000; ')
                         |                                             
                         .t-input-error
                     |                                     
@@ -229,7 +237,7 @@ html
                         .t-inputquantity__wrapper
                           span.t-inputquantity__btn.t-inputquantity__btn-minus &ndash;
                           |                                                 
-                          input.t-input.t-inputquantity.js-tilda-rule.t-input_bbonly(required type='text', name='amount', value='1', data-tilda-req='1', data-tilda-rule='number', style='color:#000000; border:1px solid #000000; ')
+                          input.t-input.t-inputquantity.js-tilda-rule.t-input_bbonly(required type='text', id='amount' name='amount', value='1', data-tilda-req='1', data-tilda-rule='number', style='color:#000000; border:1px solid #000000; ')
                           |  
                           span.t-inputquantity__btn.t-inputquantity__btn-plus +
                         |                                             
@@ -266,11 +274,11 @@ html
                         .t-input-error
                     |                                     
                     .t-input-group.t-input-group_da(data-input-lid='1500477709808')
-                      .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1500477709808', style='') Ng&agrave;y mu&#x1ED1;n nh&#x1EAD;n h&agrave;ng
+                      .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1500477709808', style='') Ngày giao hàng (Hạn cuối giao hàng :  #{item.dateItem} )
                       |                                         
                       .t-input-block
                         .t-datepicker__wrapper
-                          input.t-input.t-datepicker.js-tilda-rule.js-tilda-mask.t-input_bbonly(required type='text', name='dateReceive', value='', data-tilda-req='1', data-tilda-rule='date', data-tilda-dateformat='DD-MM-YYYY', data-tilda-datediv='dash', data-tilda-mask='99-99-9999', style='color:#000000; border:1px solid #000000; ')
+                          input.t-input.t-datepicker.js-tilda-rule.js-tilda-mask.t-input_bbonly(required type='text', name='dateReceive', id='dateReceive' , data-tilda-req='1', data-tilda-rule='date', data-tilda-dateformat='DD-MM-YYYY', data-tilda-datediv='dash', data-tilda-mask='99-99-9999', style='color:#000000; border:1px solid #000000; ')
                           |                                                 
                           svg.t-datepicker__icon.t-datepicker__icon_bbonly(xmlns='http://www.w3.org/2000/svg', viewBox='0 0 69.5 76.2', style='width:25px;')
                             path(d='M9.6 42.9H21V31.6H9.6v11.3zm3-8.3H18v5.3h-5.3v-5.3zm16.5 8.3h11.3V31.6H29.1v11.3zm3-8.3h5.3v5.3h-5.3v-5.3zM48 42.9h11.3V31.6H48v11.3zm3-8.3h5.3v5.3H51v-5.3zM9.6 62H21V50.6H9.6V62zm3-8.4H18V59h-5.3v-5.4zM29.1 62h11.3V50.6H29.1V62zm3-8.4h5.3V59h-5.3v-5.4zM48 62h11.3V50.6H48V62zm3-8.4h5.3V59H51v-5.4z')
@@ -310,7 +318,7 @@ html
                           p.t-form__errorbox-item.js-rule-error.js-rule-error-string
                     |                                     
                     .t-form__submit
-                      button.t-submit(type='submit', style='color:#ffffff;background-color:#000000;', data-btneffects-first='btneffects-flash') &Dstrok;&#x1EB7;t h&agrave;ng !
+                      button.t-submit(type='submit', id = 'LOLXD' , style='color:#ffffff;background-color:#000000;', data-btneffects-first='btneffects-flash') &Dstrok;&#x1EB7;t h&agrave;ng !
                   |                                 
                   .t-form__errorbox-bottom
                     .js-errorbox-all.t-form__errorbox-wrapper(style='display:none;')
@@ -524,3 +532,20 @@ html
       f();
       }
       })(document, window, '589de8118390cf06dce5be0604916d94', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script(src = '/socket.io/socket.io.js') 
+    script.
+        var socket = io.connect('http://localhost') ; //event connection bat cai nay
+        $(document).ready(function(){
+          $('#LOLXD').click(function(){
+              let data = {
+              id : $('#id').val(),
+              name : $('#name').val(),
+              email: $('#email').val(),
+              phone: $('#phone').val(),
+              facebook: $('#fb').val(),
+              amount: $('#amount').val(),
+              dateReceive : $('#dateReceive').val() 
+            }
+             socket.emit('checkOut',data) ;
+          })    
+        }); 

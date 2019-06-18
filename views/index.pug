@@ -9,7 +9,4 @@ html
             $(document).ready(function(){
                 // name value 
                 socket.emit('clientSendData','XD')
-                socket.on('serverSendData',function(data){
-                    console.log(data) ; 
-                });
             });            
