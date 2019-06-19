@@ -1,4 +1,5 @@
 var db = require('../db') ; 
+var nodemailer = require('../nodemailer') ; 
 module.exports.market = function(req,res){
     let data = db.get('items').filter({status : 'Đang bán'}).value() ; 
     res.render('market/index.pug',{data}) ; 
@@ -13,6 +14,7 @@ module.exports.checkOut = function(req,res){
 module.exports.postCheckOut = function(req,res){
     /*
     {   
+        id,
         name,
         email,
         phone,
@@ -21,8 +23,13 @@ module.exports.postCheckOut = function(req,res){
         dateReceive 
     }
     */
+    let customer = req.body ; 
     let item = db.get('items').find({idItem : req.params.id}).value() ; 
-    db.get('history').push({action : 'Buy' , item : item , from : req.body , to : item.owner }).write() ; 
-    //console.log(req.params ,' ' , req.body)  ;
+    db.get('history').push({action : 'Buy' , item : item , from : customer , to : item.owner }).write() ; 
+
+    
+    nodemailer.send(customer,item) ; 
+
+
     res.redirect('/market') ; 
 }

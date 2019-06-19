@@ -1,13 +1,15 @@
+//dotENV
+require('dotenv').config() ; 
+
+
 //CONSTANT
-const PORT = 80 ; 
-const HOST = 'localhost' ;
+const PORT = process.env.PORT ; 
+const HOST = process.env.HOST ;
+const ENCRYPTEDCOOKIE = process.env.ENCRYPTEDCOOKIE ; 
 
 //EXPRESS
 var express = require('express') ;
 var app = express() ; 
-
-//REDIS
-
 
 // CONFIG SOCKET.IO
 var server = require('http').Server(app) ; 
@@ -36,7 +38,7 @@ var authMiddleware = require('./middlewares/auth.middleware') ;
     
     app.use(bodyParser.json()) ;
     app.use(bodyParser.urlencoded({extended : true})) ;
-    app.use(cookieParser('#!czx$$!@ER@23123c348XZCr3cbt2resvxer$23^52#41212$23%^@23412')) ; 
+    app.use(cookieParser(ENCRYPTEDCOOKIE)) ; 
     
     app.use('/user',userRoute) ;
     app.use('/admin',authMiddleware.authAdmin,adminRoute) ; 
