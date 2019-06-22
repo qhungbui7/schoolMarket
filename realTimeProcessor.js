@@ -1,16 +1,44 @@
-//Server on event lớn nhất là 'connection' 
-//Lúc này vẫn là chưa có socket thì phải là io.on, param duy nhất cho callback là socket
 var db = require('./db') ; 
+//var cookieParser = require('cookie-parser') ; 
 var controllers = require('./controllers/realtime.controllers') ; 
 module.exports = function(io){
+    let mapList = [] ; 
     io.on('connection',function(socket){
-        console.log(`${socket.id} kết nối`) ;
+        /*console.log(`${socket.id} kết nối`) ;*/
         socket.on('disconnect',function() {
         console.log(`${socket.id} đã thoát`) ; 
         });
-        //socket.on('checkOut',controllers.checkOut) ; 
-        socket.on('checkOut',function(data){
-            socket.emit('customerSendData',data) ; 
+        socket.on('online',function(userId){
+            mapList.push({
+                socketId : socket.id,
+                customId : userId 
+            })
+            console.log(`${socket.id} kết nối`) ;
+        });
+        socket.on('checkOut',function(data,idItem){
+            
+            if (!data.dateReceive) return ;  
+
+            let temp = db.get('items').find({idItem}).value() ; 
+
+            let queue = db.get('users').find({id : temp.owner}).value().queue ; 
+
+
+            data.idItem = idItem ; 
+            data.nameItem = temp.nameItem ; 
+            data.cost = temp.priceItem * data.amount  ;
+            queue.push(data) ; 
+            console.log(queue) ; 
+
+            seller = mapList.find(function(element){
+                return element.customId === temp.owner ;
+            });
+            db.get('users')
+                .find({id : seller.socketId})
+                .assign({queue})
+                .write() ; 
+            
+            io.to(`${seller.socketId}`).emit('customerSendData',data) ; 
         });
     }) ; 
 }

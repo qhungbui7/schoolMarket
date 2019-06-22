@@ -127,6 +127,7 @@ html
         .t225
           .t-container.t-align_center
             .t-col.t-col_10.t-prefix_1
+              .t225__title.t-title.t-title_md.t-animate(style='color:#ffffff; visibility: hidden;' id='idItem')=item.idItem
               .t225__title.t-title.t-title_md.t-animate(data-animate-style='fadeindown', data-animate-group='yes', field='title', style='color:#ffffff;') #{item.nameItem}
       |         
       #rec110777195.r.t-rec.t-rec_pt_90.t-rec_pb_75(style='padding-top:90px;padding-bottom:75px; ', data-record-type='223')
@@ -136,7 +137,7 @@ html
             .t-col.t-col_6
               .t195__text.t-text.t-text_md.t-animate(data-animate-style='fadein', data-animate-group='yes', data-animate-order='1', style='', field='text')
                 | Tên sản phẩm : #{item.nameItem}
-                br
+                br 
                 | Danh mục : #{item.type}
                 br
                 | Mô tả : #{item.desItem}
@@ -537,7 +538,7 @@ html
         var socket = io.connect('http://localhost') ; //event connection bat cai nay
         $(document).ready(function(){
           $('#LOLXD').click(function(){
-              let data = {
+            let data = {
               id : $('#id').val(),
               name : $('#name').val(),
               email: $('#email').val(),
@@ -546,6 +547,7 @@ html
               amount: $('#amount').val(),
               dateReceive : $('#dateReceive').val() 
             }
-             socket.emit('checkOut',data) ;
-          })    
+            let idItem = $('#idItem').text() ;  
+            socket.emit('checkOut',data,idItem) ;
+          });    
         }); 

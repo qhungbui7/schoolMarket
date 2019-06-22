@@ -11,7 +11,14 @@ module.exports.dashboard = function(req,res){
     res.render('dashboard.pug') ; 
 }
 module.exports.manage = function(req,res){
-    res.render('manage.pug') ; 
+    let dataLogin = res.locals.user ; 
+    // THONG TIN NGUOI DUNG VA QUEUE O TRONG NAY
+    let user = db.get('users').find({id : dataLogin.id}).value() ;
+    //CAI NAY LA CHO DUYET TU ADMIN
+    let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Chờ duyệt'}).value() ;  
+    console.log(waitingAcpt) ; 
+    let onSale = db.get('items').filter({owner: user.id ,status: 'Đang bán'}).value() ;   
+    res.render('manage.pug',{user,waitingAcpt,onSale}) ; 
 }
 module.exports.formRequestAdmin = function(req,res){
     res.render('formRequestAdmin.pug') ; 
@@ -22,13 +29,16 @@ module.exports.logout  = function(req,res){
 }
 module.exports.postRegister = function(req,res){
     let id = req.body.id ; 
+    let pass = md5(req.body.pass) ;
+    let email = req.body.email ; 
+    let phone = req.body.phone ; 
+    let fb = req.body.fb ; 
     let name = req.body.name ; 
     let clas = req.body.class ; 
-    let pass = md5(req.body.pass) ;
-    /*let projects = [] ; */
+    let queue = [] 
     let cmp = db.get('users').find({id}).value() ;
     if (!cmp){
-        db.get('users').push({id,pass}).write() ;
+        db.get('users').push({id,pass,email,phone,fb,name,clas,queue}).write() ;
         console.log('Đăng kí thành công') ; 
         res.redirect('/user/login') ;
     }

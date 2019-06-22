@@ -12,7 +12,7 @@ module.exports.acptItem = function(req,res){
     idItem = req.params.id ; 
     db.get('items')
         .find({idItem})
-        .assign({ status : 'Đang bán'}) // or .defaults depending on what you want to do
+        .assign({ status : 'Đang bán'}) 
         .write() ; 
     res.redirect('/admin/') ;
     db.get('history').push({
@@ -24,7 +24,7 @@ module.exports.decItem = function(req,res){
     idItem = req.params.id ; 
     db.get('items')
         .find({idItem})
-        .assign({ status : 'Tạm xoá'}) // or .defaults depending on what you want to do
+        .assign({ status : 'Tạm xoá'}) 
         .write() ; 
     db.get('history').push({
         action : 'Đã từ chối' , 

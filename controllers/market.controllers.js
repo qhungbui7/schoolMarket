@@ -9,6 +9,8 @@ module.exports.checkOut = function(req,res){
     let item = db.get('items').find({idItem : req.params.id}).value() ; 
     let user = db.get('users').find({id : item.owner}).value() ; 
     delete user.pass
+    //MO DU LIEU NAY CAN DUOC GUI TOI USER.DASHBOARD QUEUE PLZZZZZZZZZZ !
+    //ĐÃ GỬI Ở PHẦN REALTIME
     res.render('market/checkOut.pug',{item,user,customer}) ; 
 }
 module.exports.postCheckOut = function(req,res){
@@ -25,10 +27,16 @@ module.exports.postCheckOut = function(req,res){
     */
     let customer = req.body ; 
     let item = db.get('items').find({idItem : req.params.id}).value() ; 
-    db.get('history').push({action : 'Buy' , item : item , from : customer , to : item.owner }).write() ; 
+     var currentdate = new Date(); 
+    var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
 
-    
-    nodemailer.send(customer,item) ; 
+    db.get('history').push({action : 'Buy' , item : item , from : customer , to : item.owner, time : datetime }).write() ; 
+    //nodemailer.send(customer,item) ; 
 
 
     res.redirect('/market') ; 
