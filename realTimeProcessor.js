@@ -6,14 +6,19 @@ module.exports = function(io){
     io.on('connection',function(socket){
         /*console.log(`${socket.id} kết nối`) ;*/
         socket.on('disconnect',function() {
-        console.log(`${socket.id} đã thoát`) ; 
+            console.log(`${socket.id} disconnect`) ; 
+            for (let i = 0 ; i < mapList.length ; i++){
+                if (socket.id === mapList[i].socketId){
+                    mapList.splice(i,1) ; 
+                }
+            }
         });
         socket.on('online',function(userId){
             mapList.push({
                 socketId : socket.id,
                 customId : userId 
             })
-            console.log(`${socket.id} kết nối`) ;
+            console.log(`${userId} connect`, socket.id) ;
         });
         socket.on('checkOut',function(data,idItem){
             
@@ -30,7 +35,7 @@ module.exports = function(io){
             queue.push(data) ; 
             console.log(queue) ; 
 
-            seller = mapList.find(function(element){
+            let seller = mapList.find(function(element){
                 return element.customId === temp.owner ;
             });
             db.get('users')
@@ -39,6 +44,18 @@ module.exports = function(io){
                 .write() ; 
             
             io.to(`${seller.socketId}`).emit('customerSendData',data) ; 
+        });
+        socket.on('userRemoveRequest',function(){
+            setTimeout(function(){
+                let waitingAccept = db.get('items').filter({status : 'Waiting accept'}).value() ;          
+
+                var admin = mapList.find(function(element){
+                    return element.customId === 'admin' ;
+                });
+                console.log('admin : ', admin.socketId) ;
+                console.log(waitingAccept) ;  
+                io.to(`${admin.socketId}`).emit('displayNewRequest',waitingAccept) ; 
+            },2000) ; 
         });
     }) ; 
 }

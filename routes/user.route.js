@@ -9,7 +9,7 @@ router.get('/register',controller.register) ;
 router.get('/dashboard',authMiddleware.reqAuth,controller.dashboard) ; 
 router.get('/manage',authMiddleware.reqAuth,controller.manage) ; 
 router.get('/formRequestAdmin',authMiddleware.reqAuth,controller.formRequestAdmin)
-
+router.get('/userRemoveRequest/:idItem',authMiddleware.reqAuth,controller.userRemoveRequest) ; 
 
 router.post('/login',controller.postLogin) ; 
 router.post('/register',controller.postRegister) ;  

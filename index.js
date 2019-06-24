@@ -41,7 +41,7 @@ var authMiddleware = require('./middlewares/auth.middleware') ;
     app.use(cookieParser(ENCRYPTEDCOOKIE)) ; 
     
     app.use('/user',userRoute) ;
-    app.use('/admin',authMiddleware.authAdmin,adminRoute) ; 
+    app.use('/admin',authMiddleware.reqAuth,adminRoute) ; 
     app.use('/market',authMiddleware.reqAuth,marketRoute) ; 
 
 app.get('/',function(req,res){

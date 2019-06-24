@@ -12,12 +12,9 @@ module.exports.dashboard = function(req,res){
 }
 module.exports.manage = function(req,res){
     let dataLogin = res.locals.user ; 
-    // THONG TIN NGUOI DUNG VA QUEUE O TRONG NAY
     let user = db.get('users').find({id : dataLogin.id}).value() ;
-    //CAI NAY LA CHO DUYET TU ADMIN
-    let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Chờ duyệt'}).value() ;  
-    console.log(waitingAcpt) ; 
-    let onSale = db.get('items').filter({owner: user.id ,status: 'Đang bán'}).value() ;   
+    let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Waiting accept'}).value() ;  
+    let onSale = db.get('items').filter({owner: user.id ,status: 'On sale'}).value() ;   
     res.render('manage.pug',{user,waitingAcpt,onSale}) ; 
 }
 module.exports.formRequestAdmin = function(req,res){
@@ -50,18 +47,22 @@ module.exports.postRegister = function(req,res){
 module.exports.postLogin = function(req,res){
     let id = req.body.id ; 
     let pass = md5(req.body.pass) ; 
-    let cmp = db.get('users').find({id}).value() ; 
-    if (cmp){
-        if (pass === cmp.pass) console.log('Đăng nhập thành công') ; 
+    let cmp = db.get('users').find({id,pass}).value() ; 
+    if (!cmp){
+        console.log('Sai mật khẩu hoặc tài khoản không tồn tại') ; 
+        res.redirect('/user/login') ; 
+        return ; 
+    }
+        console.log('Đăng nhập thành công') ; 
         res.cookie('id',id,{
             signed : true 
         }) ; 
-        if (id === 'admin') res.redirect('/admin') ; else 
+        if (id === 'admin') {
+            res.redirect('/admin') ;
+            return ; 
+        } 
         res.redirect('/user/dashboard') ; 
-        return ; 
-    }
-        console.log('Sai mật khẩu hoặc tài khoản không tồn tại') ; 
-        res.redirect('/user/login') ; 
+
 }
 module.exports.requestAdmin = function(req,res){
     let user = res.locals.user ; 
@@ -76,24 +77,43 @@ module.exports.requestAdmin = function(req,res){
     */
     let data = req.body ;
     /*
-    Chờ duyệt
-    Đang bán
+    Waiting accept
+    On sale
     Tạm đóng
     Đã dừng
     */
     data.idItem = shortid.generate() ; 
-    data.status = 'Chờ duyệt' ;
+    data.status = 'Waiting accept' ;
 
     
     if (md5(data.pass) !== user.pass){
-        console.log('Sai mật khẩu') ;
+        console.log('Wrong password') ;
         res.redirect('/user/formRequestAdmin') ; 
         return ; 
     } 
     delete data.pass ;
     data.owner = user.id ; 
-    console.log(data) ; 
     db.get('items').push(data).write() ; 
     res.redirect('/user/manage') ;
-    
+}
+module.exports.userRemoveRequest = function(req,res){
+    var idItem = req.params.idItem ;
+    var currentdate = new Date(); 
+    var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds(); 
+    db.get('history').push({
+        action : 'User remove request',
+        item : db.get('items').find({idItem}).value(),
+        subject : res.locals.user.id,        
+        time : datetime 
+    });
+    db.get('items')
+        .remove({ idItem })
+        .write() ;
+
+    res.redirect('/user/manage') ;
 }

@@ -117,9 +117,8 @@ html
                   div(data-hook-content='covercontent')
                     .t182__wrapper
                       .t182__title.t-title.t-title_xl.t-animate(data-animate-style='fadeinleft', data-animate-group='yes', style='', field='title') Dashboard
-                      |  
                       .t182__descr.t-descr.t-descr_lg.t-animate(data-animate-style='fadeinright', data-animate-group='yes', style='opacity:1;', field='descr') Ch&agrave;o m&#x1EEB;ng tr&#x1EDF; l&#x1EA1;i, admin !
-                      |  
+                      h1(id='userId' style='visibility: hidden') admin
                       .t182__buttons
                         a.t-btn.t-animate(href='/', target='', data-btneffects-first='btneffects-flash', data-animate-style='fadeinup', data-animate-group='yes', style='color:#ffffff;background-color:#f0ab52;border-radius:0px; -moz-border-radius:0px; -webkit-border-radius:0px;')
                           table(style='width:100%; height:100%;')
@@ -275,8 +274,8 @@ html
       #rec108816567.r.t-rec.t-rec_pt_0.t-rec_pb_165(style='padding-top:0px;padding-bottom:165px; ', data-animationappear='off', data-record-type='585')
         // T585
         .t585
-          .t-container
-            each item,index in data 
+          .t-container(id = 'waitingAccept')
+            each item,index in waitingAccept
               .t-col.t-col_8.t-prefix_2
                 .t585__accordion.t-animate(data-animate-style='fadeinup', data-animate-chain='yes')
                   .t585__wrapper
@@ -330,53 +329,7 @@ html
                                               table(style='width:100%; height:100%;')
                                                 tbody
                                                   tr
-                                                    td Xoá
-                            |                            
-            |  
-            //.t-col.t-col_8.t-prefix_2
-              .t585__accordion.t-animate(data-animate-style='fadeinup', data-animate-chain='yes')
-                .t585__wrapper
-                  .t585__header(style=' border-top: 1px solid #000000')
-                    .t585__title.t-name.t-name_xl(field='li_title__1480611048442', style='') Chocolate
-                    |  
-                    .t585__icon
-                      .t585__lines
-                        svg(width='24px', height='24px', viewBox='0 0 24 24', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
-                          g(stroke='none', stroke-width='1px', fill='none', fill-rule='evenodd', stroke-linecap='square')
-                            g(transform='translate(1.000000, 1.000000)', stroke='#000000')
-                              path(d='M0,11 L22,11')
-                              |  
-                              path(d='M11,0 L11,22')
-                      |  
-                      .t585__circle(style='background-color: transparent;')
-                    |  
-                    .t585__icon.t585__icon-hover
-                      .t585__lines
-                        svg(width='24px', height='24px', viewBox='0 0 24 24', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
-                          g(stroke='none', stroke-width='1px', fill='none', fill-rule='evenodd', stroke-linecap='square')
-                            g(transform='translate(1.000000, 1.000000)', stroke='#ffffff')
-                              path(d='M0,11 L22,11')
-                              |  
-                              path(d='M11,0 L11,22')
-                      |  
-                      .t585__circle(style='background-color: #ff2f00')
-                  |  
-                  .t585__content
-                    .t585__textwrapper
-                      .t585__text.t-descr.t-descr_xs(field='li_descr__1480611048442', style='')
-                        | Th&ocirc;ng tin
-                        br
-                        | &Dstrok;&#x1B0;&#x1EE3;c &dstrok;&abreve;ng b&#x1EDF;i : H&#x1ECD; v&agrave; t&ecirc;n , l&#x1EDB;p
-                        br
-                        br
-                        | N&uacute;t duy&#x1EC7;t
-                        br
-                        | N&uacute;t xo&aacute;
-                        br
-                        | C&#x1EA3; 2 ho&#x1EA1;t &dstrok;&#x1ED9;ng &dstrok;&#x1B0;&#x1EE3;c l&#x1B0;u &#x1EDF; l&#x1ECB;ch s&#x1EED; ho&#x1EA1;t &dstrok;&#x1ED9;ng
-                        br
-              |  
-              .t585__border(style='height: 1px; background-color: #000000')
+                                                    td Xoá                          
         script(type='text/javascript').
           $(document).ready(function(){ t585_init('108816567'); });
       #rec110199109.r.t-rec.t-rec_pt_90.t-rec_pb_90(style='padding-top:90px;padding-bottom:90px; ', data-record-type='208')
@@ -467,91 +420,56 @@ html
         // T585
         .t585
           .t-container
-            .t-col.t-col_8.t-prefix_2
-              .t585__accordion.t-animate(data-animate-style='fadeinup', data-animate-chain='yes')
-                .t585__wrapper
-                  .t585__header(style=' border-top: 1px solid #000000')
-                    .t585__title.t-name.t-name_xl(field='li_title__1480611044356', style='') Cookie
-                    |  
-                    .t585__icon
-                      .t585__lines
-                        svg(width='24px', height='24px', viewBox='0 0 24 24', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
-                          g(stroke='none', stroke-width='1px', fill='none', fill-rule='evenodd', stroke-linecap='square')
-                            g(transform='translate(1.000000, 1.000000)', stroke='#000000')
-                              path(d='M0,11 L22,11')
-                              |  
-                              path(d='M11,0 L11,22')
+            each item,index in onSale
+              .t-col.t-col_8.t-prefix_2
+                .t585__accordion.t-animate(data-animate-style='fadeinup', data-animate-chain='yes')
+                  .t585__wrapper
+                    .t585__header(style=' border-top: 1px solid #000000')
+                      .t585__title.t-name.t-name_xl(field='li_title__1480611044356', style='') #{item.nameItem}
                       |  
-                      .t585__circle(style='background-color: transparent;')
-                    |  
-                    .t585__icon.t585__icon-hover
-                      .t585__lines
-                        svg(width='24px', height='24px', viewBox='0 0 24 24', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
-                          g(stroke='none', stroke-width='1px', fill='none', fill-rule='evenodd', stroke-linecap='square')
-                            g(transform='translate(1.000000, 1.000000)', stroke='#ffffff')
-                              path(d='M0,11 L22,11')
-                              |  
-                              path(d='M11,0 L11,22')
+                      .t585__icon
+                        .t585__lines
+                          svg(width='24px', height='24px', viewBox='0 0 24 24', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+                            g(stroke='none', stroke-width='1px', fill='none', fill-rule='evenodd', stroke-linecap='square')
+                              g(transform='translate(1.000000, 1.000000)', stroke='#000000')
+                                path(d='M0,11 L22,11')
+                                |  
+                                path(d='M11,0 L11,22')
+                        |  
+                        .t585__circle(style='background-color: transparent;')
                       |  
-                      .t585__circle(style='background-color: #ff2f00')
-                  |  
-                  .t585__content
-                    .t585__textwrapper
-                      .t585__text.t-descr.t-descr_xs(field='li_descr__1480611044356', style='')
-                        | Th&ocirc;ng tin
-                        br
-                        | &Dstrok;&#x1B0;&#x1EE3;c &dstrok;&abreve;ng b&#x1EDF;i : H&#x1ECD; v&agrave; t&ecirc;n , l&#x1EDB;p
-                        br
-                        br
-                        br
-                        | N&uacute;t xo&aacute;
-                        br
-                        | C&#x1EA3; 2 ho&#x1EA1;t &dstrok;&#x1ED9;ng &dstrok;&#x1B0;&#x1EE3;c l&#x1B0;u &#x1EDF; l&#x1ECB;ch s&#x1EED; ho&#x1EA1;t &dstrok;&#x1ED9;ng
-            |  
-            .t-col.t-col_8.t-prefix_2
-              .t585__accordion.t-animate(data-animate-style='fadeinup', data-animate-chain='yes')
-                .t585__wrapper
-                  .t585__header(style=' border-top: 1px solid #000000')
-                    .t585__title.t-name.t-name_xl(field='li_title__1480611048442', style='') Chocolate
+                      .t585__icon.t585__icon-hover
+                        .t585__lines
+                          svg(width='24px', height='24px', viewBox='0 0 24 24', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+                            g(stroke='none', stroke-width='1px', fill='none', fill-rule='evenodd', stroke-linecap='square')
+                              g(transform='translate(1.000000, 1.000000)', stroke='#ffffff')
+                                path(d='M0,11 L22,11')
+                                |  
+                                path(d='M11,0 L11,22')
+                        |  
+                        .t585__circle(style='background-color: #ff2f00')
                     |  
-                    .t585__icon
-                      .t585__lines
-                        svg(width='24px', height='24px', viewBox='0 0 24 24', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
-                          g(stroke='none', stroke-width='1px', fill='none', fill-rule='evenodd', stroke-linecap='square')
-                            g(transform='translate(1.000000, 1.000000)', stroke='#000000')
-                              path(d='M0,11 L22,11')
-                              |  
-                              path(d='M11,0 L11,22')
-                      |  
-                      .t585__circle(style='background-color: transparent;')
-                    |  
-                    .t585__icon.t585__icon-hover
-                      .t585__lines
-                        svg(width='24px', height='24px', viewBox='0 0 24 24', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
-                          g(stroke='none', stroke-width='1px', fill='none', fill-rule='evenodd', stroke-linecap='square')
-                            g(transform='translate(1.000000, 1.000000)', stroke='#ffffff')
-                              path(d='M0,11 L22,11')
-                              |  
-                              path(d='M11,0 L11,22')
-                      |  
-                      .t585__circle(style='background-color: #ff2f00')
-                  |  
-                  .t585__content
-                    .t585__textwrapper
-                      .t585__text.t-descr.t-descr_xs(field='li_descr__1480611048442', style='')
-                        | Th&ocirc;ng tin
-                        br
-                        | &Dstrok;&#x1B0;&#x1EE3;c &dstrok;&abreve;ng b&#x1EDF;i : H&#x1ECD; v&agrave; t&ecirc;n , l&#x1EDB;p
-                        br
-                        br
-                        | N&uacute;t duy&#x1EC7;t
-                        br
-                        | N&uacute;t xo&aacute;
-                        br
-                        | C&#x1EA3; 2 ho&#x1EA1;t &dstrok;&#x1ED9;ng &dstrok;&#x1B0;&#x1EE3;c l&#x1B0;u &#x1EDF; l&#x1ECB;ch s&#x1EED; ho&#x1EA1;t &dstrok;&#x1ED9;ng
-                        br
-              |  
-              .t585__border(style='height: 1px; background-color: #000000')
+                    .t585__content
+                      .t585__textwrapper
+                        img.t585__img.t-img(imgfield='li_img__1480611044356', src=item.imgItem, data-original=item.imgItem  )
+                        .t585__text.t-descr.t-descr_xs(field='li_descr__1480611044356', style='')
+                          | Danh mục sản phẩm : #{item.type}
+                          br
+                          | Giá : #{item.priceItem} vnđ
+                          br
+                          | Mô tả : #{item.desItem}
+                          br
+                          | Được đăng bởi : #{item.owner}                  
+                          br
+                          | Hạn cuối nhận giao hàng : #{item.dateItem}
+                          br
+                        div(id = 'update')
+                          a.t-btn.t-btn_sm.t142A__marginleft20px.t-animate(href='/admin/remove/' + item.idItem, target='', data-animate-style='fadeindown', data-animate-group='yes', data-animate-order='2', data-animate-delay='0.3', style='color:#000000;border:3px solid #000000;', data-btneffects-second='btneffects-light')
+                                            table(style='width:100%; height:100%;')
+                                              tbody
+                                                tr
+                                                  td Gỡ  
+                //.t585__border(style='height: 1px; background-color: #000000')
         script(type='text/javascript').
           $(document).ready(function(){ t585_init('110194671'); });
       #rec108816576.r.t-rec.t-rec_pt_0.t-rec_pb_0(style='padding-top:0px;padding-bottom:0px;background-color:#0d0d0d; ', data-record-type='56', data-bg-color='#0d0d0d')
@@ -564,17 +482,85 @@ html
                   | B&#x1EA3;n quy&#x1EC1;n thu&#x1ED9;c v&#x1EC1; Quoc Hung Bui
                   br
     // /allrecords
-    // Stat
+    // Stat 
     script(type='text/javascript').
       if (! window.mainTracker) { window.mainTracker = 'tilda'; }	(function (d, w, k, o, g) { var n=d.getElementsByTagName(o)[0],s=d.createElement(o),f=function(){n.parentNode.insertBefore(s,n);}; s.type = "text/javascript"; s.async = true; s.key = k; s.id = "tildastatscript"; s.src=g; if (w.opera=="[object Opera]") {d.addEventListener("DOMContentLoaded", f, false);} else { f(); } })(document, window, '589de8118390cf06dce5be0604916d94','script','https://stat.tildacdn.com/js/tildastat-0.2.min.js');
-    //script(src ='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js') ; 
     script(src = '/socket.io/socket.io.js') 
     script.
       var socket = io.connect('http://localhost') ; 
       $(document).ready(function(){
-        $('#update').click(function(){
-          socket.emit('updateStatusIten') ; 
-        })
+        socket.emit('online',$('#userId').text()) ; 
+        socket.on('displayNewRequest',function(waitingAccept){
+          alert('Xd') ; 
+          $('#waitingAccept').html("") ; 
+          for (let i = 0 ; i < waitingAccept.length ; i++){
+          
+          $('#waitingAccept').append('<h1>cac</h1>'/*`<div class="t-col t-col_8 t-prefix_2">
+                        <div class="t585__accordion">
+                            <div class="t585__wrapper">
+                                <div class="t585__header" style=" border-top: 1px solid #000000">
+                                    <div class="t585__title t-name t-name_xl" field="li_title__1480611044356">${waitingAccept[i].nameItem}</div>
+                                    <div class="t585__icon">
+                                        <div class="t585__lines">
+                                            <svg width="24px" height="24px" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square">
+                                                    <g transform="translate(1.000000, 1.000000)" stroke="#000000">
+                                                        <path d="M0,11 L22,11"></path>
+                                                        <path d="M11,0 L11,22"></path>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="t585__circle" style="background-color: transparent;"></div>
+                                    </div>
+                                    <div class="t585__icon t585__icon-hover">
+                                        <div class="t585__lines">
+                                            <svg width="24px" height="24px" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square">
+                                                    <g transform="translate(1.000000, 1.000000)" stroke="#ffffff">
+                                                        <path d="M0,11 L22,11"></path>
+                                                        <path d="M11,0 L11,22"></path>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                        <div class="t585__circle" style="background-color: #ff2f00"></div>
+                                    </div>
+                                </div>
+                                <div class="t585__content">
+                                    <div class="t585__textwrapper">
+                                        <!--img.t585__img.t-img(imgfield="li_img__1480611044356" src="https://static.tildacdn.com/tild3165-3965-4639-b833-663538613434/-/empty/CYhSSvH.jpg" data-original="https://static.tildacdn.com/tild3165-3965-4639-b833-663538613434/CYhSSvH.jpg")-->
+                                        <div class="t585__text t-descr t-descr_xs" field="li_descr__1480611044356 " style=" ">Thành tiền : ${queue.cost}
+                                            <br>Danh mục sản phẩm:  ${waitingAccept[i].type}
+                                            <br>Giá : ${waitingAccept[i].priceItem}
+                                            <br>Mô tả : ${waitingAccept[i].desItem}
+                                            <br>Hạn cuối nhận giao hàng : ${waitingAccept[i].owner}
+                                        <a class="t-btn t-btn_sm t142A__marginleft20px t-animate" href='/admin/accept/'+ ${waitingAccept[i].idItem} , target="" data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="color:#000000;border:3px solid #000000;" data-btneffects-second="btneffects-light">
+                                            <table style="width:100%; height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Duyệt</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </a>
+                                        <a class="t-btn t-btn_sm t142A__marginleft20px t-animate" href='/admin/decline/'+ ${waitingAccept[i].idItem} ,  target="" data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="color:#000000;border:3px solid #000000;" data-btneffects-second="btneffects-light">
+                                            <table style="width:100%; height:100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Xoá</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="t585__border" style="height: 1px; background-color: #000000"></div>
+                    </div>`*/);
+            }
+        }) ; 
       });
 
       

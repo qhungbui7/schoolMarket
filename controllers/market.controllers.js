@@ -1,7 +1,7 @@
 var db = require('../db') ; 
 var nodemailer = require('../nodemailer') ; 
 module.exports.market = function(req,res){
-    let data = db.get('items').filter({status : 'Đang bán'}).value() ; 
+    let data = db.get('items').filter({status : 'On sale'}).value() ; 
     res.render('market/index.pug',{data}) ; 
 }
 module.exports.checkOut = function(req,res){
@@ -35,7 +35,7 @@ module.exports.postCheckOut = function(req,res){
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
 
-    db.get('history').push({action : 'Buy' , item : item , from : customer , to : item.owner, time : datetime }).write() ; 
+    db.get('history').push({action : 'Buy' , item : item , customer : customer , seller : item.owner, time : datetime }).write() ; 
     //nodemailer.send(customer,item) ; 
 
 
