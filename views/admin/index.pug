@@ -495,7 +495,8 @@ html
           $('#waitingAccept').html("") ; 
           for (let i = 0 ; i < waitingAccept.length ; i++){
           
-          $('#waitingAccept').append('<h1>cac</h1>'/*`<div class="t-col t-col_8 t-prefix_2">
+          $('#waitingAccept').append(`
+                  <div class="t-col t-col_8 t-prefix_2">
                         <div class="t585__accordion">
                             <div class="t585__wrapper">
                                 <div class="t585__header" style=" border-top: 1px solid #000000">
@@ -530,7 +531,7 @@ html
                                 <div class="t585__content">
                                     <div class="t585__textwrapper">
                                         <!--img.t585__img.t-img(imgfield="li_img__1480611044356" src="https://static.tildacdn.com/tild3165-3965-4639-b833-663538613434/-/empty/CYhSSvH.jpg" data-original="https://static.tildacdn.com/tild3165-3965-4639-b833-663538613434/CYhSSvH.jpg")-->
-                                        <div class="t585__text t-descr t-descr_xs" field="li_descr__1480611044356 " style=" ">Thành tiền : ${queue.cost}
+                                        <div class="t585__text t-descr t-descr_xs" field="li_descr__1480611044356 " style=" ">
                                             <br>Danh mục sản phẩm:  ${waitingAccept[i].type}
                                             <br>Giá : ${waitingAccept[i].priceItem}
                                             <br>Mô tả : ${waitingAccept[i].desItem}
@@ -558,7 +559,7 @@ html
                             </div>
                         </div>
                         <div class="t585__border" style="height: 1px; background-color: #000000"></div>
-                    </div>`*/);
+                    </div>`);
             }
         }) ; 
       });
