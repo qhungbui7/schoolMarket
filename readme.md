@@ -21,6 +21,8 @@ Waiting accept
 On sale
 Deleted
 
+
+Để hàng dài luôn
 # CONTACT US :
 Gmail : b.qhung.12.7@gmail.com
 Facebook : https://www.facebook.com/qhung.12.7 

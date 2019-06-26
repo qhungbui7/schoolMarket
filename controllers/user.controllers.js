@@ -10,6 +10,9 @@ module.exports.register = function(req,res){
 module.exports.dashboard = function(req,res){
     res.render('dashboard.pug') ; 
 }
+module.exports.waitingAccept = function(req,res){
+    res.render('waitingAccept.pug') ;
+}
 module.exports.manage = function(req,res){
     let dataLogin = res.locals.user ; 
     let user = db.get('users').find({id : dataLogin.id}).value() ;
