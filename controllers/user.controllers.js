@@ -10,15 +10,46 @@ module.exports.register = function(req,res){
 module.exports.dashboard = function(req,res){
     res.render('dashboard.pug') ; 
 }
+module.exports.renderOnSaleItem = function(req,res){
+    let dataLogin = res.locals.user ; 
+    let user = db.get('users').find({id : dataLogin.id}).value() ;
+    let onSale = db.get('items').filter({owner: user.id ,status: 'On sale'}).value() ;   
+    res.render('onSale.pug',{user,onSale}) ;
+}
 module.exports.waitingAccept = function(req,res){
-    res.render('waitingAccept.pug') ;
+    let dataLogin = res.locals.user ; 
+    let user = db.get('users').find({id : dataLogin.id}).value() ;
+    let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Waiting accept'}).value() ;  
+    //let onSale = db.get('items').filter({owner: user.id ,status: 'On sale'}).value() ;   
+    res.render('waitingAccept.pug',{user,waitingAcpt/*,onSale*/}) ;
+}
+module.exports.renderUserHistory = function(req,res){
+    let date = req.params.date ;  
+    let dataLogin = res.locals.user ; 
+    let historySeller = db.get('users').filter({seller : dataLogin.id , date }).value() ; 
+    let historyCustomer = db.get('users').filter({customer : dataLogin.id , date}).value() ; 
+    let history = historySeller.concat(historyCustomer) ; 
+    res.render('userHistory.pug',{history,date}) ;
+}
+module.exports.findDayUserHistory = function(req,res){
+    let dateFind = req.body.dateFind ; 
+    res.redirect('/user/manage/userHistory/' + dateFind) ; 
+}
+module.exports.renderQueue = function(req,res){
+    let dataLogin = res.locals.user ; 
+    let user = db.get('users').find({id : dataLogin.id}).value() ;
+    res.render('queue.pug',{user}) ; 
 }
 module.exports.manage = function(req,res){
     let dataLogin = res.locals.user ; 
     let user = db.get('users').find({id : dataLogin.id}).value() ;
-    let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Waiting accept'}).value() ;  
-    let onSale = db.get('items').filter({owner: user.id ,status: 'On sale'}).value() ;   
-    res.render('manage.pug',{user,waitingAcpt,onSale}) ; 
+    /*let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Waiting accept'}).value() ;  
+    let onSale = db.get('items').filter({owner: user.id ,status: 'On sale'}).value() ;   */
+    var currentdate = new Date(); 
+    var date = currentdate.getDate() + "-"
+                + (currentdate.getMonth()+1)  + "-" 
+                + currentdate.getFullYear()  ;
+    res.render('manage.pug',{user,date/*,waitingAcpt,onSale*/}) ; 
 }
 module.exports.formRequestAdmin = function(req,res){
     res.render('formRequestAdmin.pug') ; 
@@ -102,18 +133,20 @@ module.exports.requestAdmin = function(req,res){
 module.exports.userRemoveRequest = function(req,res){
     var idItem = req.params.idItem ;
     var currentdate = new Date(); 
-    var datetime = currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
+    var date = currentdate.getDate() + "-"
+                + (currentdate.getMonth()+1)  + "-" 
+                + currentdate.getFullYear()  ;
+                
+    var time =  currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds(); 
+                + currentdate.getSeconds();
     db.get('history').push({
         action : 'User remove request',
         item : db.get('items').find({idItem}).value(),
         subject : res.locals.user.id,        
-        time : datetime 
-    });
+        date , 
+        time
+    }).write();
     db.get('items')
         .remove({ idItem })
         .write() ;

@@ -404,7 +404,7 @@ html
         // T422
         .t422
           .t422__container.t-container
-            each element,index in waitingAcpt
+            each element,index in onSale
               .t422__wrapper.t-width_12.t422__prefix.t-prefix_1
                 .t422__img-mobile.t-col.t-bgimg(bgimgfield="img" data-original=element.imgItem)
                 .t422__img.t422__col.t422__col_5.t-col.t-bgimg(bgimgfield="img" data-original=element.imgItem)
@@ -427,7 +427,7 @@ html
                           | Hạn cuối nhận giao hàng : #{element.dateItem}
                           br
                         .t422__btn-wrapper
-                          a.t-btn.t-btn_sm(href="'/user/userRemoveRequest/'" target="" style="color:#ffc919;border:2px solid #ffc919;")
+                          a.t-btn.t-btn_sm(href="/user/userRemoveRequest/" target="" style="color:#ffc919;border:2px solid #ffc919;")
                             table(style="width:100%; height:100%;")
                               tr
                                 td Gỡ

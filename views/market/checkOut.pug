@@ -128,6 +128,7 @@ html
           .t-container.t-align_center
             .t-col.t-col_10.t-prefix_1
               .t225__title.t-title.t-title_md.t-animate(style='color:#ffffff; visibility: hidden;' id='idItem')=item.idItem
+              h1(id='userId' style='visibility: hidden')=customer.id
               .t225__title.t-title.t-title_md.t-animate(data-animate-style='fadeindown', data-animate-group='yes', field='title', style='color:#ffffff;') #{item.nameItem}
       |         
       #rec110777195.r.t-rec.t-rec_pt_90.t-rec_pb_75(style='padding-top:90px;padding-bottom:75px; ', data-record-type='223')
@@ -230,9 +231,16 @@ html
                         input.t-input.js-tilda-rule.t-input_bbonly(required type='text',  id = 'fb', name='fb', value=customer.fb, data-tilda-req='1', style='color:#000000; border:1px solid #000000; ')
                         |                                             
                         .t-input-error
+                    .t-input-group.t-input-group_in(data-input-lid='1495040492013')
+                      .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1495040492013', style='') Size (Nếu là áo quần)
+                      |                                         
+                      .t-input-block
+                        input.t-input.js-tilda-rule.t-input_bbonly(type='text',  id = 'size', name='size',ata-tilda-req='1', value =' ' style='color:#000000; border:1px solid #000000; ')
+                        |                                             
+                        .t-input-error
                     |                                     
                     .t-input-group.t-input-group_qn(data-input-lid='1500477576412')
-                      .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1500477576412', style='') S&#x1ED1; l&#x1B0;&#x1EE3;ng c&#x1EA7;n mua
+                      .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1500477576412', style='') Số lượng cần mua
                       |                                         
                       .t-input-block
                         .t-inputquantity__wrapper
@@ -537,6 +545,7 @@ html
     script.
         var socket = io.connect('http://localhost') ; //event connection bat cai nay
         $(document).ready(function(){
+          socket.emit('online',$('#userId').text()) ; 
           $('#LOLXD').click(function(){
             let data = {
               id : $('#id').val(),
@@ -545,6 +554,7 @@ html
               phone: $('#phone').val(),
               facebook: $('#fb').val(),
               amount: $('#amount').val(),
+              size : $('#size').val() ,
               dateReceive : $('#dateReceive').val() 
             }
             let idItem = $('#idItem').text() ;  

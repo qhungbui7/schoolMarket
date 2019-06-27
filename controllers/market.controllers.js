@@ -27,15 +27,23 @@ module.exports.postCheckOut = function(req,res){
     */
     let customer = req.body ; 
     let item = db.get('items').find({idItem : req.params.id}).value() ; 
-     var currentdate = new Date(); 
-    var datetime = currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
+    var currentdate = new Date(); 
+    var date = currentdate.getDate() + "-"
+                + (currentdate.getMonth()+1)  + "-" 
+                + currentdate.getFullYear()  ;
+                
+    var time =  currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
-
-    db.get('history').push({action : 'Buy' , item : item , customer : customer , seller : item.owner, time : datetime }).write() ; 
+    db.get('history').push({
+        action : 'Buy' ,
+        item : item , 
+        customerInfo : customer , 
+        customer : customer.id,
+        seller : item.owner, 
+        date , 
+        time 
+    }).write() ; 
     //nodemailer.send(customer,item) ; 
 
 

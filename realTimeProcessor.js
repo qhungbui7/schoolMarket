@@ -33,17 +33,18 @@ module.exports = function(io){
             data.nameItem = temp.nameItem ; 
             data.cost = temp.priceItem * data.amount  ;
             queue.push(data) ; 
-            console.log(queue) ; 
+            //console.log(queue) ; 
 
             let seller = mapList.find(function(element){
                 return element.customId === temp.owner ;
             });
+            console.log(mapList) ;
             db.get('users')
-                .find({id : seller.socketId})
+                .find({id : temp.owner})
                 .assign({queue})
                 .write() ; 
-            
-            io.to(`${seller.socketId}`).emit('customerSendData',data) ; 
+            if (seller)
+             io.to(`${seller.socketId}`).emit('customerSendData',data) ; 
         });
         socket.on('userRemoveRequest',function(){
             setTimeout(function(){
