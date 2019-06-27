@@ -36,11 +36,11 @@ module.exports.postCheckOut = function(req,res){
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
     db.get('history').push({
-        action : 'Buy' ,
+        action : 'Buy - Sell' ,
         item : item , 
-        customerInfo : customer , 
-        customer : customer.id,
-        seller : item.owner, 
+        objectInfo : customer , 
+        subject : customer.id,
+        object : item.owner, 
         date , 
         time 
     }).write() ; 

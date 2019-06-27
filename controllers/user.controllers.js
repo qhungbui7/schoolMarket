@@ -26,10 +26,9 @@ module.exports.waitingAccept = function(req,res){
 module.exports.renderUserHistory = function(req,res){
     let date = req.params.date ;  
     let dataLogin = res.locals.user ; 
-    let historySeller = db.get('users').filter({seller : dataLogin.id , date }).value() ; 
-    let historyCustomer = db.get('users').filter({customer : dataLogin.id , date}).value() ; 
-    let history = historySeller.concat(historyCustomer) ; 
-    res.render('userHistory.pug',{history,date}) ;
+    let historySubject = db.get('history').filter({subject : dataLogin.id , date : req.params.date }).value() ; 
+    let historyObject = db.get('history').filter({object : dataLogin.id , date : req.params.date }).value() ;
+    res.render('userHistory.pug',{historySubject,historyObject,date}) ;
 }
 module.exports.findDayUserHistory = function(req,res){
     let dateFind = req.body.dateFind ; 
