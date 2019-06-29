@@ -5,13 +5,7 @@ html
     meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     // metatextblock
-    title User dashboard
-    meta(property="og:url" content="http://schoolmarket.tilda.ws/dashboard")
-    meta(property="og:title" content="User dashboard")
-    meta(property="og:description" content="")
-    meta(property="og:type" content="website")
-    meta(property="og:image" content="https://static.tildacdn.com/tild3330-3230-4838-b334-643031383765/-/resize/504x/asian-assorted-backg.jpg")
-    link(rel="canonical" href="http://schoolmarket.tilda.ws/dashboard")
+    title Quản lí - School market
     // /metatextblock
     meta(property="fb:app_id" content="257953674358265")
     meta(name="format-detection" content="telephone=no")
@@ -56,7 +50,7 @@ html
             .t228__padding40px
             .t228__leftside
               .t228__leftcontainer
-                .t228__logo.t-title(field="title" style="color:#ffffff;font-size:30px;font-weight:600;font-family:'Montserrat';") School Market
+                a.t228__logo.t-title(href = '/' field="title" style="color:#ffffff;font-size:30px;font-weight:600;font-family:'Montserrat';") School Market
             .t228__centerside
               .t228__centercontainer
                 ul.t228__list.t228__list_hidden
@@ -68,6 +62,11 @@ html
               .t228__rightcontainer
                 .t228__right_buttons
                   .t228__right_buttons_wrap
+                    .t228__right_buttons_but
+                      a.t-btn(href="/user/dashboard" target="" style="color:#ffffff;background-color:#ffb833;")
+                        table(style="width:100%; height:100%;")
+                          tr
+                            td Bảng điều khiển
                     .t228__right_buttons_but
                       a.t-btn(href="/user/logout" target="" style="color:#ffffff;background-color:#ffb833;")
                         table(style="width:100%; height:100%;")
@@ -119,7 +118,7 @@ html
                       .t182__descr.t-descr.t-descr_lg.t-animate(data-animate-style="fadeindown" data-animate-group="yes" style="" field="descr") Chào mừng trở lại, #{user.name}
                       h1(id='userId' style='visibility: hidden')=user.id
                       .t182__buttons
-                        a.t-btn.t-animate(href="" target="" data-btneffects-first="btneffects-ripple" data-animate-style="fadeinleft" data-animate-group="yes" style="color:#ffffff;background-color:#f5914f;text-transform:uppercase;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);")
+                        a.t-btn.t-animate(href="/user/manage/profile" target="" data-btneffects-first="btneffects-ripple" data-animate-style="fadeinleft" data-animate-group="yes" style="color:#ffffff;background-color:#f5914f;text-transform:uppercase;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);")
                           table(style="width:100%; height:100%;")
                             tr
                               td Hồ sơ
@@ -341,7 +340,7 @@ html
                 .t598__descr.t-descr.t-descr_xs(field="descr" style=" ")
                   ul
                     li Không có thông báo mới
-                a.t598__btn.t-btn.t-btn_sm(href="/user/manage/waitingAccept" target="_blank" style="color:#ffffff;background-color:#f5914f;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;")
+                a.t598__btn.t-btn.t-btn_sm(href="/user/manage/waitingAccept" target="" style="color:#ffffff;background-color:#f5914f;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;")
                   table(style="width:100%; height:100%;")
                     tr
                       td Truy cập
@@ -468,17 +467,17 @@ html
               .t-sociallinks
                 .t-sociallinks__wrapper
                   .t-sociallinks__item
-                    a(href="temp" target="_blank")
+                    a(href=admin.facebook target="_blank")
                       svg#Layer_1.t-sociallinks__svg(version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px" viewbox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve")
                         desc Facebook
                         path(style="fill:#ffffff;" d="M47.761,24c0,13.121-10.638,23.76-23.758,23.76C10.877,47.76,0.239,37.121,0.239,24c0-13.124,10.638-23.76,23.764-23.76C37.123,0.24,47.761,10.876,47.761,24 M20.033,38.85H26.2V24.01h4.163l0.539-5.242H26.2v-3.083c0-1.156,0.769-1.427,1.308-1.427h3.318V9.168L26.258,9.15c-5.072,0-6.225,3.796-6.225,6.224v3.394H17.1v5.242h2.933V38.85z")
               .t494__text.t-heading.t-heading_xs.t494__text-bottom-margin.t-animate(data-animate-style="fadein" data-animate-group="yes" data-animate-order="1" style="" field="text") Góp ý tới Admin
               .t494__text.t-text.t-text_sm.t-animate(data-animate-style="fadein" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="" field="text2")
-                | Link google form
+                | Góp ý : #{admin.googleForm}
                 br
-                | Số điện thoại :
+                | Số điện thoại : #{admin.phone}
                 br
-                | E-mail:
+                | E-mail: #{admin.email}
       #rec112189155.r.t-rec.t-rec_pt_0.t-rec_pb_0(style="padding-top:0px;padding-bottom:0px;background-color:#ffffff; " data-animationappear="off" data-record-type="56" data-bg-color="#ffffff")
         // T046
         .t046

@@ -2,15 +2,16 @@ doctype html
 head
   meta(name='viewport', content='width=device-width, initial-scale=1')
   link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
+  link(href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet")
   style.
     body{
-    background-color: #eedddd;
+    background-color: #ffe6cc;
     padding: 0px;
     margin: 0px;
     overflow: hidden;
     }
     .toggle {
-    background-color: #c87f8a;
+    background-color: #e67700;
     text-align: center;
     height: 100px;
     width: 100px;
@@ -36,7 +37,7 @@ head
     transform: scale(0);
     border-radius: 50%;
     border-style: double;
-    border-color: #c87f8a;
+    border-color:#e67700;
     position: absolute;
     margin: auto;
     top: 0px;
@@ -79,6 +80,19 @@ head
     a:hover {
     color: #c87f8a;
     }
+    .swal-title {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .swal-text {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #FEFAE3;
+      padding: 17px;
+      border: 1px solid #F0E1A1;
+      display: block;
+      margin: 22px;
+      text-align: center;
+      color: #61534e;
+    }
 #toggle.toggle(onclick='menu-expand()')
   i#plus.fa.fa-plus
 #menu.menu
@@ -86,15 +100,15 @@ head
   a(href='/user/logout') 
     i.fa.fa-power-off
   //profile
-  a(href='#')
+  a(href='/user/manage/profile')
     i.fa.fa-user
-  //project
+  //manage
   a(href='/user/manage')
     i.fa.fa-folder-open
-  //about us
+  // About Dev
   a(href='#')
     i.fa.fa-users
-  //contact
+  // Contact Dev
   a(href='#')
     i.fa.fa-phone
   //Intruction
@@ -113,3 +127,12 @@ script.
   i=0;
   }
   }
+script(src="https://unpkg.com/sweetalert/dist/sweetalert.min.js")
+script.
+  swal({
+    title: 'Welcome !',
+    text: 'Nếu là lần đầu tiên vào đây, vui lòng xem FAQs (dấu chấm hỏi) để biết cách sử dụng trang web và tự giải đáp một vài thắc mắc thường gặp ',
+    icon: 'info',
+    button: 'Chấp thuận',
+  });
+

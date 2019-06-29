@@ -19,12 +19,18 @@ router.get('/manage/formRequestAdmin',authMiddleware.reqAuth,controller.formRequ
 // Queue the request of customer
 router.get('/manage/queue',authMiddleware.reqAuth,controller.renderQueue) ; 
 router.get('/userRemoveRequest/:idItem',authMiddleware.reqAuth,controller.userRemoveRequest) ; 
+router.get('/manage/shipped/:index',authMiddleware.reqAuth,controller.shipped); 
 
+
+router.get('/userRemoveItem/:idItem',authMiddleware.reqAuth,controller.userRemoveItem)
 //On sale
 router.get('/manage/onSaleItem',authMiddleware.reqAuth,controller.renderOnSaleItem) ; 
 
 //History user 
 router.get('/manage/userHistory/:date',authMiddleware.reqAuth,controller.renderUserHistory) ; 
+
+//profile 
+router.get('/manage/profile',authMiddleware.reqAuth,controller.renderProfile) ; 
 
 
 
@@ -32,4 +38,6 @@ router.post('/login',controller.postLogin) ;
 router.post('/register',controller.postRegister) ;  
 router.post('/requestAdmin',authMiddleware.reqAuth,controller.requestAdmin) ; 
 router.post('/manage/findDayUserHistory',authMiddleware.reqAuth,controller.findDayUserHistory) ; 
+router.post('/manage/editProfile',authMiddleware.reqAuth,controller.editProfile) ; 
+router.post('/manage/changePass',authMiddleware.reqAuth,controller.changePass) ; 
 module.exports = router ;

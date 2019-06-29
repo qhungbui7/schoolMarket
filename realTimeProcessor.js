@@ -32,8 +32,8 @@ module.exports = function(io){
             data.idItem = idItem ; 
             data.nameItem = temp.nameItem ; 
             data.cost = temp.priceItem * data.amount  ;
+            data.status = 'Đang giao' ; 
             queue.push(data) ; 
-            //console.log(queue) ; 
 
             let seller = mapList.find(function(element){
                 return element.customId === temp.owner ;

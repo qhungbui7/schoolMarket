@@ -8,19 +8,18 @@ module.exports.register = function(req,res){
     res.render('register.pug') ; 
 }
 module.exports.dashboard = function(req,res){
-    res.render('dashboard.pug') ; 
+    let user = res.locals.user ; 
+    console.log(user); 
+    res.render('dashboard.pug',{user}) ; 
 }
 module.exports.renderOnSaleItem = function(req,res){
-    let dataLogin = res.locals.user ; 
-    let user = db.get('users').find({id : dataLogin.id}).value() ;
+    let user =  res.locals.user ;
     let onSale = db.get('items').filter({owner: user.id ,status: 'On sale'}).value() ;   
     res.render('onSale.pug',{user,onSale}) ;
 }
 module.exports.waitingAccept = function(req,res){
-    let dataLogin = res.locals.user ; 
-    let user = db.get('users').find({id : dataLogin.id}).value() ;
+    let user =  res.locals.user ;
     let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Waiting accept'}).value() ;  
-    //let onSale = db.get('items').filter({owner: user.id ,status: 'On sale'}).value() ;   
     res.render('waitingAccept.pug',{user,waitingAcpt/*,onSale*/}) ;
 }
 module.exports.renderUserHistory = function(req,res){
@@ -29,6 +28,10 @@ module.exports.renderUserHistory = function(req,res){
     let historySubject = db.get('history').filter({subject : dataLogin.id , date : req.params.date }).value() ; 
     let historyObject = db.get('history').filter({object : dataLogin.id , date : req.params.date }).value() ;
     res.render('userHistory.pug',{historySubject,historyObject,date}) ;
+}
+module.exports.renderProfile = function(req,res){
+    let user = res.locals.user ; 
+    res.render('userProfile.pug',{user}) ; 
 }
 module.exports.findDayUserHistory = function(req,res){
     let dateFind = req.body.dateFind ; 
@@ -42,13 +45,19 @@ module.exports.renderQueue = function(req,res){
 module.exports.manage = function(req,res){
     let dataLogin = res.locals.user ; 
     let user = db.get('users').find({id : dataLogin.id}).value() ;
-    /*let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Waiting accept'}).value() ;  
-    let onSale = db.get('items').filter({owner: user.id ,status: 'On sale'}).value() ;   */
-    var currentdate = new Date(); 
-    var date = currentdate.getDate() + "-"
+    let currentdate = new Date(); 
+    let date = currentdate.getDate() + "-"
                 + (currentdate.getMonth()+1)  + "-" 
                 + currentdate.getFullYear()  ;
-    res.render('manage.pug',{user,date/*,waitingAcpt,onSale*/}) ; 
+    let dataAdmin = db.get('users').find({id : 'admin'}).value() ; 
+    let admin =  {
+        email : dataAdmin.email,
+        phone : dataAdmin.phone,
+        facebook : dataAdmin.fb ,
+        googleForm : dataAdmin.googleForm  
+    }
+    console.log(admin) ; 
+    res.render('manage.pug',{user,date,admin}) ; 
 }
 module.exports.formRequestAdmin = function(req,res){
     res.render('formRequestAdmin.pug') ; 
@@ -150,5 +159,73 @@ module.exports.userRemoveRequest = function(req,res){
         .remove({ idItem })
         .write() ;
 
-    res.redirect('/user/manage') ;
+    res.redirect('/user/manage/waitingAccept') ;
+}
+module.exports.userRemoveItem = function(req,res){
+    var idItem = req.params.idItem ;
+    var currentdate = new Date(); 
+    var date = currentdate.getDate() + "-"
+                + (currentdate.getMonth()+1)  + "-" 
+                + currentdate.getFullYear()  ;
+                
+    var time =  currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+    db.get('history').push({
+        action : 'User remove item',
+        item : db.get('items').find({idItem}).value(),
+        subject : res.locals.user.id,        
+        date , 
+        time
+    }).write();
+    console.log(idItem) ; 
+    db.get('items')
+        .find({idItem: idItem })
+        .assign({ status : 'Deleted' })
+        .write() ;
+
+    res.redirect('/user/manage/onSaleItem') ;
+}
+module.exports.editProfile = function(req,res){
+    let user = res.locals.user ;
+    let newProfile = req.body ; 
+    if (user.pass !== md5(newProfile.password)){
+        console.log('Sai mật khẩu') ; 
+        res.redirect('/user/manage/profile') ;
+        return ;
+    }
+    ///user.email = newProfile.email
+    db.get('users')
+        .find({id : user.id})
+        .assign({
+            email : newProfile.email , 
+            fb : newProfile.fb , 
+            phone : newProfile.phone , 
+        }).write() ; 
+    res.redirect('/user/manage/profile') ;
+}
+module.exports.changePass = function(req,res){
+    let user = res.locals.user ; 
+    let info = req.body ; 
+    if (user.pass !== md5(info.oldpass)){
+        console.log('Sai mật khẩu') ; 
+        res.redirect('/user/manage/profile') ;
+        return ; 
+    }
+    db.get('users')
+    .find({id : user.id})
+    .assign({
+        pass : md5(info.pass) 
+    }).write() ; 
+    res.redirect('/user/manage/profile') ;
+}   
+module.exports.shipped = function(req,res){
+    let index = req.params.index ; 
+    let user = res.locals.user ; 
+    user.queue[index].status = 'Đã giao' ; 
+    db.get('users')
+    .find({id : user.id}) 
+    .assign({queue : user.queue})
+    .write() ; 
+    res.redirect('/user/manage/queue') ; 
 }

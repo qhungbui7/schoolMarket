@@ -1,12 +1,10 @@
 var db = require('../db') ; 
 module.exports.reqAuth = function(req,res,next){
     if (!req.signedCookies) {
-        console.log(req.signedCookies) ; 
         res.redirect('/user/login') ;
         return ;  
     }
     let cmp = db.get('users').find({id : req.signedCookies.id}).value() ; 
-
     if (!cmp){
         res.redirect('/user/login') ; 
         return ; 
