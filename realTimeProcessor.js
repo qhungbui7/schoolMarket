@@ -38,7 +38,6 @@ module.exports = function(io){
             let seller = mapList.find(function(element){
                 return element.customId === temp.owner ;
             });
-            console.log(mapList) ;
             db.get('users')
                 .find({id : temp.owner})
                 .assign({queue})
@@ -53,8 +52,6 @@ module.exports = function(io){
                 var admin = mapList.find(function(element){
                     return element.customId === 'admin' ;
                 });
-                console.log('admin : ', admin.socketId) ;
-                console.log(waitingAccept) ;  
                 io.to(`${admin.socketId}`).emit('displayNewRequest',waitingAccept) ; 
             },2000) ; 
         });

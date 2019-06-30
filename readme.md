@@ -9,8 +9,8 @@ npm start
 # NOTE
 In database
 Action in History collection contains :
-Buy
-User remove on sale
+Buy - Sell
+User remove item
 User remove request
 Admin decline request
 Admin remove on sale 
@@ -29,7 +29,7 @@ Deleted
 Gmail : b.qhung.12.7@gmail.com
 Facebook : https://www.facebook.com/qhung.12.7 
 
-#LICENSE
+# LICENSE
 Bản quyền thuộc về Quoc Hung Bui
 
 

@@ -9,6 +9,7 @@ module.exports.reqAuth = function(req,res,next){
         res.redirect('/user/login') ; 
         return ; 
     }
+    console.log(cmp.id ,' ' , cmp.pass) ; 
     res.locals.user = cmp ; 
     next() ; 
 }

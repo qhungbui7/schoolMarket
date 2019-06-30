@@ -1,11 +1,9 @@
 var db = require('../db') ; 
+var subFunction = require('./subFunction') ; 
 var shortid = require('shortid') ; 
 var md5 = require('md5') ;
 module.exports.index = function(req,res){
-    var currentdate = new Date(); 
-    var date = currentdate.getDate() + "-"
-                + (currentdate.getMonth()+1)  + "-" 
-                + currentdate.getFullYear()  ;
+    var date = subFunction.getDay() ; 
     res.render('admin/index.pug',{date}); 
 }
 module.exports.renderProfile = function(req,res){
@@ -19,7 +17,7 @@ module.exports.renderHistory = function(req,res){
     res.render('admin/adminHistory.pug',{history,date}) ;
 }
 module.exports.renderOnSale = function(req,res){
-    let admin = /*db.get('users').find({id : dataLogin.id}).value()*/ res.locals.user ;
+    let admin =  res.locals.user ;
     let onSale = db.get('items').filter({status: 'On sale'}).value() ;   
     res.render('admin/onSale.pug',{admin,onSale}) ;
 }

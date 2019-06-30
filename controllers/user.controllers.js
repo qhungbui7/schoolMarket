@@ -1,4 +1,5 @@
 var db = require('../db') ;
+var subFunction = require('./subFunction') ; 
 var shortid = require('shortid') ;  
 var md5 = require('md5') ; 
 module.exports.login = function(req,res){
@@ -9,7 +10,6 @@ module.exports.register = function(req,res){
 }
 module.exports.dashboard = function(req,res){
     let user = res.locals.user ; 
-    console.log(user); 
     res.render('dashboard.pug',{user}) ; 
 }
 module.exports.renderOnSaleItem = function(req,res){
@@ -27,7 +27,9 @@ module.exports.renderUserHistory = function(req,res){
     let dataLogin = res.locals.user ; 
     let historySubject = db.get('history').filter({subject : dataLogin.id , date : req.params.date }).value() ; 
     let historyObject = db.get('history').filter({object : dataLogin.id , date : req.params.date }).value() ;
-    res.render('userHistory.pug',{historySubject,historyObject,date}) ;
+    let history = historySubject + historyObject ; 
+    console.log(historyObject,' ' , historySubject) ;
+    res.render('userHistory.pug',{historySubject,historyObject,history,date}) ;
 }
 module.exports.renderProfile = function(req,res){
     let user = res.locals.user ; 
@@ -45,10 +47,7 @@ module.exports.renderQueue = function(req,res){
 module.exports.manage = function(req,res){
     let dataLogin = res.locals.user ; 
     let user = db.get('users').find({id : dataLogin.id}).value() ;
-    let currentdate = new Date(); 
-    let date = currentdate.getDate() + "-"
-                + (currentdate.getMonth()+1)  + "-" 
-                + currentdate.getFullYear()  ;
+    let date = subFunction.getDay() ; 
     let dataAdmin = db.get('users').find({id : 'admin'}).value() ; 
     let admin =  {
         email : dataAdmin.email,
@@ -56,7 +55,6 @@ module.exports.manage = function(req,res){
         facebook : dataAdmin.fb ,
         googleForm : dataAdmin.googleForm  
     }
-    console.log(admin) ; 
     res.render('manage.pug',{user,date,admin}) ; 
 }
 module.exports.formRequestAdmin = function(req,res){
@@ -108,22 +106,7 @@ module.exports.postLogin = function(req,res){
 }
 module.exports.requestAdmin = function(req,res){
     let user = res.locals.user ; 
-    /*email
-    phone
-    type 
-    name 
-    desItem 
-    imgItem 
-    dateItem
-    password 
-    */
     let data = req.body ;
-    /*
-    Waiting accept
-    On sale
-    Tạm đóng
-    Đã dừng
-    */
     data.idItem = shortid.generate() ; 
     data.status = 'Waiting accept' ;
 
@@ -139,15 +122,10 @@ module.exports.requestAdmin = function(req,res){
     res.redirect('/user/manage') ;
 }
 module.exports.userRemoveRequest = function(req,res){
-    var idItem = req.params.idItem ;
-    var currentdate = new Date(); 
-    var date = currentdate.getDate() + "-"
-                + (currentdate.getMonth()+1)  + "-" 
-                + currentdate.getFullYear()  ;
-                
-    var time =  currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
+    let idItem = req.params.idItem ;
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ; 
+
     db.get('history').push({
         action : 'User remove request',
         item : db.get('items').find({idItem}).value(),
@@ -162,15 +140,10 @@ module.exports.userRemoveRequest = function(req,res){
     res.redirect('/user/manage/waitingAccept') ;
 }
 module.exports.userRemoveItem = function(req,res){
-    var idItem = req.params.idItem ;
-    var currentdate = new Date(); 
-    var date = currentdate.getDate() + "-"
-                + (currentdate.getMonth()+1)  + "-" 
-                + currentdate.getFullYear()  ;
-                
-    var time =  currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
+    let idItem = req.params.idItem ;
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ;
+
     db.get('history').push({
         action : 'User remove item',
         item : db.get('items').find({idItem}).value(),
@@ -178,7 +151,6 @@ module.exports.userRemoveItem = function(req,res){
         date , 
         time
     }).write();
-    console.log(idItem) ; 
     db.get('items')
         .find({idItem: idItem })
         .assign({ status : 'Deleted' })
