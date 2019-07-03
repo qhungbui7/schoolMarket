@@ -1,8 +1,8 @@
 # CONFIG : 
 unlock nodemailer, history in controllers/market.controllers.js (line 36 - 37)
-# FIRST RUN :
 node db.js
-RUN :
+
+# RUN :
 npm start
 
 
@@ -16,24 +16,42 @@ Admin decline request
 Admin remove on sale 
 Admin accept request 
 
-tab format : Name - School Market
 
+Item queue type : 
+Delivering
+Delivered 
+
+Type item tab
+all
+food
+deco
+fashion
+digital
+others
+
+
+Tab format : Name - School Market
+
+Realtime : 
+Market render when admin remove, admin accept userRemove, 
 
 Item status : 
 Waiting accept
 On sale
 Deleted
+mua xong giam so luong
+
+
 
 Để hàng dài luôn
+
 # CONTACT US :
 Gmail : b.qhung.12.7@gmail.com
-Facebook : https://www.facebook.com/qhung.12.7 
+Facebook : https://www.facebook.com/qhung.12.7
 
 # LICENSE
-Bản quyền thuộc về Quoc Hung Bui
+Copyright © Quoc Hung Bui 
 
 
-
-
-
-
+# BUGS
+Khi vào được bằng tài khoản user có thể sử dụng /admin một cách dễ dàng và ngược lại

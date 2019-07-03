@@ -27,9 +27,7 @@ module.exports.renderUserHistory = function(req,res){
     let dataLogin = res.locals.user ; 
     let historySubject = db.get('history').filter({subject : dataLogin.id , date : req.params.date }).value() ; 
     let historyObject = db.get('history').filter({object : dataLogin.id , date : req.params.date }).value() ;
-    let history = historySubject + historyObject ; 
-    console.log(historyObject,' ' , historySubject) ;
-    res.render('userHistory.pug',{historySubject,historyObject,history,date}) ;
+    res.render('userHistory.pug',{historySubject,historyObject,date}) ;
 }
 module.exports.renderProfile = function(req,res){
     let user = res.locals.user ; 
@@ -58,7 +56,8 @@ module.exports.manage = function(req,res){
     res.render('manage.pug',{user,date,admin}) ; 
 }
 module.exports.formRequestAdmin = function(req,res){
-    res.render('formRequestAdmin.pug') ; 
+    let user = res.locals.user ; 
+    res.render('formRequestAdmin.pug',{user}) ; 
 }
 module.exports.logout  = function(req,res){
     res.clearCookie('id') ; 
@@ -107,7 +106,7 @@ module.exports.postLogin = function(req,res){
 module.exports.requestAdmin = function(req,res){
     let user = res.locals.user ; 
     let data = req.body ;
-    data.idItem = shortid.generate() ; 
+    data.idItem = shortid.generate() + shortid.generate() ; 
     data.status = 'Waiting accept' ;
 
     
@@ -116,7 +115,6 @@ module.exports.requestAdmin = function(req,res){
         res.redirect('/user/formRequestAdmin') ; 
         return ; 
     } 
-    delete data.pass ;
     data.owner = user.id ; 
     db.get('items').push(data).write() ; 
     res.redirect('/user/manage') ;

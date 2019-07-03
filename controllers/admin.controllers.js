@@ -50,7 +50,7 @@ module.exports.acptItem = function(req,res){
             action : 'Admin accept request', 
             idItem : idItem 
     });
-    res.redirect('/admin/') ;
+    res.redirect('/admin/waitingAccept') ;
 
 }
 module.exports.decItem = function(req,res){
@@ -63,7 +63,7 @@ module.exports.decItem = function(req,res){
         action : 'Admin decline request', 
         idItem : idItem 
     })
-    res.redirect('/admin/') ;
+    res.redirect('/admin/waitingAccept') ;
 }
 module.exports.changeProfile = function(req,res){
     let admin = res.locals.user ;
