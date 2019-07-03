@@ -9,7 +9,7 @@ npm start
 # NOTE
 In database
 Action in History collection contains :
-Buy - Sell
+Buy - Sell 
 User remove item
 User remove request
 Admin decline request
@@ -33,13 +33,14 @@ others
 Tab format : Name - School Market
 
 Realtime : 
-Market render when admin remove, admin accept userRemove, 
+Market render when admin remove
+Admin accept userRemove
+Amount (X)
 
 Item status : 
 Waiting accept
 On sale
 Deleted
-mua xong giam so luong
 
 
 
@@ -54,4 +55,3 @@ Copyright © Quoc Hung Bui
 
 
 # BUGS
-Khi vào được bằng tài khoản user có thể sử dụng /admin một cách dễ dàng và ngược lại
