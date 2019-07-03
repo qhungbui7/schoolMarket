@@ -31,22 +31,29 @@ var marketRoute = require('./routes/market.route') ;
 //MIDDLEWARES
 var authMiddleware = require('./middlewares/auth.middleware') ; 
 
+//CONFIG
+app.use(express.static('public')) ; 
+app.set('view engine','pug') ; 
+app.set('views','./views') ;  
 
-    app.use(express.static('public')) ; 
-    app.set('view engine','pug') ; 
-    app.set('views','./views') ;  
-    
-    app.use(bodyParser.json()) ;
-    app.use(bodyParser.urlencoded({extended : true})) ;
-    app.use(cookieParser(ENCRYPTEDCOOKIE)) ; 
-    
-    app.use('/user',userRoute) ;
-    app.use('/admin',authMiddleware.reqAuth,adminRoute) ; 
-    app.use('/market',authMiddleware.reqAuth,marketRoute) ; 
+app.use(bodyParser.json()) ;
+app.use(bodyParser.urlencoded({extended : true})) ;
+app.use(cookieParser(ENCRYPTEDCOOKIE)) ; 
 
+app.use('/user',userRoute) ;
+app.use('/admin',authMiddleware.reqAuth,adminRoute) ; 
+app.use('/market',authMiddleware.reqAuth,marketRoute) ; 
+
+
+//INDEX
 app.get('/',function(req,res){
     res.render('index.pug') ; 
 })
+//404
+app.use(function(req, res, next){
+    res.status(404).render('404', {title: "Sorry, page not found"});
+});
+
 
 // SOCKET PART
 require('./realTimeProcessor')(io) ; 
