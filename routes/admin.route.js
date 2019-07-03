@@ -15,6 +15,8 @@ router.get('/history/:date',controllers.renderHistory) ;
 router.get('/manageUsers',controllers.renderUsers) ; 
 router.get('/onSale',controllers.renderOnSale) ; 
 router.get('/waitingAccept',controllers.renderWaitingAccept) ;
+router.get('/clearAllHistory',controllers.clearAllHistory) ; 
+
 
 router.post('/editProfile',controllers.changeProfile) ; 
 router.post('/changePass',controllers.changePass) ; 

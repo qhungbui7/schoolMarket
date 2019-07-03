@@ -44,16 +44,18 @@ app.use('/user',userRoute) ;
 app.use('/admin',authMiddleware.reqAuth,adminRoute) ; 
 app.use('/market',authMiddleware.reqAuth,marketRoute) ; 
 
+
+//INDEX
+app.get('/',function(req,res){
+    res.render('index.pug') ; 
+})
+
 //404
 app.use(function(req, res, next){
     res.status(404).render('404', {title: "Sorry, page not found"});
 });
 
 
-//INDEX
-app.get('/',function(req,res){
-    res.render('index.pug') ; 
-})
 
 
 // SOCKET PART
@@ -62,5 +64,5 @@ require('./realTimeProcessor')(io) ;
 
 
 server.listen(PORT,function(){
-    console.log(`Server is listening on port ${PORT} `) ; 
+    console.log(`Server is listening on port ${PORT}`) ; 
 });

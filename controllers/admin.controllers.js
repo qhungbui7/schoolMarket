@@ -101,3 +101,7 @@ module.exports.changePass = function(req,res){
     }).write() ; 
     res.redirect('/admin/profile') ;
 }
+module.exports.clearAllHistory = function(req,res){
+    db.get('history').remove().write()  ;
+    res.redirect('/admin') ;
+}
