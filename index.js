@@ -44,15 +44,16 @@ app.use('/user',userRoute) ;
 app.use('/admin',authMiddleware.reqAuth,adminRoute) ; 
 app.use('/market',authMiddleware.reqAuth,marketRoute) ; 
 
+//404
+app.use(function(req, res, next){
+    res.status(404).render('404', {title: "Sorry, page not found"});
+});
+
 
 //INDEX
 app.get('/',function(req,res){
     res.render('index.pug') ; 
 })
-//404
-app.use(function(req, res, next){
-    res.status(404).render('404', {title: "Sorry, page not found"});
-});
 
 
 // SOCKET PART

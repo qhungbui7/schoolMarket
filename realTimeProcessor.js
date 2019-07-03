@@ -1,10 +1,16 @@
 var db = require('./db') ; 
 var subFunction = require('./controllers/subFunction') ; 
 //var cookieParser = require('cookie-parser') ; 
-var controllers = require('./controllers/realtime.controllers') ; 
 module.exports = function(io){
     let mapList = [] ; 
     io.on('connection',function(socket){
+        socket.on('online',function(userId){
+            mapList.push({
+                socketId : socket.id,
+                customId : userId 
+            }) ; 
+            console.log(`${userId} connect`, socket.id) ;
+        });
         socket.on('disconnect',function() {
             console.log(`${socket.id} disconnect`) ; 
             for (let i = 0 ; i < mapList.length ; i++){
@@ -13,13 +19,12 @@ module.exports = function(io){
                 }
             }
         });
-        socket.on('online',function(userId){
-            mapList.push({
-                socketId : socket.id,
-                customId : userId 
-            })
-            console.log(`${userId} connect`, socket.id) ;
+        // Join item room
+        socket.on('joinItemRoom',function(idItemClient){
+            socket.join(`${idItemClient}`);
+            console.log(socket.id, 'join room' ,idItemClient)
         });
+
         socket.on('checkOut',function(data,idItem,clientId){ 
 
             let temp = db.get('items').find({idItem}).value() ; 
@@ -29,7 +34,7 @@ module.exports = function(io){
             });
             //check Fill date
             if (!data.dateReceive && clientId) {
-                io.to(`${socket.id}`).emit('plsFillDate') ; 
+                io.to(`${socket.id}`).emit('plsFillDate') ; // Can use socket.emit
                 return ; 
             } ;  
             //check amount 0
@@ -38,8 +43,10 @@ module.exports = function(io){
                 return ; 
             }
             //check amount
-            if (data.amount > temp.amount  && clientId) {
-                io.to(`${socket.id}`).emit('soldOut') ; 
+            /*console.log(data.amount ,'>' , temp.amount) ;
+            console.log(data.amount > temp.amount);*/
+            if ((data.amount > temp.amount)  && clientId) {
+                io.to(`${socket.id}`).emit('soldOut') ; // Can use socket.emit
                 return ; 
             } ;  
 
@@ -49,23 +56,8 @@ module.exports = function(io){
                 .find({id : idItem})
                 .assign({amount : temp.amount})
                 .write() ; 
-            socket.emit('updateNewAmount',temp.idItem,temp.amount) ;
-
-            //push history
-            /*let customer = data ; 
-            let item = temp ; 
-            let date = subFunction.getDay() ; 
-            let time =  subFunction.getTime() ; 
-            db.get('history').push({
-                action : 'Buy - Sell' ,
-                item : item , 
-                objectInfo : customer , 
-                subject : customer.id,
-                object : item.owner, 
-                date , 
-                time 
-            }).write() ; 
-            */
+            
+            io.in(`${temp.idItem}`).emit('updateNewAmount',temp.idItem,temp.amount);
 
             //push data to queue of user
             let queue = db.get('users').find({id : temp.owner}).value().queue ; 

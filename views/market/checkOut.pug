@@ -698,11 +698,15 @@ html
     script(src = '/socket.io/socket.io.js') 
     script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
     script.
-        var socket = io.connect('http://localhost') ; //event connection bat cai nay
+        var socket = io.connect('http://localhost') ; 
         $(document).ready(function(){
-          let idItemClient = $('#id').val() ; 
+          let idItemClient = $('#idItem').text() ; 
           let clientId = $('#userId').text() ; 
+
           socket.emit('online',clientId) ; 
+          socket.emit('joinItemRoom',idItemClient) ;
+          
+          //send data
           $('#LOLXD').click(function(){
             let data = {
               id : idItemClient,
@@ -717,10 +721,12 @@ html
             let idItem = $('#idItem').text() ;  
             socket.emit('checkOut',data,idItem,clientId) ;
           });    
+          // update new amount
           socket.on('updateNewAmount',function(idItem,amount){
             if (idItemClient === idItem)
               $('#amountDesForm').text(`Số lượng cần mua ( còn ${amount} )`)
           });
+          //warning include fillday, sold out, amount 0 
           socket.on('plsFillDate',function(){
             swal(
               {
@@ -750,7 +756,8 @@ html
                 button : false 
               }
             );
-          })
+          }) ; 
+          // msg buy successfully
           socket.on('buySucc',function(){
               swal(
               {
