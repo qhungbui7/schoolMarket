@@ -36,6 +36,8 @@ module.exports.checkOut = function(req,res){
 module.exports.postCheckOut = function(req,res){
     
     let customer = req.body ; 
+    if (customer.id ==='') customer.id = 'anonymous' ; 
+
     let item = db.get('items').find({idItem : req.params.id}).value() ; 
     let date = subFunction.getDay() ; 
     let time =  subFunction.getTime() ; 
@@ -43,8 +45,8 @@ module.exports.postCheckOut = function(req,res){
         action : 'Buy - Sell' ,
         item : item , 
         objectInfo : customer , 
-        subject : customer.id,
-        object : item.owner, 
+        subject : item.owner,
+        object : customer.id, 
         date , 
         time 
     }).write() ; 

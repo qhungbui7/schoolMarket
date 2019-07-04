@@ -5,20 +5,34 @@ var shortid = require('shortid') ;
 
 
 
-
+// Common task
 router.get('/',controllers.index);
 router.get('/logout',controllers.logout) ; 
+
+// Waiting accept item
+router.get('/waitingAccept',controllers.renderWaitingAccept) ;
 router.get('/accept/:id',controllers.acptItem) ; 
 router.get('/decline/:id',controllers.decItem) ; 
-router.get('/profile',controllers.renderProfile) ; 
-router.get('/history/:date',controllers.renderHistory) ;
-router.get('/manageUsers',controllers.renderUsers) ; 
-router.get('/onSale',controllers.renderOnSale) ; 
-router.get('/waitingAccept',controllers.renderWaitingAccept) ;
-router.get('/clearAllHistory',controllers.clearAllHistory) ; 
 
+// Profile
+router.get('/profile',controllers.renderProfile) ; 
 
 router.post('/editProfile',controllers.changeProfile) ; 
 router.post('/changePass',controllers.changePass) ; 
+
+// History server
+router.get('/history/:date',controllers.renderHistory) ;
+router.get('/clearAllHistory',controllers.clearAllHistory) ; 
+
+// Manage users 
+router.get('/manageUsers',controllers.renderUsers) ; 
+router.get('/eliminate/:id',controllers.eliminate) ; 
+
+// On sale
+router.get('/onSale',controllers.renderOnSale) ; 
+router.get('/removeItem/:idItem',controllers.removeItem) ;
+
+
+
 
 module.exports = router ;  

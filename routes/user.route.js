@@ -21,6 +21,9 @@ router.get('/manage/queue',authMiddleware.reqAuth,controller.renderQueue) ;
 router.get('/userRemoveRequest/:idItem',authMiddleware.reqAuth,controller.userRemoveRequest) ; 
 router.get('/manage/shipped/:index',authMiddleware.reqAuth,controller.shipped); 
 
+//Delivered
+router.get('/manage/delivered',authMiddleware.reqAuth,controller.renderDelivered) ; 
+
 
 router.get('/userRemoveItem/:idItem',authMiddleware.reqAuth,controller.userRemoveItem)
 //On sale

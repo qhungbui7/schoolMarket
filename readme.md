@@ -5,6 +5,14 @@ node db.js
 # RUN :
 npm start
 
+# CHECK :
+Admin history
+Admin manage User
+Admin waiting accept
+Admin profile 
+User queue
+User delivered 
+
 
 # NOTE
 In database
@@ -13,8 +21,9 @@ Buy - Sell
 User remove item
 User remove request
 Admin decline request
-Admin remove on sale 
 Admin accept request 
+Admin remove item
+
 
 
 Item queue type : 
@@ -30,17 +39,14 @@ digital
 others
 
 
-Tab format : Name - School Market
-
 Realtime : 
-Market render when admin remove
+Market render when admin accept request / remove request
 Admin accept userRemove
 Amount (X)
 
 Item status : 
 Waiting accept
 On sale
-Deleted
 
 
 

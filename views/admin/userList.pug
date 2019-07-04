@@ -5,13 +5,7 @@ html
     meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     // metatextblock
-    title User list
-    meta(property="og:url" content="http://schoolmarket.tilda.ws/userlist")
-    meta(property="og:title" content="User list")
-    meta(property="og:description" content="")
-    meta(property="og:type" content="website")
-    meta(property="og:image" content="https://static.tildacdn.com/tild3330-3230-4838-b334-643031383765/-/resize/504x/asian-assorted-backg.jpg")
-    link(rel="canonical" href="http://schoolmarket.tilda.ws/userlist")
+    title Danh sách người dùng - School market
     // /metatextblock
     meta(property="fb:app_id" content="257953674358265")
     meta(name="format-detection" content="telephone=no")
@@ -128,7 +122,7 @@ html
             .t228__padding40px
             .t228__leftside
               .t228__leftcontainer
-                .t228__logo.t-title(field="title" style="color:#ffffff;font-size:30px;font-weight:600;font-family:'Montserrat';") School Market
+                a.t228__logo.t-title(href = '/' field="title" style="color:#ffffff;font-size:30px;font-weight:600;font-family:'Montserrat';") School Market
             .t228__centerside
               .t228__centercontainer
                 ul.t228__list.t228__list_hidden  
@@ -137,12 +131,12 @@ html
                 .t228__right_buttons
                   .t228__right_buttons_wrap
                     .t228__right_buttons_but
-                      a.t-btn(href="" target="" style="color:#ffffff;background-color:#ffb833;")
+                      a.t-btn(href="/admin" target="" style="color:#ffffff;background-color:#ffb833;")
                         table(style="width:100%; height:100%;")
                           tr
                             td Trở lại trang
                     .t228__right_buttons_but
-                      a.t-btn(href="" target="" style="color:#ffffff;border:0px solid #ffffff;background-color:#ffb833;")
+                      a.t-btn(href="/admin/logout" target="" style="color:#ffffff;border:0px solid #ffffff;background-color:#ffb833;")
                         table(style="width:100%; height:100%;")
                           tr
                             td Đăng xuất
@@ -190,7 +184,7 @@ html
                     .t182__wrapper
                       .t182__title.t-title.t-title_xl.t-animate(data-animate-style="fadeinup" data-animate-group="yes" style="" field="title") Danh sách
                       .t182__descr.t-descr.t-descr_lg.t-animate(data-animate-style="fadeindown" data-animate-group="yes" style="" field="descr") Tất cả các user trên toàn máy chủ
-                      .t182__buttons
+                      //.t182__buttons
                         a.t-btn.t-animate(href="" target="" data-btneffects-first="btneffects-ripple" data-animate-style="fadeinleft" data-animate-group="yes" style="color:#ffffff;background-color:#f5914f;text-transform:uppercase;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);")
                           table(style="width:100%; height:100%;")
                             tr
@@ -407,11 +401,11 @@ html
             .t-col.t-col_8.t-prefix_2
               .t838__wrapper.t-site-search-input
                 .t838__blockinput
-                  input.t838__input.t-input(type="text" placeholder="Tìm kiếm người dùng" style="color:#000000; border:1px solid #000000; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;")
+                  input.t838__input.t-input(id = 'formsearch' type="text" placeholder="Nhập id người dùng" style="color:#000000; border:1px solid #000000; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;")
                   svg.t838__search-icon(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 88 88")
                     path(fill="#b6b6b6" d="M85 31.1c-.5-8.7-4.4-16.6-10.9-22.3C67.6 3 59.3 0 50.6.6c-8.7.5-16.7 4.4-22.5 11-11.2 12.7-10.7 31.7.6 43.9l-5.3 6.1-2.5-2.2-17.8 20 9 8.1 17.8-20.2-2.1-1.8 5.3-6.1c5.8 4.2 12.6 6.3 19.3 6.3 9 0 18-3.7 24.4-10.9 5.9-6.6 8.8-15 8.2-23.7zM72.4 50.8c-9.7 10.9-26.5 11.9-37.6 2.3-10.9-9.8-11.9-26.6-2.3-37.6 4.7-5.4 11.3-8.5 18.4-8.9h1.6c6.5 0 12.7 2.4 17.6 6.8 5.3 4.7 8.5 11.1 8.9 18.2.5 7-1.9 13.8-6.6 19.2z")
                 .t838__blockbutton
-                  button.t-submit(style="color:#ffffff;background-color:#000000;border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px;") Search
+                  button.t-submit(id = 'search' style="color:#ffffff;background-color:#000000;border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px;") Search
         script(type="text/javascript").
           $(document).ready(function() {
           if ($("script[src^='https://search.tildacdn.com/static/tilda-search-']").length === 0) {
@@ -438,8 +432,9 @@ html
       #rec112235304.r.t-rec.t-rec_pt_45.t-rec_pb_45(style="padding-top:45px;padding-bottom:45px; " data-record-type="139")
         // T013
         .t013
-         .t-container
+         .t-container(id = 'users')
           each element,index in users
+           div(style='visibility: hidden;')=element.id  
            .t-col.t-col_4.t013__centeredsection
             img.t013__img.t-img.t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" src="https://static.tildacdn.com/tild6238-6165-4338-b861-643639356163/17004.svg" imgfield="img" data-tu-max-width="320" data-tu-max-height="320" data-tu-cover="c")
             br
@@ -455,14 +450,12 @@ html
              br
              | Địa chỉ facebook : #{element.fb}
              br
-             | Một nút xoá tài khoản
-             br
              br
             .t422__btn-wrapper()
-             a.t-btn.t-btn_sm(href="/user/userRemoveRequest/" target="" style="color:#ffc919;border:2px solid #ffc919;")
+             a.t-btn.t-btn_sm(href="/admin/eliminate/" + element.id target="" style="color:#ffc919;border:2px solid #ffc919;")
               table(style="width:100%; height:100%;")
                tr
-                td Gỡ
+                td Loại bỏ người dùng
       #rec112237279.r.t-rec.t-rec_pt_90.t-rec_pb_90(style="padding-top:90px;padding-bottom:90px; " data-record-type="71")
         // T057
         .t057
@@ -495,3 +488,12 @@ html
       f();
       }
       })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script.
+      $(document).ready(function(){
+        $('#seachForm').on("keyup",function(){
+          let search = this.val().toLowerCase() ; 
+          $('#users *').filter(function(){
+            $(this).toggle($(this.text().indexOf(search)) > -1)
+          })
+        });
+      }) ; 

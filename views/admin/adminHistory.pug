@@ -5,14 +5,7 @@ html
     meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     // metatextblock
-    title Lịch sử - School market
-    meta(name="description" content="Add some interesting specific details about your company")
-    meta(property="og:url" content="http://schoolmarket.tilda.ws/userhistory")
-    meta(property="og:title" content="History user")
-    meta(property="og:description" content="Add some interesting specific details about your company")
-    meta(property="og:type" content="website")
-    meta(property="og:image" content="https://static.tildacdn.com/tild3330-3230-4838-b334-643031383765/-/resize/504x/asian-assorted-backg.jpg")
-    link(rel="canonical" href="http://schoolmarket.tilda.ws/userhistory")
+    title Lịch sử hoạt động- School market
     // /metatextblock
     meta(property="fb:app_id" content="257953674358265")
     meta(name="format-detection" content="telephone=no")
@@ -623,24 +616,110 @@ html
                 .t-section__descr.t-descr.t-descr_xl.t-margin_auto(field="bdescr")=date
           .t-container
             each element,index in history
-             .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
-               .t-cell.t-valign_top
-                 .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(index+1)
-               .t510__textwrapper.t-cell.t-valign_top(style="")
-                 .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.time
-                 .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
-                   | ĐÃ BÁN
-                   br
-                   | Người mua : #{element.object}
-                   br
-                   | Số lượng mua : #{element.objectInfo.amount}
-                   br
-                   | Tên mặt hàng : #{element.item.nameItem}
-                   br
-                   | Id mặt hàng : #{element.item.idItem}
-                   br
-                   br
-                   br
+             if (element.action === 'Buy - Sell')
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(index+1)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.time
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | GIAO DỊCH
+                    br
+                    | Người bán : #{element.subject}
+                    br
+                    | Người mua : #{element.object}
+                    br
+                    | Số lượng mua : #{element.objectInfo.amount}
+                    br
+                    | Tên mặt hàng : #{element.item.nameItem}
+                    br
+                    | Id mặt hàng : #{element.item.idItem}
+                    br
+                    br
+                    br
+            else if (element.action === 'User remove item')
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(index+1)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.time
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | GỠ BỎ MẶT HÀNG
+                    br
+                    | Người gỡ : #{element.subject}
+                    br
+                    | Tên mặt hàng : #{element.item.nameItem}
+                    br
+                    | Mô tả mặt hàng : #{element.item.idItem}
+                    br
+                    br
+                    br
+            else if (element.action === 'User remove request')
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(index+1)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.time
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | GỠ YÊU CẦU MỞ MẶT HÀNG
+                    br
+                    | Người gỡ : #{element.subject}
+                    br
+                    | Tên mặt hàng : #{element.item.nameItem}
+                    br
+                    | Mô tả mặt hàng : #{element.item.desItem}
+                    br
+                    br
+                    br
+            else if (element.action ==='Admin accept request')
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(index+1)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.time
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | ADMIN CHẤP NHẬN YÊU CẦU
+                    br
+                    | Tên mặt hàng : #{element.item.nameItem}
+                    br
+                    | Id mặt hàng : #{element.item.idItem}      
+                    br
+                    | Mô tả mặt hàng : #{element.item.desItem}
+                    br
+                    br
+                    br
+            else if (element.action ==='Admin decline request')
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(index+1)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.time
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | ADMIN TỪ CHỐI YÊU CẦU
+                    br
+                    | Tên mặt hàng : #{element.item.nameItem}
+                    br
+                    | Id mặt hàng : #{element.item.idItem}      
+                    br
+                    | Mô tả mặt hàng : #{element.item.desItem}
+                    br
+                    br
+                    br
+            else if (element.action ==='Admin remove item')
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(index+1)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.time
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | ADMIN GỠ MẶT HÀNG
+                    br
+                    | Tên mặt hàng : #{element.item.nameItem}
+                    br
+                    | Id mặt hàng : #{element.item.idItem}      
+                    br
+                    br
+                    br
         style.
           #rec112314526 .t514__rightcol_5 .t514__line {
           height: 4px;

@@ -184,6 +184,11 @@ html
                     .t182__wrapper
                       .t182__title.t-title.t-title_xl.t-animate(data-animate-style="fadeinup" data-animate-group="yes" style="" field="title") Danh sách
                       .t182__descr.t-descr.t-descr_lg.t-animate(data-animate-style="fadeindown" data-animate-group="yes" style="" field="descr") Các đơn hàng đang chờ bạn phê duyệt
+                      .t182__buttons
+                        a.t-btn.t-animate(href="/user/manage/delivered" target="" data-btneffects-first="btneffects-ripple" data-animate-style="fadeinleft" data-animate-group="yes" style="color:#ffffff;background-color:#f5914f;text-transform:uppercase;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);")
+                          table(style="width:100%; height:100%;")
+                            tr
+                              td Danh sách các mặt hàng đã giao
           // arrow
           .t-cover__arrow
             .t-cover__arrow-wrapper.t-cover__arrow-wrapper_animated
@@ -396,36 +401,37 @@ html
                 .t-section__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinup" data-animate-group="yes" field="bdescr") Thông tin bao gồm số lượng sản phẩm và thông tin người mua
           .t-container
             each element,index in user.queue
-             .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
-               .t-cell.t-valign_top
-                 .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(index+1)
-               .t510__textwrapper.t-cell.t-valign_top(style="")
-                 .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.nameItem
-                 .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
-                   | Thành tiền : #{element.cost}
-                   br
-                   | Số lượng mua : #{element.amount}
-                   br
-                   | Thời gian mong muốn : #{element.dateReceive}
-                   br
-                   | ID người dùng : #{element.id}
-                   br
-                   | Tên người dùng : #{element.name}
-                   br
-                   | Email : #{element.email}
-                   br
-                   | Phone : #{element.phone}
-                   br
-                   | Facebook : #{element.facebook}
-                   br
-                   | Một chấp thuận, một gỡ, khi đã chấp thuận thì sang confirm đã giao
-                 if (element.status==='Đang giao') 
-                  .t422__btn-wrapper
-                    a.t-btn.t-btn_sm(href='/user/manage/shipped/'+index target="" style="color:#ffc919;border:2px solid #ffc919;")
-                      table(style="width:100%; height:100%;")
-                        tr
-                          td Xác nhận đã giao
-             .t-clear.t510__separator(style="")
+             if (element.status === 'Đang giao')
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(index+1)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.nameItem
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | Thành tiền : #{element.cost}
+                    br
+                    | Số lượng mua : #{element.amount}
+                    br
+                    | Thời gian mong muốn : #{element.dateReceive}
+                    br
+                    | ID người dùng : #{element.id}
+                    br
+                    | Tên người dùng : #{element.name}
+                    br
+                    | Email : #{element.email}
+                    br
+                    | Phone : #{element.phone}
+                    br
+                    | Facebook : #{element.facebook}
+                    br
+                    | Một chấp thuận, một gỡ, khi đã chấp thuận thì sang confirm đã giao
+                  if (element.status==='Đang giao') 
+                    .t422__btn-wrapper
+                      a.t-btn.t-btn_sm(href='/user/manage/shipped/'+index target="" style="color:#ffc919;border:2px solid #ffc919;")
+                        table(style="width:100%; height:100%;")
+                          tr
+                            td Xác nhận đã giao
+              .t-clear.t510__separator(style="")
       #rec112317992.r.t-rec.t-rec_pt_90.t-rec_pb_90(style="padding-top:90px;padding-bottom:90px; " data-record-type="71")
         // T057
         .t057

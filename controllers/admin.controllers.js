@@ -41,29 +41,63 @@ module.exports.logout  = function(req,res){
     res.redirect('/user/login') ; 
 }
 module.exports.acptItem = function(req,res){
-    idItem = req.params.id ; 
+    let idItem = req.params.id ; 
+    let item = db.get('items').find({idItem}).value() ; 
     db.get('items')
         .find({idItem})
         .assign({ status : 'On sale'}) 
         .write() ; 
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ;
     db.get('history').push({
-            action : 'Admin accept request', 
-            idItem : idItem 
+        action : 'Admin accept request',
+        item  ,
+        subject : 'admin',
+        obj : item.owner,
+        objInfo : '',        
+        date , 
+        time
     });
     res.redirect('/admin/waitingAccept') ;
 
 }
 module.exports.decItem = function(req,res){
-    idItem = req.params.id ; 
+    let idItem = req.params.id ; 
+    let item = db.get('items').find({idItem}).value() ; 
     db.get('items')
-        .find({idItem})
-        .assign({ status : 'Deleted'}) 
+        .remove({idItem})
         .write() ; 
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ;
     db.get('history').push({
-        action : 'Admin decline request', 
-        idItem : idItem 
-    })
+        action : 'Admin decline request',
+        item ,
+        subject : 'admin',
+        obj : item.owner,
+        objInfo : '',        
+        date , 
+        time
+    });
     res.redirect('/admin/waitingAccept') ;
+}
+module.exports.removeItem = function(req,res){
+    let idItem = req.params.idItem ;
+    let item = db.get('items').find({idItem}).value() ;
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ;
+    db.get('history').push({
+        action : 'Admin remove item',
+        item ,
+        subject : 'admin',
+        obj : item.owner,
+        objInfo : '',        
+        date , 
+        time
+    }).write();
+    db.get('items')
+        .remove({idItem})
+        .write() ; 
+    res.redirect('/admin/onSale') ; 
 }
 module.exports.changeProfile = function(req,res){
     let admin = res.locals.user ;
@@ -104,4 +138,12 @@ module.exports.changePass = function(req,res){
 module.exports.clearAllHistory = function(req,res){
     db.get('history').remove().write()  ;
     res.redirect('/admin') ;
+}
+module.exports.eliminate = function(req,res){
+    let id = req.parmas.id ; 
+    db.get('users')
+        .find({id}) 
+        .remove()
+        .write() ;
+    res.redirect('/admin/manageUsers') ; 
 }

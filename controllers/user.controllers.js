@@ -42,6 +42,10 @@ module.exports.renderQueue = function(req,res){
     let user = db.get('users').find({id : dataLogin.id}).value() ;
     res.render('queue.pug',{user}) ; 
 }
+module.exports.renderDelivered = function(req,res){
+    let user = res.locals.user ; 
+    res.render('delivered.pug',{user}) ; 
+}
 module.exports.manage = function(req,res){
     let dataLogin = res.locals.user ; 
     let user = db.get('users').find({id : dataLogin.id}).value() ;
@@ -125,12 +129,15 @@ module.exports.userRemoveRequest = function(req,res){
     let time = subFunction.getTime() ; 
 
     db.get('history').push({
-        action : 'User remove request',
+        action : 'User remove item',
         item : db.get('items').find({idItem}).value(),
         subject : res.locals.user.id,        
+        object : '',
+        objectInfo :'',
         date , 
         time
     }).write();
+    
     db.get('items')
         .remove({ idItem })
         .write() ;
@@ -146,12 +153,13 @@ module.exports.userRemoveItem = function(req,res){
         action : 'User remove item',
         item : db.get('items').find({idItem}).value(),
         subject : res.locals.user.id,        
+        object : '',
+        objectInfo :'',
         date , 
         time
     }).write();
     db.get('items')
-        .find({idItem: idItem })
-        .assign({ status : 'Deleted' })
+        .remove({ idItem })
         .write() ;
 
     res.redirect('/user/manage/onSaleItem') ;
@@ -183,10 +191,11 @@ module.exports.changePass = function(req,res){
         return ; 
     }
     db.get('users')
-    .find({id : user.id})
-    .assign({
-        pass : md5(info.pass) 
-    }).write() ; 
+        .find({id : user.id})
+        .assign({
+            pass : md5(info.pass) 
+        })
+        .write() ; 
     res.redirect('/user/manage/profile') ;
 }   
 module.exports.shipped = function(req,res){
@@ -194,8 +203,12 @@ module.exports.shipped = function(req,res){
     let user = res.locals.user ; 
     user.queue[index].status = 'Đã giao' ; 
     db.get('users')
-    .find({id : user.id}) 
-    .assign({queue : user.queue})
-    .write() ; 
+        .find({
+            id : user.id
+        }) 
+        .assign({
+            queue : user.queue
+        })
+        .write() ; 
     res.redirect('/user/manage/queue') ; 
 }

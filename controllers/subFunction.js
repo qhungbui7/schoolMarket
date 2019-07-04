@@ -14,7 +14,7 @@ module.exports.getTime = function(){
     let mm = currentDay.getMinutes() ; 
     let ss =  currentDay.getSeconds();
     
-    if (hh < 10) dd = '0' + dd ; 
+    if (hh < 10) hh = '0' + hh ; 
     if (mm < 10) mm = '0' + mm ; 
     if (ss < 10) ss = '0' + ss ;
     

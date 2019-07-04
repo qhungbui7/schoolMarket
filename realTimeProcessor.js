@@ -43,8 +43,6 @@ module.exports = function(io){
                 return ; 
             }
             //check amount
-            /*console.log(data.amount ,'>' , temp.amount) ;
-            console.log(data.amount > temp.amount);*/
             if ((data.amount > temp.amount)  && clientId) {
                 io.to(`${socket.id}`).emit('soldOut') ; // Can use socket.emit
                 return ; 
