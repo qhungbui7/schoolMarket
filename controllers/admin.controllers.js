@@ -31,6 +31,9 @@ module.exports.renderUsers = function(req,res){
     users.splice(posAdmin,1) ; 
     res.render('admin/userList.pug',{admin,users}) ; 
 }
+module.exports.renderUsage = function(req,res){
+    res.render('admin/usage.pug') ; 
+}
 module.exports.renderWaitingAccept = function(req,res){
         let user = res.locals.user ;
         let waitingAcpt = db.get('items').filter({status: 'Waiting accept'}).value() ;  

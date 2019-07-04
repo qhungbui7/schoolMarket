@@ -7,6 +7,7 @@ var shortid = require('shortid') ;
 
 // Common task
 router.get('/',controllers.index);
+router.get('/usage',controllers.renderUsage) ; 
 router.get('/logout',controllers.logout) ; 
 
 // Waiting accept item
