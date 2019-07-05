@@ -6,15 +6,16 @@ node db.js
 npm start
 
 # CHECK :
-Admin manage
-Admin usage
-Admin history
+Admin manage (X)
+
+Admin history (X)
 Admin manage User
 Admin waiting accept
 Admin profile 
 User queue
 User delivered 
-
+Login form, reg form
+Admin usage
 # NOTE
 In database
 Action in History collection contains :
@@ -24,6 +25,7 @@ User remove request
 Admin decline request
 Admin accept request 
 Admin remove item
+Admin eliminate user
 
 
 
@@ -55,7 +57,7 @@ DEADLINE : 31/07/2019
 Always : check # CHECK for information
 
 
-1. Apply the github student pack again 
+1. Apply the github student pack again (X)
 2. Seach google to complete this timeline
 
 3. Create google form demo for admin
@@ -74,7 +76,7 @@ Always : check # CHECK for information
 7. Create page : contact to developer/admin  
 8. Create page : about developer
 9. Make alert in somewhere possible 
-10. Write FAQs, Terms and Policy : 
+10. Write FAQs, Terms and Policy, Usage for admin : 
     Content :
         FAQS : 
             Usage for user

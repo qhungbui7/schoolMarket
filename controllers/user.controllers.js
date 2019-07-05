@@ -35,7 +35,7 @@ module.exports.renderProfile = function(req,res){
 }
 module.exports.findDayUserHistory = function(req,res){
     let dateFind = req.body.dateFind ; 
-    res.redirect('/user/manage/userHistory/' + dateFind) ; 
+    res.redirect('/admin/history/' + dateFind) ; 
 }
 module.exports.renderQueue = function(req,res){
     let dataLogin = res.locals.user ; 

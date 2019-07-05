@@ -60,7 +60,7 @@ module.exports.acptItem = function(req,res){
         objInfo : '',        
         date , 
         time
-    });
+    }).write();
     res.redirect('/admin/waitingAccept') ;
 
 }
@@ -80,7 +80,7 @@ module.exports.decItem = function(req,res){
         objInfo : '',        
         date , 
         time
-    });
+    }).write();
     res.redirect('/admin/waitingAccept') ;
 }
 module.exports.removeItem = function(req,res){
@@ -141,6 +141,10 @@ module.exports.changePass = function(req,res){
 module.exports.clearAllHistory = function(req,res){
     db.get('history').remove().write()  ;
     res.redirect('/admin') ;
+}
+module.exports.findDay = function(req,res){
+    let dateFind = req.body.dateFind ; 
+    res.redirect('/admin/history/' + dateFind) ; 
 }
 module.exports.eliminate = function(req,res){
     let id = req.parmas.id ; 

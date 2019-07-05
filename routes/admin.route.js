@@ -23,6 +23,7 @@ router.post('/changePass',controllers.changePass) ;
 
 // History server
 router.get('/history/:date',controllers.renderHistory) ;
+router.post('/findDayHistory',controllers.findDay) ; 
 router.get('/clearAllHistory',controllers.clearAllHistory) ; 
 
 // Manage users 
