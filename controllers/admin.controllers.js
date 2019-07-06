@@ -3,8 +3,9 @@ var subFunction = require('./subFunction') ;
 var shortid = require('shortid') ; 
 var md5 = require('md5') ;
 module.exports.index = function(req,res){
-    var date = subFunction.getDay() ; 
-    res.render('admin/index.pug',{date}); 
+    let admin = res.locals.user ;
+    let date = subFunction.getDay() ; 
+    res.render('admin/index.pug',{admin,date}); 
 }
 module.exports.renderProfile = function(req,res){
     let admin = res.locals.user ; 
@@ -147,10 +148,18 @@ module.exports.findDay = function(req,res){
     res.redirect('/admin/history/' + dateFind) ; 
 }
 module.exports.eliminate = function(req,res){
-    let id = req.parmas.id ; 
+    let id = req.params.id ; 
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ; 
     db.get('users')
-        .find({id}) 
-        .remove()
+        .remove({id})
         .write() ;
+    db.get('history').push({
+        action : 'Admin eliminate user',
+        subject : 'admin',
+        obj : id, 
+        date , 
+        time
+    }).write();
     res.redirect('/admin/manageUsers') ; 
 }

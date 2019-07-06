@@ -9,11 +9,11 @@ npm start
 Admin manage (X)
 
 Admin history (X)
-Admin manage User
-Admin waiting accept
-Admin profile 
-User queue
-User delivered 
+Admin manage User (X)
+Admin waiting accept (X)
+Admin profile (X)
+User queue (X)
+User delivered (X) 
 Login form, reg form
 Admin usage
 # NOTE
