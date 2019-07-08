@@ -47,7 +47,13 @@ module.exports = function(io){
                 io.to(`${socket.id}`).emit('soldOut') ; // Can use socket.emit
                 return ; 
             } ;  
-
+            //check date 
+            let dateR = subFunction.convert(data.dateReceive) ; 
+            let dateI = subFunction.convert(temp.dateItem) ; 
+            if (dateR > dateI){
+                socket.emit('errorDate') ; 
+            }
+            
             // decrease the amount of item and update new amount
             temp.amount -= data.amount
             db.get('items')

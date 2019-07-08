@@ -1,0 +1,76 @@
+doctype html
+head
+  title Polymorphic blog
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  // ===============================================================================================
+  link(rel='icon', type='image/png', href='/loginreg/images/icons/favicon.ico')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/bootstrap/css/bootstrap.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/fonts/iconic/css/material-design-iconic-font.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/animate/animate.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/css-hamburgers/hamburgers.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/animsition/css/animsition.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/select2/select2.min.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/daterangepicker/daterangepicker.css')
+  // ===============================================================================================
+  link(rel='stylesheet', type='text/css', href='/loginreg/css/util.css')
+  link(rel='stylesheet', type='text/css', href='/loginreg/css/main.css')
+  // ===============================================================================================
+.limiter
+  .container-login100(style="background-image: url('/loginreg/images/bg-01.jpg');")
+    .wrap-login100.p-l-55.p-r-55.p-t-65.p-b-54
+      form.login100-form.validate-form(action ='/user/login' method = 'POST')
+        span.login100-form-title.p-b-49
+          | Login
+        .wrap-input100.validate-input.m-b-23(data-validate='Username is reauired')
+          span.label-input100 Username
+          input.input100(type='text', name='id', id ='id' placeholder='Type your username' maxlength ='16' required)
+          span.focus-input100(data-symbol='')
+        .wrap-input100.validate-input(data-validate='Password is required')
+          span.label-input100 Password
+          input.input100(type='password', name='pass', placeholder='Type your password' maxlength ='16' required)
+          span.focus-input100(data-symbol='')
+        .text-right.p-t-8.p-b-31
+          a(href='register')
+            | Register now !
+        .container-login100-form-btn
+          .wrap-login100-form-btn
+            .login100-form-bgbtn
+            button.login100-form-btn
+              | Login
+        .txt1.text-center.p-t-54.p-b-20
+          span
+        .flex-c-m
+          a.login100-social-item.bg1(href='#')
+            i.fa.fa-facebook
+        //.flex-col-c.p-t-155
+          span.txt1.p-b-17
+            | Or Sign Up Using
+          a.txt2(href='#')
+            | Sign Up
+#dropDownSelect1
+// ===============================================================================================
+script(src='/loginreg/vendor/jquery/jquery-3.2.1.min.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/animsition/js/animsition.min.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/bootstrap/js/popper.js')
+script(src='/loginreg/vendor/bootstrap/js/bootstrap.min.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/select2/select2.min.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/daterangepicker/moment.min.js')
+script(src='/loginreg/vendor/daterangepicker/daterangepicker.js')
+// ===============================================================================================
+script(src='/loginreg/vendor/countdowntime/countdowntime.js')
+// ===============================================================================================
+script(src='/loginreg/js/main.js')

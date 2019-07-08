@@ -1,76 +1,274 @@
 doctype html
-head
-  title Polymorphic blog
-  meta(charset='UTF-8')
-  meta(name='viewport', content='width=device-width, initial-scale=1')
-  // ===============================================================================================
-  link(rel='icon', type='image/png', href='/loginreg/images/icons/favicon.ico')
-  // ===============================================================================================
-  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/bootstrap/css/bootstrap.min.css')
-  // ===============================================================================================
-  link(rel='stylesheet', type='text/css', href='/loginreg/fonts/font-awesome-4.7.0/css/font-awesome.min.css')
-  // ===============================================================================================
-  link(rel='stylesheet', type='text/css', href='/loginreg/fonts/iconic/css/material-design-iconic-font.min.css')
-  // ===============================================================================================
-  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/animate/animate.css')
-  // ===============================================================================================
-  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/css-hamburgers/hamburgers.min.css')
-  // ===============================================================================================
-  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/animsition/css/animsition.min.css')
-  // ===============================================================================================
-  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/select2/select2.min.css')
-  // ===============================================================================================
-  link(rel='stylesheet', type='text/css', href='/loginreg/vendor/daterangepicker/daterangepicker.css')
-  // ===============================================================================================
-  link(rel='stylesheet', type='text/css', href='/loginreg/css/util.css')
-  link(rel='stylesheet', type='text/css', href='/loginreg/css/main.css')
-  // ===============================================================================================
-.limiter
-  .container-login100(style="background-image: url('/loginreg/images/bg-01.jpg');")
-    .wrap-login100.p-l-55.p-r-55.p-t-65.p-b-54
-      form.login100-form.validate-form(action ='/user/login' method = 'POST')
-        span.login100-form-title.p-b-49
-          | Login
-        .wrap-input100.validate-input.m-b-23(data-validate='Username is reauired')
-          span.label-input100 Username
-          input.input100(type='text', name='id', id ='id' placeholder='Type your username' maxlength ='16' required)
-          span.focus-input100(data-symbol='')
-        .wrap-input100.validate-input(data-validate='Password is required')
-          span.label-input100 Password
-          input.input100(type='password', name='pass', placeholder='Type your password' maxlength ='16' required)
-          span.focus-input100(data-symbol='')
-        .text-right.p-t-8.p-b-31
-          a(href='register')
-            | Register now !
-        .container-login100-form-btn
-          .wrap-login100-form-btn
-            .login100-form-bgbtn
-            button.login100-form-btn
-              | Login
-        .txt1.text-center.p-t-54.p-b-20
-          span
-        .flex-c-m
-          a.login100-social-item.bg1(href='#')
-            i.fa.fa-facebook
-        //.flex-col-c.p-t-155
-          span.txt1.p-b-17
-            | Or Sign Up Using
-          a.txt2(href='#')
-            | Sign Up
-#dropDownSelect1
-// ===============================================================================================
-script(src='/loginreg/vendor/jquery/jquery-3.2.1.min.js')
-// ===============================================================================================
-script(src='/loginreg/vendor/animsition/js/animsition.min.js')
-// ===============================================================================================
-script(src='/loginreg/vendor/bootstrap/js/popper.js')
-script(src='/loginreg/vendor/bootstrap/js/bootstrap.min.js')
-// ===============================================================================================
-script(src='/loginreg/vendor/select2/select2.min.js')
-// ===============================================================================================
-script(src='/loginreg/vendor/daterangepicker/moment.min.js')
-script(src='/loginreg/vendor/daterangepicker/daterangepicker.js')
-// ===============================================================================================
-script(src='/loginreg/vendor/countdowntime/countdowntime.js')
-// ===============================================================================================
-script(src='/loginreg/js/main.js')
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    // metatextblock
+    title Đăng nhập - School market
+    // /metatextblock
+    meta(property="fb:app_id" content="257953674358265")
+    meta(name="format-detection" content="telephone=no")
+    meta(http-equiv="x-dns-prefetch-control" content="on")
+    meta(name="robots" content="nofollow")
+    link(rel='shortcut icon', href='/ico/eco.png', type='image/x-icon')
+    // Assets
+    link(rel="stylesheet" href="https://static.tildacdn.com/css/tilda-grid-3.0.min.css" type="text/css" media="all")
+    link(rel="stylesheet" href="https://tilda.ws/project1419256/tilda-blocks-2.12.css?t=1562422141" type="text/css" media="all")
+    link(rel="stylesheet" href="https://static.tildacdn.com/css/tilda-animation-1.0.min.css" type="text/css" media="all")
+    script(src="https://static.tildacdn.com/js/jquery-1.10.2.min.js")
+    script(src="https://static.tildacdn.com/js/tilda-scripts-2.8.min.js")
+    script(src="https://tilda.ws/project1419256/tilda-blocks-2.7.js?t=1562422141")
+    script(src="https://static.tildacdn.com/js/lazyload-1.3.min.js" charset="utf-8")
+    script(src="https://static.tildacdn.com/js/tilda-animation-1.0.min.js" charset="utf-8")
+    script(src="https://static.tildacdn.com/js/tilda-forms-1.0.min.js" charset="utf-8")
+    script(type="text/javascript").
+      window.dataLayer = window.dataLayer || [];
+    script(type="text/javascript").
+      if ((/bot|google|yandex|baidu|bing|msn|duckduckbot|teoma|slurp|crawler|spider|robot|crawling|facebook/i.test(navigator.userAgent)) === false && typeof(sessionStorage) != 'undefined' && sessionStorage.getItem('visited') !== 'y') {
+      var style = document.createElement('style');
+      style.type = 'text/css';
+      style.innerHTML = '@media screen and (min-width: 980px) {.t-records {opacity: 0;}.t-records_animated {-webkit-transition: opacity ease-in-out .2s;-moz-transition: opacity ease-in-out .2s;-o-transition: opacity ease-in-out .2s;transition: opacity ease-in-out .2s;}.t-records.t-records_visible {opacity: 1;}}';
+      document.getElementsByTagName('head')[0].appendChild(style);
+      $(document).ready(function() {
+      $('.t-records').addClass('t-records_animated');
+      setTimeout(function() {
+      $('.t-records').addClass('t-records_visible');
+      sessionStorage.setItem('visited', 'y');
+      }, 400);
+      });
+      }
+  body.t-body(style="margin:0;")
+    // allrecords
+    #allrecords.t-records(data-hook="blocks-collection-content-node" data-tilda-project-id="1419256" data-tilda-page-id="6469869" data-tilda-page-alias="login" data-tilda-formskey="c71755a091199fc45bcc6680ae929656")
+      #rec114582773.r.t-rec.t-rec_pt_150.t-rec_pb_150(style="padding-top:150px;padding-bottom:150px; " data-animationappear="off" data-record-type="696")
+        // t696
+        .t696
+          .t-container
+            .t-width.t-width_8.t696__mainblock
+              .t696__mainwrapper
+                .t696__content(style=" border-width: 15px; border-color: #ffb514; box-shadow: 0px 0px 29px 0px rgba(0, 0, 0, 0.3);")
+                  .t696__text-wrapper.t-align_center
+                    .t696__title.t-title.t-title_xs.t-margin_auto.t-animate(data-animate-style="fadeinright" data-animate-group="yes" data-animate-order="1" style="color:#ffb514;" field="title") Đăng nhập
+                    .t696__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinleft" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="" field="descr") Đăng nhập bằng tài khoản của bạn
+                  .t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="3" data-animate-delay="0.3")
+                    form(action ='/user/login' method = 'POST' role="form" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t696_onSuccess")
+                      // NO ONE SERVICES CONNECTED
+                      .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
+                      .t-form__inputsbox
+                        .t-input-group.t-input-group_in(data-input-lid="1562421448049")
+                          .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1562421448049" style="") Tài khoản 
+                          .t-input-block
+                            input.t-input.js-tilda-rule.t-input_bbonly(type='text', name='id', id ='id' maxlength ='16' required style="color:#000000; border:1px solid #ffb514; ")
+                            .t-input-error
+                        .t-input-group.t-input-group_in(data-input-lid="1562421494772")
+                          .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1562421494772" style="") Mật khẩu
+                          .t-input-block
+                            input.t-input.js-tilda-rule.t-input_bbonly(type='password', name='pass' required style="color:#000000; border:1px solid #ffb514; ")
+                            .t-input-error
+                        .t-form__errorbox-middle
+                          .js-errorbox-all.t-form__errorbox-wrapper(style="display:none;")
+                            .t-form__errorbox-text.t-text.t-text_md
+                              p.t-form__errorbox-item.js-rule-error.js-rule-error-all
+                              p.t-form__errorbox-item.js-rule-error.js-rule-error-req
+                              p.t-form__errorbox-item.js-rule-error.js-rule-error-email
+                              p.t-form__errorbox-item.js-rule-error.js-rule-error-name
+                              p.t-form__errorbox-item.js-rule-error.js-rule-error-phone
+                              p.t-form__errorbox-item.js-rule-error.js-rule-error-minlength
+                              p.t-form__errorbox-item.js-rule-error.js-rule-error-string
+                        .t-form__submit
+                          button.t-submit(type="submit" style="color:#000000;border:3px solid #ffb514;background-color:#ffffff;" data-btneffects-first="btneffects-flash") Đăng nhập
+                      .t-form__errorbox-bottom
+                        .js-errorbox-all.t-form__errorbox-wrapper(style="display:none;")
+                          .t-form__errorbox-text.t-text.t-text_md
+                            p.t-form__errorbox-item.js-rule-error.js-rule-error-all
+                            p.t-form__errorbox-item.js-rule-error.js-rule-error-req
+                            p.t-form__errorbox-item.js-rule-error.js-rule-error-email
+                            p.t-form__errorbox-item.js-rule-error.js-rule-error-name
+                            p.t-form__errorbox-item.js-rule-error.js-rule-error-phone
+                            p.t-form__errorbox-item.js-rule-error.js-rule-error-minlength
+                            p.t-form__errorbox-item.js-rule-error.js-rule-error-string
+                    style.
+                      #rec114582773 input::-webkit-input-placeholder {
+                      color: #000000;
+                      opacity: 0.5;
+                      }
+                      #rec114582773 input::-moz-placeholder {
+                      color: #000000;
+                      opacity: 0.5;
+                      }
+                      #rec114582773 input:-moz-placeholder {
+                      color: #000000;
+                      opacity: 0.5;
+                      }
+                      #rec114582773 input:-ms-input-placeholder {
+                      color: #000000;
+                      opacity: 0.5;
+                      }
+                      #rec114582773 textarea::-webkit-input-placeholder {
+                      color: #000000;
+                      opacity: 0.5;
+                      }
+                      #rec114582773 textarea::-moz-placeholder {
+                      color: #000000;
+                      opacity: 0.5;
+                      }
+                      #rec114582773 textarea:-moz-placeholder {
+                      color: #000000;
+                      opacity: 0.5;
+                      }
+                      #rec114582773 textarea:-ms-input-placeholder {
+                      color: #000000;
+                      opacity: 0.5;
+                      }
+                  .t696__form-bottom-text.t-text.t-text_xs.t-align_center.t-animate(data-animate-style="fadeinleft" data-animate-group="yes" data-animate-order="4" data-animate-delay="0.3" field="text")
+                    | Chưa có tài khoản ?
+                    |
+                    a(href="/user/register" style="color:rgb(255, 145, 20) !important;") Đăng kí
+                    |  ngay
+        style.
+          #rec114582773 .t-btn[data-btneffects-first],
+          #rec114582773 .t-btn[data-btneffects-second],
+          #rec114582773 .t-submit[data-btneffects-first],
+          #rec114582773 .t-submit[data-btneffects-second] {
+          position: relative;
+          overflow: hidden;
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          }
+          #rec114582773 .t-btn[data-btneffects-first="btneffects-flash"] .t-btn_wrap-effects,
+          #rec114582773 .t-submit[data-btneffects-first="btneffects-flash"] .t-btn_wrap-effects {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          -webkit-transform: translateX(-85px);
+          -ms-transform: translateX(-85px);
+          transform: translateX(-85px);
+          -webkit-animation-name: flash;
+          animation-name: flash;
+          -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+          -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+          -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+          }
+          #rec114582773 .t-btn[data-btneffects-first="btneffects-flash"] .t-btn_wrap-effects_md,
+          #rec114582773 .t-submit[data-btneffects-first="btneffects-flash"] .t-btn_wrap-effects_md {
+          -webkit-animation-name: flash-md;
+          animation-name: flash-md;
+          }
+          #rec114582773 .t-btn[data-btneffects-first="btneffects-flash"] .t-btn_wrap-effects_lg,
+          #rec114582773 .t-submit[data-btneffects-first="btneffects-flash"] .t-btn_wrap-effects_lg {
+          -webkit-animation-name: flash-lg;
+          animation-name: flash-lg;
+          }
+          #rec114582773 .t-btn[data-btneffects-first="btneffects-flash"] .t-btn_effects,
+          #rec114582773 .t-submit[data-btneffects-first="btneffects-flash"] .t-btn_effects {
+          background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, .1)), to(rgba(255, 255, 255, .4)));
+          background: -webkit-linear-gradient(left, rgba(255, 255, 255, .1), rgba(255, 255, 255, .4));
+          background: -o-linear-gradient(left, rgba(255, 255, 255, .1), rgba(255, 255, 255, .4));
+          background: linear-gradient(90deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .4));
+          width: 45px;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 30px;
+          -webkit-transform: skewX(-45deg);
+          -ms-transform: skewX(-45deg);
+          transform: skewX(-45deg);
+          }
+          @-webkit-keyframes flash {
+          20% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          100% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          }
+          @keyframes flash {
+          20% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          100% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          }
+          @-webkit-keyframes flash-md {
+          30% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          100% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          }
+          @keyframes flash-md {
+          30% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          100% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          }
+          @-webkit-keyframes flash-lg {
+          40% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          100% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          }
+          @keyframes flash-lg {
+          40% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          100% {
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          }
+          }
+        script(type="text/javascript").
+          $(document).ready(function() {
+          $('#rec114582773 .t-btn[data-btneffects-first], #rec114582773 .t-submit[data-btneffects-first]').append('<div class="t-btn_wrap-effects"><div class="t-btn_effects"></div></div>');
+          if ($('#rec114582773 .t-btn[data-btneffects-first], #rec114582773 .t-submit[data-btneffects-first]').outerWidth() > 230) {
+          $('#rec114582773 .t-btn[data-btneffects-first] .t-btn_wrap-effects, #rec114582773 .t-submit[data-btneffects-first] .t-btn_wrap-effects').addClass('t-btn_wrap-effects_md');
+          }
+          if ($('#rec114582773 .t-btn[data-btneffects-first], #rec114582773 .t-submit').outerWidth() > 750) {
+          $('#rec114582773 .t-btn[data-btneffects-first] .t-btn_wrap-effects, #rec114582773 .t-submit[data-btneffects-first] .t-btn_wrap-effects').removeClass('t-btn_wrap-effects_md');
+          $('#rec114582773 .t-btn[data-btneffects-first] .t-btn_wrap-effects, #rec114582773 .t-submit[data-btneffects-first] .t-btn_wrap-effects').addClass('t-btn_wrap-effects_lg');
+          }
+          });
+    // /allrecords
+    script(type="text/javascript").
+      if (!window.mainTracker) {
+      window.mainTracker = 'tilda';
+      }(function(d, w, k, o, g) {
+      var n = d.getElementsByTagName(o)[0],
+      s = d.createElement(o),
+      f = function() {
+      n.parentNode.insertBefore(s, n);
+      };
+      s.type = "text/javascript";
+      s.async = true;
+      s.key = k;
+      s.id = "tildastatscript";
+      s.src = g;
+      if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+      } else {
+      f();
+      }
+      })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildasimplestat-0.1.min.js');

@@ -55,7 +55,14 @@ app.use(function(req, res, next){
     res.status(404).render('404', {title: "Sorry, page not found"});
 });
 
-
+//FAQs 
+app.get('/faqs',function(req,res){
+    res.render('faqs.pug') ; 
+});
+//Terms
+app.get('/terms',function(req,res){
+    res.render('terms.pug') ; 
+});
 
 
 // SOCKET PART

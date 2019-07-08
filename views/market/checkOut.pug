@@ -718,13 +718,23 @@ html
           socket.on('plsFillDate',function(){
             swal(
               {
-                title : "Thông báo", 
+                title : "Lỗi", 
                 text : "Hãy nhập ngày", 
                 inon : "error",
                 button : false 
               }
             );
           }) ; 
+          socket.on('errorDate',function(){
+            swal(
+              {
+                title : "Lỗi", 
+                text : "Ngày bạn mong muốn vượt quá ngày giao hàng cuối cùng của mặt hàng", 
+                inon : "error",
+                button : false 
+              }
+            );
+          });
           socket.on('soldOut',function(){
               swal(
               {
@@ -738,7 +748,7 @@ html
           socket.on('amount0',function(){
               swal(
               {
-                title : "Thông báo", 
+                title : "Lỗi", 
                 text :  "Số lượng hàng mua không được bằng 0", 
                 icon : "error",
                 button : false 

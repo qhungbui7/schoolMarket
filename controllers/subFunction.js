@@ -21,3 +21,9 @@ module.exports.getTime = function(){
     let time = hh + ':' + mm + ':' + ss ; 
     return time ; 
 }
+module.exports.convert = function(dateString){
+    let arrDate = date.split('-') ; 
+    let standardFormat = new Date (arrDate[2] , arrDate[1]-1 , arrDate[0]) ; 
+    console.log(standerFormat.toDateString()) ; 
+    return standardFormat ;  
+}

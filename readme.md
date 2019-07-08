@@ -14,8 +14,28 @@ Admin waiting accept (X)
 Admin profile (X)
 User queue (X)
 User delivered (X) 
-Login form, reg form
-Admin usage
+Login form, reg form (X)
+check date validate realtime
+
+
+Watch  again nodejs part in login form video to know how to emit warning
+form reason kick and alert reason kick and reborn user ui
+
+Market render when admin accept request / remove request ( realtime)
+Market render when user remove request( realtime)
+Admin accept userRemove (realtime)
+Amount (X)
+
+
+
+
+
+
+
+render index and faqs
+faqs : why my order is don't accept
+check ui,faqs content
+
 # NOTE
 In database
 Action in History collection contains :
@@ -42,11 +62,6 @@ digital
 others
 
 
-Realtime : 
-Market render when admin accept request / remove request
-Admin accept userRemove
-Amount (X)
-
 Item status : 
 Waiting accept
 On sale
@@ -62,7 +77,7 @@ Always : check # CHECK for information
 
 3. Create google form demo for admin
 4. Complete realtime part ( # NOTE for detail )
-5. Find icon no copyright for the website
+5. Find icon no copyright for the website (X)
 
 
 2 weeks for last des ui page start :
@@ -76,7 +91,7 @@ Always : check # CHECK for information
 7. Create page : contact to developer/admin  
 8. Create page : about developer
 9. Make alert in somewhere possible 
-10. Write FAQs, Terms and Policy, Usage for admin : 
+10. Write FAQs, Terms  : 
     Content :
         FAQS : 
             Usage for user
@@ -86,7 +101,7 @@ Always : check # CHECK for information
 13. Open Beta for tester : Nhat Huy *, Bro Hop *, Ninh, Khanh Huyen, Thao Quynh test
 14. Fix bug and ask Nhat Huy to test the last time and edit the FAQs if need
 
-2 weeks for last des ui page start :
+2 weeks for last des ui page end :
 
 
 15. Record video
