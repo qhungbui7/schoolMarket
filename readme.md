@@ -15,11 +15,11 @@ Admin profile (X)
 User queue (X)
 User delivered (X) 
 Login form, reg form (X)
-check date validate realtime
+check date validate realtime(X)
 
-
+form reason kick and alert reason kick and reborn user ui , rank user
 Watch  again nodejs part in login form video to know how to emit warning
-form reason kick and alert reason kick and reborn user ui
+
 
 Market render when admin accept request / remove request ( realtime)
 Market render when user remove request( realtime)

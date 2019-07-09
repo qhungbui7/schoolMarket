@@ -1,12 +1,552 @@
+doctype html
 html
-    head
-    body
-        h1 xd
-        script(src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js') ; 
-        script(src = '/socket.io/socket.io.js') 
-        script.
-            var socket = io.connect('http://localhost') ; //event connection bat cai nay
-            $(document).ready(function(){
-                // name value 
-                socket.emit('clientSendData','XD')
-            });            
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    // metatextblock
+    title Trang chủ - School Market
+    // /metatextblock
+    meta(property="fb:app_id" content="257953674358265")
+    meta(name="format-detection" content="telephone=no")
+    meta(http-equiv="x-dns-prefetch-control" content="on")
+    link(rel="dns-prefetch" href="https://tilda.ws")
+    link(rel="dns-prefetch" href="https://static.tildacdn.com")
+    link(rel='shortcut icon', href='/ico/eco.png', type='image/x-icon')
+    // Assets
+    link(rel="stylesheet" href="https://static.tildacdn.com/css/tilda-grid-3.0.min.css" type="text/css" media="all")
+    link(rel="stylesheet" href="https://tilda.ws/project1468220/tilda-blocks-2.12.css?t=1562683979" type="text/css" media="all")
+    link(rel="stylesheet" href="https://static.tildacdn.com/css/tilda-animation-1.0.min.css" type="text/css" media="all")
+    link(rel="stylesheet" href="https://static.tildacdn.com/css/tilda-slds-1.4.min.css" type="text/css" media="all")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" type="text/css")
+    script(src="https://static.tildacdn.com/js/jquery-1.10.2.min.js")
+    script(src="https://static.tildacdn.com/js/tilda-scripts-2.8.min.js")
+    script(src="https://tilda.ws/project1468220/tilda-blocks-2.7.js?t=1562683979")
+    script(src="https://static.tildacdn.com/js/lazyload-1.3.min.js" charset="utf-8")
+    script(src="https://static.tildacdn.com/js/tilda-animation-1.0.min.js" charset="utf-8")
+    script(src="https://static.tildacdn.com/js/tilda-slds-1.4.min.js" charset="utf-8")
+    script(src="https://static.tildacdn.com/js/hammer.min.js" charset="utf-8")
+    script(type="text/javascript").
+      window.dataLayer = window.dataLayer || [];
+    script(type="text/javascript").
+      if ((/bot|google|yandex|baidu|bing|msn|duckduckbot|teoma|slurp|crawler|spider|robot|crawling|facebook/i.test(navigator.userAgent)) === false && typeof(sessionStorage) != 'undefined' && sessionStorage.getItem('visited') !== 'y') {
+      var style = document.createElement('style');
+      style.type = 'text/css';
+      style.innerHTML = '@media screen and (min-width: 980px) {.t-records {opacity: 0;}.t-records_animated {-webkit-transition: opacity ease-in-out .2s;-moz-transition: opacity ease-in-out .2s;-o-transition: opacity ease-in-out .2s;transition: opacity ease-in-out .2s;}.t-records.t-records_visible {opacity: 1;}}';
+      document.getElementsByTagName('head')[0].appendChild(style);
+      $(document).ready(function() {
+      $('.t-records').addClass('t-records_animated');
+      setTimeout(function() {
+      $('.t-records').addClass('t-records_visible');
+      sessionStorage.setItem('visited', 'y');
+      }, 400);
+      });
+      }
+  body.t-body(style="margin:0;")
+    // allrecords
+    #allrecords.t-records(data-hook="blocks-collection-content-node" data-tilda-project-id="1468220" data-tilda-page-id="6471098" data-tilda-page-alias="marketd" data-tilda-formskey="7f592b368f4578fc0ac806a95444793d")
+      #rec114601358.r.t-rec(style="background-color:#ffffff; " data-animationappear="off" data-record-type="257" data-bg-color="#ffffff")
+        // T228
+        #nav114601358marker
+        #nav114601358.t228.t228__positionfixed(style="background-color: rgba(255,255,255,0.70); height:75px; box-shadow: 0px 1px 3px rgba(0,0,0,0.30);" data-bgcolor-hex="#ffffff" data-bgcolor-rgba="rgba(255,255,255,0.70)" data-navmarker="nav114601358marker" data-appearoffset="" data-bgopacity-two="" data-menushadow="30" data-bgopacity="0.70" data-menu-items-align="right" data-menu="yes")
+          .t228__maincontainer(style="height:75px;")
+            .t228__padding40px
+            .t228__leftside
+              .t228__leftcontainer
+                a.t228__logo.t-title(href = '/' field="title" style="color:#000000;font-weight:600;") School Market
+            .t228__centerside.t228__menualign_right
+              .t228__centercontainer
+                ul.t228__list
+                  li.t228__list_item
+                    a.t-menu__link-item(href="/user/login" style="color:#000000;font-weight:600;" data-menu-item-number="1") Đăng nhập
+                  li.t228__list_item
+                    a.t-menu__link-item(href="/user/register" style="color:#000000;font-weight:600;" data-menu-item-number="2") Đăng kí
+                  li.t228__list_item
+                    a.t-menu__link-item(href="/market/all" style="color:#000000;font-weight:600;" data-menu-item-number="3") Thị trường
+                  li.t228__list_item
+                    a.t-menu__link-item(href="/faqs" style="color:#000000;font-weight:600;" data-menu-item-number="4") FAQs
+                  li.t228__list_item
+                    a.t-menu__link-item(href="/terms" style="color:#000000;font-weight:600;" data-menu-item-number="5") Điều khoản
+            .t228__rightside
+              .t228__rightcontainer
+                .t228__right_social_links
+                  .t228__right_social_links_wrap
+                    .t228__right_social_links_item
+                      a(href="https://www.facebook.com/qhung.12.7" target="_blank")
+                        svg#Layer_1(style="fill:#000000;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewbox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve")
+                          path(d="M47.761,24c0,13.121-10.638,23.76-23.758,23.76C10.877,47.76,0.239,37.121,0.239,24c0-13.124,10.638-23.76,23.764-23.76 C37.123,0.24,47.761,10.876,47.761,24 M20.033,38.85H26.2V24.01h4.163l0.539-5.242H26.2v-3.083c0-1.156,0.769-1.427,1.308-1.427 h3.318V9.168L26.258,9.15c-5.072,0-6.225,3.796-6.225,6.224v3.394H17.1v5.242h2.933V38.85z")
+            .t228__padding40px
+        script(type="text/javascript").
+          $(document).ready(function() {
+          t228_highlight();
+          t228_checkAnchorLinks('114601358');
+          });
+          $(window).resize(function() {
+          t228_setBg('114601358');
+          });
+          $(document).ready(function() {
+          t228_setBg('114601358');
+          });
+        //if IE 8
+          style.
+            #rec114601358 .t228 { filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D9ffffff', endColorstr='#D9ffffff');
+            }
+      #rec114601359.r.t-rec(style=" " data-animationappear="off" data-record-type="18")
+        // cover
+        #recorddiv114601359.t-cover(bgimgfield="img" style="height:100vh; background-image:url('https://static.tildacdn.com/tild3531-3764-4234-b133-616130393365/-/resize/20x/ecommerce-1485586975.jpg');")
+          #coverCarry114601359.t-cover__carrier(data-content-cover-id="114601359" data-content-cover-bg="https://static.tildacdn.com/tild3531-3764-4234-b133-616130393365/ecommerce-1485586975.jpg" data-content-cover-height="100vh" data-content-cover-parallax="" style="height:100vh;background-attachment:scroll; ")
+          .t-cover__filter(style="height:100vh;background-image: -moz-linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.70));background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.70));background-image: -o-linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.70));background-image: -ms-linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.70));background-image: linear-gradient(top, rgba(0,0,0,0.60), rgba(0,0,0,0.70));filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#66000000', endColorstr='#4c000000');")
+          .t-container
+            .t-col.t-col_12
+              .t-cover__wrapper.t-valign_middle(style="height:100vh;")
+                .t001.t-align_center
+                  .t001__wrapper(data-hook-content="covercontent")
+                    .t001__uptitle.t-uptitle.t-uptitle_sm.t-animate(data-animate-style="fadeindown" data-animate-group="yes" style="" field="subtitle") Sáng tạo khoa học kĩ thuật 2019
+                    .t001__title.t-title.t-title_xl.t-animate(data-animate-style="fadeinup" data-animate-group="yes" style="" field="title") SCHOOL MARKET
+                    .t001__descr.t-descr.t-descr_xl.t001__descr_center.t-animate(data-animate-style="fadeinup" data-animate-group="yes" style="" field="descr")
+                      | Bùi Quốc Hùng
+                      br
+                      | 12 Tin
+                      br
+                      | THPT Chuyên Quốc Học Huế
+                      br
+                    span.space
+          // arrow
+          .t-cover__arrow
+            .t-cover__arrow-wrapper.t-cover__arrow-wrapper_animated
+              .t-cover__arrow_mobile
+                svg.t-cover__arrow-svg(style="fill:#ffffff;" x="0px" y="0px" width="38.417px" height="18.592px" viewbox="0 0 38.417 18.592")
+                  g
+                    path(d="M19.208,18.592c-0.241,0-0.483-0.087-0.673-0.261L0.327,1.74c-0.408-0.372-0.438-1.004-0.066-1.413c0.372-0.409,1.004-0.439,1.413-0.066L19.208,16.24L36.743,0.261c0.411-0.372,1.042-0.342,1.413,0.066c0.372,0.408,0.343,1.041-0.065,1.413L19.881,18.332C19.691,18.505,19.449,18.592,19.208,18.592z")
+          // arrow
+      #rec114656707.r.t-rec.t-rec_pt_30.t-rec_pb_30(style="padding-top:30px;padding-bottom:30px; " data-record-type="219")
+        // T191
+        .t191
+          .t-align_center
+            hr.t191__line.t-width.t-width_2(style="background-color:#000000;opacity:0.2;")
+      #rec114601902.r.t-rec.t-rec_pt_150.t-rec_pb_150(style="padding-top:150px;padding-bottom:150px; " data-record-type="508")
+        // t508
+        .t508
+          .t-section__container.t-container
+            .t-col.t-col_12
+              .t-section__topwrapper.t-align_center
+                .t-section__title.t-title.t-title_xs.t-animate(data-animate-style="fadein" data-animate-group="yes" field="btitle") Giới thiệu chung
+                .t-section__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinup" data-animate-group="yes" field="bdescr") Dự án phi lợi nhuận
+          .t-container
+            .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+              .t-cell.t-valign_top
+                svg.t508__checkmark(style="width:55px; height:55px;" fill="#ff791f" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100")
+                  path(d="M50.1 98.9c-26.7 0-48.5-21.8-48.5-48.5S23.4 1.9 50.1 1.9c8.9 0 17.5 2.4 25.1 7 .7.4.9 1.4.5 2.1-.4.7-1.4.9-2.1.5C66.5 7.2 58.4 5 50.1 5 25 4.9 4.6 25.3 4.6 50.4S25 95.9 50.1 95.9s45.5-20.4 45.5-45.5c0-3.2-.3-6.4-1-9.5-.2-.8.3-1.6 1.2-1.8.8-.2 1.6.3 1.8 1.2.7 3.3 1.1 6.7 1.1 10.1-.1 26.7-21.8 48.5-48.6 48.5z")
+                  path(d="M50.1 63.9c-.4 0-.8-.2-1.1-.4L24.8 39.2c-.6-.6-.6-1.5 0-2.1.6-.6 1.5-.6 2.1 0l23.2 23.2 46.8-48c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-47.8 49c-.3.3-.7.5-1.1.5z")
+              .t508__textwrapper.t-cell.t-valign_top(style="")
+                .t-name.t-name_md.t508__bottommargin(style="" field="li_title__1476889049104") Nhu cầu
+                .t-descr.t-descr_sm(style="" field="li_descr__1476889049104")
+                  | Đáp ứng nhu cầu kinh doanh ngay từ ghế nhà trường của một số cá nhân, tập thể trẻ, chúng tôi đã cho ra đời mô hình kinh doanh online giựa trên hình thức giao dịch thương mại điện tử
+            .t-clear.t508__separator(style="")
+            .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+              .t-cell.t-valign_top
+                svg.t508__checkmark(style="width:55px; height:55px;" fill="#ff791f" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100")
+                  path(d="M50.1 98.9c-26.7 0-48.5-21.8-48.5-48.5S23.4 1.9 50.1 1.9c8.9 0 17.5 2.4 25.1 7 .7.4.9 1.4.5 2.1-.4.7-1.4.9-2.1.5C66.5 7.2 58.4 5 50.1 5 25 4.9 4.6 25.3 4.6 50.4S25 95.9 50.1 95.9s45.5-20.4 45.5-45.5c0-3.2-.3-6.4-1-9.5-.2-.8.3-1.6 1.2-1.8.8-.2 1.6.3 1.8 1.2.7 3.3 1.1 6.7 1.1 10.1-.1 26.7-21.8 48.5-48.6 48.5z")
+                  path(d="M50.1 63.9c-.4 0-.8-.2-1.1-.4L24.8 39.2c-.6-.6-.6-1.5 0-2.1.6-.6 1.5-.6 2.1 0l23.2 23.2 46.8-48c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-47.8 49c-.3.3-.7.5-1.1.5z")
+              .t508__textwrapper.t-cell.t-valign_top(style="")
+                .t-name.t-name_md.t508__bottommargin(style="" field="li_title__1476889075209") Mục đích chính
+                .t-descr.t-descr_sm(style="" field="li_descr__1476889075209")
+                  | Dưới sự giám sát của quản trị viên:
+                  ul
+                    li Học sinh sẽ có một nơi để thoả sức kinh doanh, tự mình làm giàu
+                    li Học sinh có thể mua những mặt hàng cần thiết với giá phải chăng nhất 
+                  | Khu thương mại điện tử sẽ được tổ chức một cách có tổ chức, hệ thống, chặt chẽ, đảm bảo quyền lợi của các học sinh. Người bán và người mua sẽ được đảm bảo một cách tốt nhất khi đã tuân thủ các quy định, chính sách và FAQs của chúng tôi.
+      #rec114656701.r.t-rec.t-rec_pt_30.t-rec_pb_30(style="padding-top:30px;padding-bottom:30px; " data-record-type="219")
+        // T191
+        .t191
+          .t-align_center
+            hr.t191__line.t-width.t-width_2(style="background-color:#000000;opacity:0.2;")
+      #rec114603742.r.t-rec.t-rec_pt_150.t-rec_pb_150(style="padding-top:150px;padding-bottom:150px; " data-record-type="569")
+        // T569
+        .t569(data-blocks-count="4")
+          .t-section__container.t-container
+            .t-col.t-col_12
+              .t-section__topwrapper.t-align_center
+                .t-section__title.t-title.t-title_xs.t-animate(data-animate-style="fadeinleft" data-animate-group="yes" field="btitle") Tính năng
+          .t569__container.t-container
+            .t569__col.t-col.t-col_3
+              .t569__imgwrapper.t-align_center.t-animate(data-animate-style="fadein" data-animate-group="yes" data-animate-order="1")
+                .t569__bgimg.t-margin_auto.t-bgimg(bgimgfield="img" data-original="https://static.tildacdn.com/tild3437-3666-4363-b766-636533346132/33.svg" style=" background-image: url('https://static.tildacdn.com/tild3437-3666-4363-b766-636533346132/33.svg');")
+              .t569__textwrapper.t-align_center.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t569__title.t-name.t-name_xs(style="" field="title") Quản lí dữ liệu
+                .t569__text.t-text.t-text_xs(style="" field="descr")
+                  div(style="text-align:left;" data-customstyle="yes")
+                    | Quản lí dữ liệu một cách thuận tiện với giao diện bảng điều khiển rất rõ ràng và đẹp
+            .t569__col.t-col.t-col_3
+              .t569__line-mobile.t-align_center
+                .t569__cirqle
+                .t569__cirqle
+                .t569__cirqle
+              .t569__imgwrapper.t-align_center.t-animate(data-animate-style="fadein" data-animate-group="yes" data-animate-order="1")
+                .t569__bgimg.t-margin_auto.t-bgimg(bgimgfield="img2" data-original="https://static.tildacdn.com/tild3334-3736-4436-b433-363761643632/22.svg" style=" background-image: url('https://static.tildacdn.com/tild3334-3736-4436-b433-363761643632/22.svg');")
+                .t569__line
+                  .t569__cirqle
+              .t569__textwrapper.t-align_center.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t569__title.t-name.t-name_xs(style="" field="title2") Buôn bán 
+                .t569__text.t-text.t-text_xs(style="" field="descr2")
+                  div(style="text-align:left;" data-customstyle="yes")
+                    | Dễ dàng buôn bán trến School Market khi các mặt hàng của bạn tuân thủ các điều khoản và chính sách của chúng tôi
+            .t569__col.t-col.t-col_3
+              .t569__line-mobile.t-align_center
+                .t569__cirqle
+                .t569__cirqle
+                .t569__cirqle
+              .t569__imgwrapper.t-align_center.t-animate(data-animate-style="fadein" data-animate-group="yes" data-animate-order="1")
+                .t569__bgimg.t-margin_auto.t-bgimg(bgimgfield="img3" data-original="https://static.tildacdn.com/tild3539-3363-4936-a263-333364623665/44.svg" style=" background-image: url('https://static.tildacdn.com/tild3539-3363-4936-a263-333364623665/44.svg');")
+                .t569__line
+                  .t569__cirqle
+              .t569__textwrapper.t-align_center.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t569__title.t-name.t-name_xs(style="" field="title3") Thông báo, phản hồi liên tục
+                .t569__text.t-text.t-text_xs(style="" field="descr3")
+                  div(style="text-align:left;" data-customstyle="yes")
+                    | Là ứng dụng thời gian thực, School market xử lí các tác vụ một cách nhanh chóng và phản hồi cho người dùng gần như tức thời, đảm bảo sự tiện lợi một cách tốt nhất
+            .t569__col.t-col.t-col_3
+              .t569__line-mobile.t-align_center
+                .t569__cirqle
+                .t569__cirqle
+                .t569__cirqle
+              .t569__imgwrapper.t-align_center.t-animate(data-animate-style="fadein" data-animate-group="yes" data-animate-order="1")
+                .t569__bgimg.t-margin_auto.t-bgimg(bgimgfield="img4" data-original="https://static.tildacdn.com/tild6365-6235-4330-b261-333761316563/11.svg" style=" background-image: url('https://static.tildacdn.com/tild6365-6235-4330-b261-333761316563/11.svg');")
+                .t569__line
+                  .t569__cirqle
+              .t569__textwrapper.t-align_center.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t569__title.t-name.t-name_xs(style="" field="title4") Hệ thống xử lí vi phạm
+                .t569__text.t-text.t-text_xs(style="" field="descr4")
+                  div(style="text-align:left;" data-customstyle="yes")
+                    | Hệ thống xử lí vi phạm ghi lại rõ ràng những đánh giá của quản trị viên về những hành vi của người sử dụng thông qua Lịch sử hoạt động toàn máy chủ và Hệ thống xếp loại người dùng cho nên dễ dàng xử lý bất kỳ những hành vi sai trái của người dùng một cách chính xác nhất .
+        script(type="text/javascript").
+          $(document).ready(function() {
+          t569_init('114603742');
+          });
+      #rec114656696.r.t-rec.t-rec_pt_30.t-rec_pb_30(style="padding-top:30px;padding-bottom:30px; " data-record-type="219")
+        // T191
+        .t191
+          .t-align_center
+            hr.t191__line.t-width.t-width_2(style="background-color:#000000;opacity:0.2;")
+      #rec114603829.r.t-rec.t-rec_pt_150.t-rec_pb_150(style="padding-top:150px;padding-bottom:150px; " data-record-type="577")
+        // t577
+        .t577
+          .t-section__container.t-container
+            .t-col.t-col_12
+              .t-section__topwrapper.t-align_center
+                .t-section__title.t-title.t-title_xs.t-animate(data-animate-style="fadeinleft" data-animate-group="yes" field="btitle") Ưu điểm
+          .t-container
+            .t577__row.t577__separator(style="")
+              .t577__col.t-col.t-col_4.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t577__circle(style=" ")
+                  .t577__number.t-name.t-name_md(style="") 1
+                .t577__content
+                  .t577__textwrapper.t-align_center(style=" border: 1px solid #e0e0e0; ")
+                    .t577__title.t-name.t-name_md(style="" field="li_title__1479137044697") Dễ sử dụng
+                    .t577__descr.t-text.t-text_xs(style="" field="li_descr__1479137044697")
+                      div(style="text-align:left;" data-customstyle="yes")
+                        | Giao diện thân thiện với người dùng, phản hồi liên tục. Hướng dẫn rõ ràng giúp mọi người có thể thuận tiện sử dụng các chức năng và cơ chế hoạt động của School market
+                    img.t577__img.t-img(src="https://static.tildacdn.com/tild6362-3837-4432-b238-326434633732/-/empty/account.png" data-original="https://static.tildacdn.com/tild6362-3837-4432-b238-326434633732/account.png" imgfield="li_img__1479137044697")
+              .t577__col.t-col.t-col_4.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t577__circle(style=" ")
+                  .t577__number.t-name.t-name_md(style="") 2
+                .t577__content
+                  .t577__textwrapper.t-align_center(style=" border: 1px solid #e0e0e0; ")
+                    .t577__title.t-name.t-name_md(style="" field="li_title__1479137356907") Dễ triển khai
+                    .t577__descr.t-text.t-text_xs(style="" field="li_descr__1479137356907")
+                      div(style="text-align:left;" data-customstyle="yes")
+                        | Triển khai rất đơn giản, chỉ cần đặt lên máy chủ và một tài khoản quản trị được cấp cho một giáo viên được nhà trường thoả thuận và một bài thông báo để mọi người đều biết thì ứng dụng đã triển khai rồi đấy
+                    img.t577__img.t-img(src="https://static.tildacdn.com/tild3931-3933-4961-a261-386232663331/-/empty/tariff.png" data-original="https://static.tildacdn.com/tild3931-3933-4961-a261-386232663331/tariff.png" imgfield="li_img__1479137356907")
+              .t577__col.t-col.t-col_4.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t577__circle(style=" ")
+                  .t577__number.t-name.t-name_md(style="") 3
+                .t577__content
+                  .t577__textwrapper.t-align_center(style=" border: 1px solid #e0e0e0; ")
+                    .t577__title.t-name.t-name_md(style="" field="li_title__1479137790652") Nhanh, bảo mật
+                    .t577__descr.t-text.t-text_xs(style="" field="li_descr__1479137790652")
+                      div(style="text-align:left;" data-customstyle="yes")
+                        | Các tính năng được tối ưu hoá với các công nghệ bảo mật tiên tiến nhất nhằm đảm bảo cho người dùng trải nghiệm an toàn và tin cậy
+                    img.t577__img.t-img(src="https://static.tildacdn.com/tild3566-3065-4233-b435-316165643465/-/empty/24.png" data-original="https://static.tildacdn.com/tild3566-3065-4233-b435-316165643465/24.png" imgfield="li_img__1479137790652")
+        script(type="text/javascript").
+          $(document).ready(function() {
+          t577_equalHeight('114603829');
+          });
+          var t577_doResize;
+          $(window).resize(function() {
+          if (t577_doResize) clearTimeout(t577_doResize);
+          t577_doResize = setTimeout(function() {
+          t577_equalHeight('114603829');
+          }, 200);
+          });
+          $('.t577').bind('displayChanged', function() {
+          t577_equalHeight('114603829');
+          });
+          $(window).load(function() {
+          t577_equalHeight('114603829');
+          });
+      #rec114656858.r.t-rec.t-rec_pt_30.t-rec_pb_30(style="padding-top:30px;padding-bottom:30px; " data-record-type="219")
+        // T191
+        .t191
+          .t-align_center
+            hr.t191__line.t-width.t-width_2(style="background-color:#000000;opacity:0.2;")
+      #rec114603956.r.t-rec.t-rec_pt_135.t-rec_pb_165(style="padding-top:135px;padding-bottom:165px;background-color:#ffffff; " data-animationappear="off" data-record-type="844" data-bg-color="#ffffff")
+        // t844
+        .t844
+          .t-section__container.t-container
+            .t-col.t-col_12
+              .t-section__topwrapper.t-align_center
+                .t-section__title.t-title.t-title_xs.t-animate(data-animate-style="fadeinup" data-animate-group="yes" field="btitle") Công nghệ đã sử dụng
+          .t-container
+            .t844__col.t-col.t-col_4.t-align_center.t-item.t-animate(data-animate-style="fadeinleft" data-animate-chain="yes")
+              img.t844__img.t-img(src="https://static.tildacdn.com/tild3734-3533-4532-a334-633139303331/-/empty/pugpugjs-logo-png-tr.png" data-original="https://static.tildacdn.com/tild3734-3533-4532-a334-633139303331/pugpugjs-logo-png-tr.png" imgfield="li_img__1531137250635" style="width:80px;")
+              .t844__wrappercenter
+                .t-heading.t-heading_md(style="" field="li_title__1531137250635") pug.js
+                .t-descr.t-descr_sm(style="" field="li_descr__1531137250635")
+                  div(style="text-align:left;" data-customstyle="yes")
+            .t844__col.t-col.t-col_4.t-align_center.t-item.t-animate(data-animate-style="fadeinleft" data-animate-chain="yes")
+              img.t844__img.t-img(src="https://static.tildacdn.com/tild3237-3539-4239-b561-626533336661/-/empty/cover.png" data-original="https://static.tildacdn.com/tild3237-3539-4239-b561-626533336661/cover.png" imgfield="li_img__1531137263951" style="width:80px;")
+              .t844__wrappercenter
+                .t-heading.t-heading_md(style="" field="li_title__1531137263951")
+                  | CSS
+                  br
+                .t-descr.t-descr_sm(style="" field="li_descr__1531137263951")
+                  div(style="text-align:left;" data-customstyle="yes")
+            .t844__col.t-col.t-col_4.t-align_center.t-item.t-animate(data-animate-style="fadeinleft" data-animate-chain="yes")
+              img.t844__img.t-img(src="https://static.tildacdn.com/tild6362-3135-4161-a161-613562346431/-/empty/1200px-Unofficial_Ja.png" data-original="https://static.tildacdn.com/tild6362-3135-4161-a161-613562346431/1200px-Unofficial_Ja.png" imgfield="li_img__1531137278040" style="width:80px;")
+              .t844__wrappercenter
+                .t-heading.t-heading_md(style="" field="li_title__1531137278040") Javascript
+                .t-descr.t-descr_sm(style="" field="li_descr__1531137278040")
+                  div(style="text-align:left;" data-customstyle="yes")
+            .t-clear.t844__separator(style="")
+            .t844__col.t-col.t-col_4.t-align_center.t-item.t-animate(data-animate-style="fadeinleft" data-animate-chain="yes")
+              img.t844__img.t-img(src="https://static.tildacdn.com/tild6430-3331-4336-a236-643734646134/-/empty/nodejsLogo.png" data-original="https://static.tildacdn.com/tild6430-3331-4336-a236-643734646134/nodejsLogo.png" imgfield="li_img__1531137295061" style="width:80px;")
+              .t844__wrappercenter
+                .t-heading.t-heading_md(style="" field="li_title__1531137295061") node.js
+            .t844__col.t-col.t-col_4.t-align_center.t-item.t-animate(data-animate-style="fadeinleft" data-animate-chain="yes")
+              img.t844__img.t-img(src="https://static.tildacdn.com/tild3036-3532-4163-a331-616539613936/-/empty/expressjslogo.png" data-original="https://static.tildacdn.com/tild3036-3532-4163-a331-616539613936/expressjslogo.png" imgfield="li_img__1531137309241" style="width:80px;")
+              .t844__wrappercenter
+                .t-heading.t-heading_md(style="" field="li_title__1531137309241") express.js
+                .t-descr.t-descr_sm(style="" field="li_descr__1531137309241")
+                  div(style="text-align:left;" data-customstyle="yes")
+            .t844__col.t-col.t-col_4.t-align_center.t-item.t-animate(data-animate-style="fadeinleft" data-animate-chain="yes")
+              img.t844__img.t-img(src="https://static.tildacdn.com/tild6534-3466-4262-a635-303436643434/-/empty/SOCKETIOICON.gif" data-original="https://static.tildacdn.com/tild6534-3466-4262-a635-303436643434/SOCKETIOICON.gif" imgfield="li_img__1531137326480" style="width:80px;")
+              .t844__wrappercenter
+                .t-heading.t-heading_md(style="" field="li_title__1531137326480")
+                  | Socket.IO
+                  br
+                .t-descr.t-descr_sm(style="" field="li_descr__1531137326480")
+                  div(style="text-align:left;" data-customstyle="yes")
+      #rec114656867.r.t-rec.t-rec_pt_30.t-rec_pb_30(style="padding-top:30px;padding-bottom:30px; " data-record-type="219")
+        // T191
+        .t191
+          .t-align_center
+            hr.t191__line.t-width.t-width_2(style="background-color:#000000;opacity:0.2;")
+      #rec114655986.r.t-rec.t-rec_pt_135.t-rec_pb_45(style="padding-top:135px;padding-bottom:45px; " data-record-type="795")
+        // T795
+        .t795
+          .t-container.t-align_center
+            .t-col.t-col_10.t-prefix_1
+              .t795__title.t-title.t-title_xs.t-margin_auto.t-animate(data-animate-style="fadeinup" data-animate-group="yes" data-animate-order="1" field="title" style="") Một vài hình ảnh 
+              .t795__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" field="descr" style="")
+                | Dưới đây chỉ là một số hình ảnh chung.
+                br
+                |  Muốn tìm hiểu thêm ? Đăng nhập hoặc đăng kí ngay
+      #rec114640614.r.t-rec.t-rec_pt_135.t-rec_pb_135(style="padding-top:135px;padding-bottom:135px; " data-animationappear="off" data-record-type="670")
+        .t670
+          .t-slds(style="visibility: hidden;")
+            .t-container.t-slds__main.t-animate(data-animate-style="fadeinleft")
+              .t-slds__container.t-width.t-width_9.t-margin_auto
+                .t-slds__items-wrapper.t-slds_animated-none.t-slds__witharrows(data-slider-transition="300" data-slider-with-cycle="true" data-slider-correct-height="true" data-auto-correct-mobile-width="false")
+                  .t-slds__item.t-slds__item_active(data-slide-index="1")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild6537-3864-4332-b534-366439663131/dashboard.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__0")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6537-3864-4332-b534-366439663131/dashboard.PNG" style="background-image: url('https://static.tildacdn.com/tild6537-3864-4332-b534-366439663131/-/resizeb/20x/dashboard.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="2")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild6665-3632-4035-b932-376336303966/login.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__1")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6665-3632-4035-b932-376336303966/login.PNG" style="background-image: url('https://static.tildacdn.com/tild6665-3632-4035-b932-376336303966/-/resizeb/20x/login.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="3")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3339-3631-4566-b130-306337353666/manage1.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__2")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3339-3631-4566-b130-306337353666/manage1.PNG" style="background-image: url('https://static.tildacdn.com/tild3339-3631-4566-b130-306337353666/-/resizeb/20x/manage1.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="4")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3066-6163-4665-a233-646564333034/manage2.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__3")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3066-6163-4665-a233-646564333034/manage2.PNG" style="background-image: url('https://static.tildacdn.com/tild3066-6163-4665-a233-646564333034/-/resizeb/20x/manage2.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="5")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild6365-3031-4734-b138-303636393534/manage3.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__4")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6365-3031-4734-b138-303636393534/manage3.PNG" style="background-image: url('https://static.tildacdn.com/tild6365-3031-4734-b138-303636393534/-/resizeb/20x/manage3.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="6")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3832-3136-4436-b164-616330653363/market.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__5")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3832-3136-4436-b164-616330653363/market.PNG" style="background-image: url('https://static.tildacdn.com/tild3832-3136-4436-b164-616330653363/-/resizeb/20x/market.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="7")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3731-3761-4338-a234-393463383535/market3.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__6")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3731-3761-4338-a234-393463383535/market3.PNG" style="background-image: url('https://static.tildacdn.com/tild3731-3761-4338-a234-393463383535/-/resizeb/20x/market3.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="8")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3263-3739-4835-b166-383531303162/market4.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__7")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3263-3739-4835-b166-383531303162/market4.PNG" style="background-image: url('https://static.tildacdn.com/tild3263-3739-4835-b166-383531303162/-/resizeb/20x/market4.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="9")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3033-3936-4765-b532-623064353837/market2.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__8")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3033-3936-4765-b532-623064353837/market2.PNG" style="background-image: url('https://static.tildacdn.com/tild3033-3936-4765-b532-623064353837/-/resizeb/20x/market2.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                .t-slds__bullet_wrapper
+                  .t-slds__bullet.t-slds__bullet_active(data-slide-bullet-for="1")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="2")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="3")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="4")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="5")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="6")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="7")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="8")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="9")
+                    .t-slds__bullet_body(style="")
+              .t-slds__arrow_container
+                .t-slds__arrow_wrapper.t-slds__arrow_wrapper-left(data-slide-direction="left")
+                  .t-slds__arrow.t-slds__arrow-left.t-slds__arrow-withbg(style="width: 30px; height: 30px;background-color: rgba(255,255,255,1);")
+                    .t-slds__arrow_body.t-slds__arrow_body-left(style="width: 7px;")
+                      svg(style="display: block" viewbox="0 0 7.3 13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+                        desc Left
+                        polyline(fill="none" stroke="#222" stroke-linejoin="butt" stroke-linecap="butt" stroke-width="1" points="0.5,0.5 6.5,6.5 0.5,12.5")
+                .t-slds__arrow_wrapper.t-slds__arrow_wrapper-right(data-slide-direction="right")
+                  .t-slds__arrow.t-slds__arrow-right.t-slds__arrow-withbg(style="width: 30px; height: 30px;background-color: rgba(255,255,255,1);")
+                    .t-slds__arrow_body.t-slds__arrow_body-right(style="width: 7px;")
+                      svg(style="display: block" viewbox="0 0 7.3 13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+                        desc Right
+                        polyline(fill="none" stroke="#222" stroke-linejoin="butt" stroke-linecap="butt" stroke-width="1" points="0.5,0.5 6.5,6.5 0.5,12.5")
+              .t-slds__caption__container  
+        script(type="text/javascript").
+          $(document).ready(function() {
+          t670_init('114640614');
+          t_sldsInit('114640614');
+          });
+          $('.t670').bind('displayChanged', function() {
+          t_slds_updateSlider('114640614');
+          t_slds_positionArrows('114640614');
+          });
+        style(type="text/css").
+          #rec114640614 .t-slds__bullet_active .t-slds__bullet_body {
+          background-color: #222 !important;
+          }
+          #rec114640614 .t-slds__bullet:hover .t-slds__bullet_body {
+          background-color: #222 !important;
+          }
+      #rec114656875.r.t-rec.t-rec_pt_30.t-rec_pb_30(style="padding-top:30px;padding-bottom:30px; " data-record-type="219")
+        // T191
+        .t191
+          .t-align_center
+            hr.t191__line.t-width.t-width_2(style="background-color:#000000;opacity:0.2;")
+      #rec114601363.r.t-rec.t-rec_pt_150.t-rec_pb_180(style="padding-top:150px;padding-bottom:180px;background-color:#ffffff; " data-record-type="490" data-bg-color="#ffffff")
+        // t490
+        .t490
+          .t-section__container.t-container
+            .t-col.t-col_12
+              .t-section__topwrapper.t-align_center
+                .t-section__title.t-title.t-title_xs.t-animate(data-animate-style="fadeindown" data-animate-group="yes" field="btitle") Tính năng sắp ra mắt
+          .t-container
+            .t490__col.t-col.t-col_4.t-align_center.t-item.t-animate(data-animate-style="fadeinright" data-animate-chain="yes")
+              img.t490__img.t-img(src="https://static.tildacdn.com/lib/tildaicon/34313138-3432-4531-b432-623839666466/Tilda_Icons_30_system_settings.svg" imgfield="li_img__1476968722790" style="width:90px;")
+              .t490__wrappercenter
+                .t-heading.t-heading_md(style="" field="li_title__1476968722790") Thuê hàng
+                .t-descr.t-descr_xs(style="" field="li_descr__1476968722790")  Người dùng có thể đăng mặt hàng dạng cho thuê 
+            .t490__col.t-col.t-col_4.t-align_center.t-item.t-animate(data-animate-style="fadeinright" data-animate-chain="yes")
+              img.t490__img.t-img(src="https://static.tildacdn.com/lib/tildaicon/63366338-3537-4664-b431-303039353764/Tilda_Icons_28_law_consulting.svg" imgfield="li_img__1509711759928" style="width:90px;")
+              .t490__wrappercenter
+                .t-heading.t-heading_md(style="" field="li_title__1509711759928") Nhắn tin cho đối tác
+                .t-descr.t-descr_xs(style="" field="li_descr__1509711759928")
+                  | Người mua có thể nhắn tin trực tiếp đến người bán thông qua kênh chat trực tiếp
+            .t490__col.t-col.t-col_4.t-align_center.t-item.t-animate(data-animate-style="fadeinright" data-animate-chain="yes")
+              img.t490__img.t-img(src="https://static.tildacdn.com/lib/tildaicon/31356636-6365-4239-a238-323061343131/Tilda_Icons_30_system_sound.svg" imgfield="li_img__1509711763218" style="width:90px;")
+              .t490__wrappercenter
+                .t-heading.t-heading_md(style="" field="li_title__1509711763218") Tìm mua
+                .t-descr.t-descr_xs(style="" field="li_descr__1509711763218")
+                  | Người dùng có thể đăng bài lên thị trường dạng tìm mua để có thể sở hữu các món hàng cần thiết một cách nhanh nhất
+      #rec114656899.r.t-rec.t-rec_pt_30.t-rec_pb_30(style="padding-top:30px;padding-bottom:30px; " data-record-type="219")
+        // T191
+        .t191
+          .t-align_center
+            hr.t191__line.t-width.t-width_2(style="background-color:#000000;opacity:0.2;")
+      #rec114601370.r.t-rec.t-rec_pt_150.t-rec_pb_150(style="padding-top:150px;padding-bottom:150px; " data-record-type="551")
+        // t551
+        .t551
+          .t-container
+            .t-col.t-col_6.t-prefix_3.t-align_center
+              .t551__title.t-name.t-name_xs.t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="1" style="" field="title")
+                | Liên hệ đến nhà phát triền
+                br
+              .t551__contacts.t-title.t-title_xxs.t-animate(data-animate-style="fadeinup" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="" field="text") bui.qhung.12.7@gmail.com
+              .t-sociallinks
+                .t-sociallinks__wrapper
+                  .t-sociallinks__item
+                    a(href="https://www.facebook.com/qhung.12.7" target="_blank")
+                      svg#Layer_1.t-sociallinks__svg(version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewbox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve")
+                        desc Facebook
+                        path(style="fill:#f5914f;" d="M47.761,24c0,13.121-10.638,23.76-23.758,23.76C10.877,47.76,0.239,37.121,0.239,24c0-13.124,10.638-23.76,23.764-23.76C37.123,0.24,47.761,10.876,47.761,24 M20.033,38.85H26.2V24.01h4.163l0.539-5.242H26.2v-3.083c0-1.156,0.769-1.427,1.308-1.427h3.318V9.168L26.258,9.15c-5.072,0-6.225,3.796-6.225,6.224v3.394H17.1v5.242h2.933V38.85z")
+      #rec114601372.r.t-rec.t-rec_pt_15.t-rec_pb_15(style="padding-top:15px;padding-bottom:15px;background-color:#000000; " data-animationappear="off" data-record-type="56" data-bg-color="#000000")
+        // T046
+        .t046
+          .t-container
+            .t-col.t-col_6.t-prefix_3
+              .t046__text.t-text.t-text_xs(style="" field="text")
+                span(style="color: rgb(147, 147, 147);") Bản quyền thuộc về Quoc Hung Bui
+                br
+    // /allrecords
+    // Stat
+    script(type="text/javascript").
+      if (!window.mainTracker) {
+      window.mainTracker = 'tilda';
+      }(function(d, w, k, o, g) {
+      var n = d.getElementsByTagName(o)[0],
+      s = d.createElement(o),
+      f = function() {
+      n.parentNode.insertBefore(s, n);
+      };
+      s.type = "text/javascript";
+      s.async = true;
+      s.key = k;
+      s.id = "tildastatscript";
+      s.src = g;
+      if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+      } else {
+      f();
+      }
+      })(document, window, '6eece8d45472ae04fb54d3e0d6e76794', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');

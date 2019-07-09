@@ -22,8 +22,8 @@ module.exports.getTime = function(){
     return time ; 
 }
 module.exports.convert = function(dateString){
-    let arrDate = date.split('-') ; 
+    let arrDate = dateString.split('-') ; 
     let standardFormat = new Date (arrDate[2] , arrDate[1]-1 , arrDate[0]) ; 
-    console.log(standerFormat.toDateString()) ; 
+    console.log(standardFormat.toDateString()) ; 
     return standardFormat ;  
 }

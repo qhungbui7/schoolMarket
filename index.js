@@ -19,7 +19,7 @@ var io = require('socket.io')(server) ;
 // MODULES
 var bodyParser = require('body-parser') ; 
 var cookieParser = require('cookie-parser') ; 
-
+var db = require('./db.js') ; 
 
 //REQUIRE ROUTES
 var userRoute = require('./routes/user.route') ; 
@@ -49,20 +49,22 @@ app.use('/market',authMiddleware.reqAuth,marketRoute) ;
 app.get('/',function(req,res){
     res.render('index.pug') ; 
 })
+//FAQs 
+app.get('/faqs',function(req,res){
+    let admin = db.get('users').find({id : 'admin'}).value() ; 
+    console.log(admin.email) ; 
+    res.render('faqs.pug',{admin}) ; 
+});
+//Terms
+app.get('/terms',function(req,res){
+    res.render('terms.pug') ; 
+});
 
 //404
 app.use(function(req, res, next){
     res.status(404).render('404', {title: "Sorry, page not found"});
 });
 
-//FAQs 
-app.get('/faqs',function(req,res){
-    res.render('faqs.pug') ; 
-});
-//Terms
-app.get('/terms',function(req,res){
-    res.render('terms.pug') ; 
-});
 
 
 // SOCKET PART

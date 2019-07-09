@@ -48,10 +48,12 @@ module.exports = function(io){
                 return ; 
             } ;  
             //check date 
-            let dateR = subFunction.convert(data.dateReceive) ; 
-            let dateI = subFunction.convert(temp.dateItem) ; 
+            let dateR = subFunction.convert(data.dateReceive).getTime() ; 
+            let dateI = subFunction.convert(temp.dateItem).getTime() ; 
+            console.log(dateR,' ' ,dateI);
             if (dateR > dateI){
                 socket.emit('errorDate') ; 
+                return ; 
             }
             
             // decrease the amount of item and update new amount
