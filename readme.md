@@ -20,8 +20,8 @@ check date validate realtime(X)
 
 unban script (x)
 test form reason kick and alert reason kick and reborn user ui , rank user (X)
-2 form, form edit rate and form ban with reason
-banned user ui use middleware with reason and contact admin email to unban 
+2 form, form edit rate and form ban with reason(x)
+banned user ui use middleware with reason and contact admin email to unban  (X)
 increase rate with time system
 
 
@@ -34,7 +34,7 @@ Admin accept userRemove (realtime)
 Amount (X)
 
 
-
+email noreply
 
 
 
