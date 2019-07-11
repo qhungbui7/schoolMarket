@@ -7,7 +7,9 @@ module.exports.market = function(req,res){
     let type ;
     if (tab === 'all'){
         type = 'TẤT CẢ' ; 
-        var data = db.get('items').filter({status : 'On sale'}).value() ; 
+        var data = db.get('items').filter((element)=>{
+           return (db.get('users').find({id : element.owner}).value().status === 'Normal')
+        }).filter({status : 'On sale'}).value() ; 
         res.render('market/index.pug',{data ,type,customer}) ; 
         return ; 
     }
@@ -18,7 +20,9 @@ module.exports.market = function(req,res){
         if (tab === 'digital') type = 'THIẾT BỊ ĐIỆN TỬ' ;   
         if (tab === 'others') type = 'KHÁC' ;   
 
-        var data = db.get('items').filter({status : 'On sale' , type}).value() ; 
+        var data = db.get('items').filter((element)=>{
+            return (db.get('users').find({id : element.owner}).value().status === 'Normal')
+         }).filter({status : 'On sale' , type}).value() ; 
         res.render('market/index.pug',{data ,type,customer}) ; 
         return ;
     }

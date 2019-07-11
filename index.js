@@ -52,7 +52,6 @@ app.get('/',function(req,res){
 //FAQs 
 app.get('/faqs',function(req,res){
     let admin = db.get('users').find({id : 'admin'}).value() ; 
-    console.log(admin.email) ; 
     res.render('faqs.pug',{admin}) ; 
 });
 //Terms
@@ -64,8 +63,6 @@ app.get('/terms',function(req,res){
 app.use(function(req, res, next){
     res.status(404).render('404', {title: "Sorry, page not found"});
 });
-
-
 
 // SOCKET PART
 require('./realTimeProcessor')(io) ; 

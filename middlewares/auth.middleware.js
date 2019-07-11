@@ -18,17 +18,15 @@ module.exports.reqAuth = function(req,res,next){
         next() ; 
         return ;
     }
-    if (!req.signedCookies) {
+    if ((!req.signedCookies) || (!cmp) || (path === 'admin' && cmp.id !=='admin') || (path !== 'admin' && cmp.id ==='admin')){
         res.redirect('/user/login') ;
         return ;  
     }
 
-    if (!cmp){
+    /*if (!cmp){
         res.redirect('/user/login') ; 
         return ; 
     }
-    console.log(cmp.id ,' ' , cmp.pass) ;
-    //console.log(path) ; 
     if ( path === 'admin' && cmp.id !=='admin'){
         res.redirect('/user/login') ; 
         return ; 
@@ -36,7 +34,10 @@ module.exports.reqAuth = function(req,res,next){
     if ( path !== 'admin' && cmp.id ==='admin'){
         res.redirect('/user/login') ;
         return ;
+    }*/
+    if (cmp.status === 'Banned'){
+        res.render('banned.pug',{statusHistory : cmp.statusHistory}) ; 
+        return ; 
     }
-
     next() ; 
 }

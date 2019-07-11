@@ -5,7 +5,7 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-    title 404 Not Found
+    title Tạm khoá
     // Google font
     link(href="https://fonts.googleapis.com/css?family=Kanit:200" rel="stylesheet")
     // Font Awesome Icon
@@ -22,10 +22,12 @@ html(lang="en")
     #notfound
       .notfound
         .notfound-404
-          h1 404
-        h2 Oops ! Không có gì ở đây cả
-        p
-          | Page bạn đang tìm kiếm hiện đã bị gỡ, đổi tên hoặc hiện tại không khả dụng với bạn
+          h1 Banned
+        h2 Tài khoản bị tạm khoá vì những lí do sau đây : 
+        each element in statusHistory
+            p
+            | #{element.date} #{element.time} : #{element.reason}
+            br
         br
         a(href="/") Trở về trang chủ
   // This templates was made by Colorlib (https://colorlib.com)

@@ -24,6 +24,9 @@ module.exports.getTime = function(){
 module.exports.convert = function(dateString){
     let arrDate = dateString.split('-') ; 
     let standardFormat = new Date (arrDate[2] , arrDate[1]-1 , arrDate[0]) ; 
-    console.log(standardFormat.toDateString()) ; 
     return standardFormat ;  
+}
+module.exports.convertToHTMLText = function(string){
+    
+    return string.replace(/\r\n/g,'<br>') ; 
 }

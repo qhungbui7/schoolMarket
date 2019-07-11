@@ -17,7 +17,14 @@ User delivered (X)
 Login form, reg form (X)
 check date validate realtime(X)
 
-form reason kick and alert reason kick and reborn user ui , rank user
+
+unban script (x)
+test form reason kick and alert reason kick and reborn user ui , rank user (X)
+2 form, form edit rate and form ban with reason
+banned user ui use middleware with reason and contact admin email to unban 
+increase rate with time system
+
+
 Watch  again nodejs part in login form video to know how to emit warning
 
 

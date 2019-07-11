@@ -28,8 +28,11 @@ router.get('/clearAllHistory',controllers.clearAllHistory) ;
 
 // Manage users 
 router.get('/manageUsers',controllers.renderUsers) ; 
+router.get('/banned',controllers.renderBanned) ; 
 router.get('/eliminate/:id',controllers.eliminate) ; 
-
+router.get('/unban/:id',controllers.unban) ; 
+router.get('/editStatus/:id',controllers.editStatus) ; 
+router.post('/postFormStatus/:id',controllers.postFormStatus) ; 
 // On sale
 router.get('/onSale',controllers.renderOnSale) ; 
 router.get('/removeItem/:idItem',controllers.removeItem) ;

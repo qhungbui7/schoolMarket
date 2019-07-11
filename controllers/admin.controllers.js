@@ -24,25 +24,33 @@ module.exports.renderOnSale = function(req,res){
 }
 module.exports.renderUsers = function(req,res){
     let admin = res.locals.user ; 
-    let users = db.get('users').filter({}).value() ;
-    
-    let posAdmin = users.findIndex(function(element){
-        return (element.id === 'admin') ; 
-    });
-    users.splice(posAdmin,1) ; 
+    let users = db.get('users').filter({status :'Normal'}).value() ;
+    //console.log(users) ;
     res.render('admin/userList.pug',{admin,users}) ; 
 }
 module.exports.renderUsage = function(req,res){
     res.render('admin/usage.pug') ; 
 }
 module.exports.renderWaitingAccept = function(req,res){
-        let user = res.locals.user ;
-        let waitingAcpt = db.get('items').filter({status: 'Waiting accept'}).value() ;  
-        res.render('admin/waitingAccept.pug',{user,waitingAcpt}) ;
+    let user = res.locals.user ;
+    let waitingAcpt = db.get('items').filter({status: 'Waiting accept'}).value() ;  
+    res.render('admin/waitingAccept.pug',{user,waitingAcpt}) ;
+}
+module.exports.renderBanned = function(req,res){
+    let bannedUser = db.get('users').filter({status : 'Banned'}).value() ; 
+    res.render('admin/banned.pug',{users : bannedUser}) ; 
+}
+module.exports.editStatus = function(req,res){
+    let user = db.get('users').find({id : req.params.id}).value() ;
+    res.render('admin/formStatus',{user}) ; 
 }
 module.exports.logout  = function(req,res){
     res.clearCookie('id') ; 
     res.redirect('/user/login') ; 
+}
+module.exports.unban = function(req,res){
+    db.get('users').find({id : req.params.id}).assign({rate: 3 , status : 'Normal'}).value() ; 
+    res.redirect('/admin/manageUsers') ; 
 }
 module.exports.acptItem = function(req,res){
     let idItem = req.params.id ; 
@@ -138,6 +146,19 @@ module.exports.changePass = function(req,res){
         pass : md5(info.pass) 
     }).write() ; 
     res.redirect('/admin/profile') ;
+}
+module.exports.postFormStatus = function(req,res){
+    let id = req.params.id ; 
+    let reason = req.body.reason ; 
+    let rate = req.body.rate ; 
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ;
+    let status ='Normal'
+    if (rate === '0') status = 'Banned' ;
+    let statusHistory = db.get('users').find({id}).value().statusHistory ; 
+    statusHistory.unshift({rate,date,time,reason}) ; 
+    db.get('users').find({id : req.params.id}).assign({rate,status}).write() ; 
+    res.redirect('/admin/editStatus/' + id)
 }
 module.exports.clearAllHistory = function(req,res){
     db.get('history').remove().write()  ;

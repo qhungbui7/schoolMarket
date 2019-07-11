@@ -74,11 +74,14 @@ module.exports.postRegister = function(req,res){
     let phone = req.body.phone ; 
     let fb = req.body.fb ; 
     let name = req.body.name ; 
-    let clas = req.body.class ; 
-    let queue = [] 
+    let clas = req.body.clas ;
+    let status = 'Normal' ; 
+    let rate = '10' ;  
+    let queue = [] ;
+    let statusHistory = [] ;
     let cmp = db.get('users').find({id}).value() ;
     if (!cmp){
-        db.get('users').push({id,pass,email,phone,fb,name,clas,queue}).write() ;
+        db.get('users').push({id,pass,email,phone,fb,name,clas,status,rate,statusHistory,queue}).write() ;
         console.log('Đăng kí thành công') ; 
         res.redirect('/user/login') ;
     }
@@ -88,6 +91,7 @@ module.exports.postRegister = function(req,res){
     }
 }
 module.exports.postLogin = function(req,res){
+    res.clearCookie('id') ; 
     let id = req.body.id ; 
     let pass = md5(req.body.pass) ; 
     let cmp = db.get('users').find({id,pass}).value() ; 
@@ -105,7 +109,6 @@ module.exports.postLogin = function(req,res){
             return ; 
         } 
         res.redirect('/user/dashboard') ; 
-
 }
 module.exports.requestAdmin = function(req,res){
     let user = res.locals.user ; 
