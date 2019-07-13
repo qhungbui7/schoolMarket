@@ -47,16 +47,20 @@ app.use('/market',authMiddleware.reqAuth,marketRoute) ;
 
 //INDEX
 app.get('/',function(req,res){
-    res.render('index.pug') ; 
+    let isLog = req.signedCookies.id ; 
+    res.render('index.pug',{isLog}) ; 
 })
 //FAQs 
 app.get('/faqs',function(req,res){
+    let isLog = req.signedCookies.id ; 
     let admin = db.get('users').find({id : 'admin'}).value() ; 
-    res.render('faqs.pug',{admin}) ; 
+    console.log(isLog) ; 
+    res.render('faqs.pug',{admin,isLog}) ; 
 });
 //Terms
 app.get('/terms',function(req,res){
-    res.render('terms.pug') ; 
+    let isLog = req.signedCookies.id ; 
+    res.render('terms.pug',{isLog}) ; 
 });
 
 //404

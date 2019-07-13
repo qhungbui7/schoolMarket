@@ -3,6 +3,8 @@ head
   meta(name='viewport', content='width=device-width, initial-scale=1')
   link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
   link(href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet")
+  //link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+  link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
   link(rel="shortcut icon" href="/ico/eco.png" type="image/x-icon")
   style.
     body{
@@ -12,17 +14,17 @@ head
     overflow: hidden;
     }
     .toggle {
-    background-color: #e67700;
-    text-align: center;
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    position: absolute;
-    margin: auto;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+      background-color: #e67700;
+      text-align: center;
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      position: absolute;
+      margin: auto;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
     }
     .fa-plus{
     font-size: 60px;
@@ -129,11 +131,19 @@ script.
   }
   }
 script(src="https://unpkg.com/sweetalert/dist/sweetalert.min.js")
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
 script.
   swal({
     title: 'Welcome !',
-    text: 'Nếu là lần đầu tiên vào đây, vui lòng xem FAQs (dấu chấm hỏi) để biết cách sử dụng trang web và tự giải đáp một vài thắc mắc thường gặp ',
+    text: 'Nếu là lần đầu tiên vào đây, vui lòng xem FAQs (dấu chấm hỏi) để biết cách sử dụng trang web .Rê chuột vào từng biểu tượng để biết chức năng ',
     icon: 'info',
     button: 'Chấp thuận',
+  });
+  $(document).ready(function() {
+    $('[data-toggle="popover"]').popover({
+        placement: 'top',
+        trigger: 'hover'
+    });
   });
 

@@ -59,7 +59,7 @@ module.exports.unban = function(req,res){
         date , 
         time
     }).write();
-    db.get('users').find({id}).assign({rate: 3 , status : 'Normal'}).value() ; 
+    db.get('users').find({id}).assign({rate: 3 , status : 'Normal'}).write() ; 
     res.redirect('/admin/manageUsers') ; 
 
 }
