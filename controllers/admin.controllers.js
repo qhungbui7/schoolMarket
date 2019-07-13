@@ -49,8 +49,19 @@ module.exports.logout  = function(req,res){
     res.redirect('/user/login') ; 
 }
 module.exports.unban = function(req,res){
-    db.get('users').find({id : req.params.id}).assign({rate: 3 , status : 'Normal'}).value() ; 
+    let id = req.params.id ; 
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ; 
+    db.get('history').push({
+        action : 'Admin unban user',
+        subject : 'admin',
+        obj : id, 
+        date , 
+        time
+    }).write();
+    db.get('users').find({id}).assign({rate: 3 , status : 'Normal'}).value() ; 
     res.redirect('/admin/manageUsers') ; 
+
 }
 module.exports.acptItem = function(req,res){
     let idItem = req.params.id ; 
@@ -114,7 +125,7 @@ module.exports.removeItem = function(req,res){
 module.exports.changeProfile = function(req,res){
     let admin = res.locals.user ;
     let newProfile = req.body ; 
-    if (admin.pass !== md5(newProfile.password)){
+    if (admin.pass !== md5(md5(newProfile.password))){
         console.log('Sai mật khẩu') ; 
         res.redirect('/admin/profile') ;
         return ;
@@ -135,7 +146,7 @@ module.exports.changeProfile = function(req,res){
 module.exports.changePass = function(req,res){
     let admin = res.locals.user ; 
     let info = req.body ; 
-    if (admin.pass !== md5(info.oldpass)){
+    if (admin.pass !== md5(md5(info.oldpass))){
         console.log('Sai mật khẩu') ; 
         res.redirect('/user/manage/profile') ;
         return ; 
@@ -143,7 +154,7 @@ module.exports.changePass = function(req,res){
     db.get('users')
     .find({id : admin.id})
     .assign({
-        pass : md5(info.pass) 
+        pass : md5(md5(info.pass)) 
     }).write() ; 
     res.redirect('/admin/profile') ;
 }
@@ -154,10 +165,30 @@ module.exports.postFormStatus = function(req,res){
     let date = subFunction.getDay() ; 
     let time = subFunction.getTime() ;
     let status ='Normal'
-    if (rate === '0') status = 'Banned' ;
+    if (rate === '0') { 
+        status = 'Banned' ;
+        db.get('history').push({
+            action : 'Admin ban user',
+            subject : 'admin',
+            obj : id, 
+            date , 
+            time
+        }).write();
+    }
+    else {
+        db.get('history').push({
+            action : 'Admin edit rate',
+            subject : 'admin',
+            obj : id, 
+            new : rate ,
+            old : db.get('users').find({id}).value().rate ,
+            date , 
+            time
+        }).write();
+    }
     let statusHistory = db.get('users').find({id}).value().statusHistory ; 
     statusHistory.unshift({rate,date,time,reason}) ; 
-    db.get('users').find({id : req.params.id}).assign({rate,status}).write() ; 
+    db.get('users').find({id}).assign({rate,status}).write() ; 
     res.redirect('/admin/editStatus/' + id)
 }
 module.exports.clearAllHistory = function(req,res){

@@ -53,7 +53,9 @@ Admin decline request
 Admin accept request 
 Admin remove item
 Admin eliminate user
-
+Admin ban user 
+Admin edit rate
+Admin unban user
 
 
 Item queue type : (don't need to fix)

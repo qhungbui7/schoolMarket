@@ -9,8 +9,9 @@ module.exports.register = function(req,res){
     res.render('register.pug') ; 
 }
 module.exports.dashboard = function(req,res){
-    let user = res.locals.user ; 
-    res.render('dashboard.pug',{user}) ; 
+    //let user = res.locals.user ; 
+    //res.render('dashboard.pug',{user}) ;
+    res.redirect('/user/manage') ; 
 }
 module.exports.renderOnSaleItem = function(req,res){
     let user =  res.locals.user ;
@@ -35,7 +36,7 @@ module.exports.renderProfile = function(req,res){
 }
 module.exports.findDayUserHistory = function(req,res){
     let dateFind = req.body.dateFind ; 
-    res.redirect('/admin/history/' + dateFind) ; 
+    res.redirect('user/manage/userHistory/' + dateFind) ; 
 }
 module.exports.renderQueue = function(req,res){
     let dataLogin = res.locals.user ; 
@@ -69,7 +70,7 @@ module.exports.logout  = function(req,res){
 }
 module.exports.postRegister = function(req,res){
     let id = req.body.id ; 
-    let pass = md5(req.body.pass) ;
+    let pass = md5(md5(req.body.pass)) ;
     let email = req.body.email ; 
     let phone = req.body.phone ; 
     let fb = req.body.fb ; 
@@ -93,7 +94,7 @@ module.exports.postRegister = function(req,res){
 module.exports.postLogin = function(req,res){
     res.clearCookie('id') ; 
     let id = req.body.id ; 
-    let pass = md5(req.body.pass) ; 
+    let pass = md5(md5(req.body.pass)) ; 
     let cmp = db.get('users').find({id,pass}).value() ; 
     if (!cmp){
         console.log('Sai mật khẩu hoặc tài khoản không tồn tại') ; 
@@ -108,7 +109,7 @@ module.exports.postLogin = function(req,res){
             res.redirect('/admin') ;
             return ; 
         } 
-        res.redirect('/user/dashboard') ; 
+        res.redirect('/market') ; 
 }
 module.exports.requestAdmin = function(req,res){
     let user = res.locals.user ; 
@@ -117,7 +118,7 @@ module.exports.requestAdmin = function(req,res){
     data.status = 'Waiting accept' ;
 
     
-    if (md5(data.pass) !== user.pass){
+    if (md5(md5(data.pass)) !== user.pass){
         console.log('Wrong password') ;
         res.redirect('/user/formRequestAdmin') ; 
         return ; 
@@ -170,7 +171,7 @@ module.exports.userRemoveItem = function(req,res){
 module.exports.editProfile = function(req,res){
     let user = res.locals.user ;
     let newProfile = req.body ; 
-    if (user.pass !== md5(newProfile.password)){
+    if (user.pass !== md5(md5(newProfile.password))){
         console.log('Sai mật khẩu') ; 
         res.redirect('/user/manage/profile') ;
         return ;
@@ -188,7 +189,7 @@ module.exports.editProfile = function(req,res){
 module.exports.changePass = function(req,res){
     let user = res.locals.user ; 
     let info = req.body ; 
-    if (user.pass !== md5(info.oldpass)){
+    if (user.pass !== md5(md5(info.oldpass))){
         console.log('Sai mật khẩu') ; 
         res.redirect('/user/manage/profile') ;
         return ; 
@@ -196,7 +197,7 @@ module.exports.changePass = function(req,res){
     db.get('users')
         .find({id : user.id})
         .assign({
-            pass : md5(info.pass) 
+            pass : md5(md5(info.pass)) 
         })
         .write() ; 
     res.redirect('/user/manage/profile') ;
