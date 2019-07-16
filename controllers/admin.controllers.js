@@ -60,7 +60,11 @@ module.exports.unban = function(req,res){
         time
     }).write();
     db.get('users').find({id}).assign({rate: 3 , status : 'Normal'}).value() ; 
-    res.redirect('/admin/manageUsers') ; 
+    setTimeout(function(){
+        res.redirect('/admin/manageUsers') ; 
+        }
+    ,2000) ;
+    
 
 }
 module.exports.acptItem = function(req,res){
@@ -81,8 +85,11 @@ module.exports.acptItem = function(req,res){
         date , 
         time
     }).write();
-    res.redirect('/admin/waitingAccept') ;
 
+    setTimeout(function(){
+        res.redirect('/admin/waitingAccept') ;
+        }
+    ,2000) ;
 }
 module.exports.decItem = function(req,res){
     let idItem = req.params.id ; 
@@ -101,7 +108,10 @@ module.exports.decItem = function(req,res){
         date , 
         time
     }).write();
-    res.redirect('/admin/waitingAccept') ;
+    setTimeout(function(){
+        res.redirect('/admin/waitingAccept') ;
+        }
+    ,2000) ;
 }
 module.exports.removeItem = function(req,res){
     let idItem = req.params.idItem ;
@@ -120,17 +130,23 @@ module.exports.removeItem = function(req,res){
     db.get('items')
         .remove({idItem})
         .write() ; 
-    res.redirect('/admin/onSale') ; 
+    setTimeout(function(){
+        res.redirect('/admin/onSale') ; 
+        }
+    ,2000) ;
+
 }
 module.exports.changeProfile = function(req,res){
     let admin = res.locals.user ;
     let newProfile = req.body ; 
     if (admin.pass !== md5(md5(newProfile.password))){
-        console.log('Sai mật khẩu') ; 
-        res.redirect('/admin/profile') ;
+    console.log('Sai mật khẩu') ; 
+        setTimeout(function(){
+                res.redirect('/admin/profile')
+            }
+        ,2000) ;
         return ;
     }
-    ///user.email = newProfile.email
     db.get('users')
         .find({id : 'admin'})
         .assign({
@@ -141,14 +157,20 @@ module.exports.changeProfile = function(req,res){
             phone : newProfile.phone ,
             googleForm : newProfile.googleForm  
         }).write() ; 
-    res.redirect('/admin/profile') ;
+        setTimeout(function(){
+                res.redirect('/admin/profile')
+            }
+        ,2000) ;
 }
 module.exports.changePass = function(req,res){
     let admin = res.locals.user ; 
     let info = req.body ; 
     if (admin.pass !== md5(md5(info.oldpass))){
         console.log('Sai mật khẩu') ; 
-        res.redirect('/user/manage/profile') ;
+        setTimeout(function(){
+            res.redirect('/admin/profile')
+        }
+        ,2000) ;
         return ; 
     }
     db.get('users')
@@ -156,7 +178,10 @@ module.exports.changePass = function(req,res){
     .assign({
         pass : md5(md5(info.pass)) 
     }).write() ; 
-    res.redirect('/admin/profile') ;
+    setTimeout(function(){
+        res.redirect('/admin/profile')
+    }
+    ,2000) ;
 }
 module.exports.postFormStatus = function(req,res){
     let id = req.params.id ; 
@@ -189,7 +214,10 @@ module.exports.postFormStatus = function(req,res){
     let statusHistory = db.get('users').find({id}).value().statusHistory ; 
     statusHistory.unshift({rate,date,time,reason}) ; 
     db.get('users').find({id}).assign({rate,status}).write() ; 
-    res.redirect('/admin/editStatus/' + id)
+    setTimeout(function(){
+        res.redirect('/admin/editStatus/' + id);
+        }
+    ,2000) ;
 }
 module.exports.clearAllHistory = function(req,res){
     db.get('history').remove().write()  ;
@@ -213,5 +241,8 @@ module.exports.eliminate = function(req,res){
         date , 
         time
     }).write();
-    res.redirect('/admin/manageUsers') ; 
+    setTimeout(function(){
+        res.redirect('/admin/manageUsers') ; 
+        }
+    ,2000) ;
 }

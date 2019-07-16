@@ -52,7 +52,7 @@ html
                     .t696__title.t-title.t-title_xs.t-margin_auto.t-animate(data-animate-style="fadeinright" data-animate-group="yes" data-animate-order="1" style="color:#ffb514;" field="title") Đăng nhập
                     .t696__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinleft" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="" field="descr") Đăng nhập bằng tài khoản của bạn
                   .t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="3" data-animate-delay="0.3")
-                    form(action ='/user/login' method = 'POST' role="form" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t696_onSuccess")
+                    form(action ='/user/login' id='loginForm' method = 'POST' role="form" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t696_onSuccess")
                       // NO ONE SERVICES CONNECTED
                       .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
                       .t-form__inputsbox
@@ -64,7 +64,7 @@ html
                         .t-input-group.t-input-group_in(data-input-lid="1562421494772")
                           .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1562421494772" style="") Mật khẩu
                           .t-input-block
-                            input.t-input.js-tilda-rule.t-input_bbonly(type='password', name='pass' required style="color:#000000; border:1px solid #ffb514; ")
+                            input.t-input.js-tilda-rule.t-input_bbonly(type='password', name='pass' id='pass'  required style="color:#000000; border:1px solid #ffb514; ")
                             .t-input-error
                         .t-form__errorbox-middle
                           .js-errorbox-all.t-form__errorbox-wrapper(style="display:none;")
@@ -77,7 +77,7 @@ html
                               p.t-form__errorbox-item.js-rule-error.js-rule-error-minlength
                               p.t-form__errorbox-item.js-rule-error.js-rule-error-string
                         .t-form__submit
-                          button.t-submit(type="submit" style="color:#000000;border:3px solid #ffb514;background-color:#ffffff;" data-btneffects-first="btneffects-flash") Đăng nhập
+                          button.t-submit(type="submit" id = 'butt' style="color:#000000;border:3px solid #ffb514;background-color:#ffffff;" data-btneffects-first="btneffects-flash") Đăng nhập
                       .t-form__errorbox-bottom
                         .js-errorbox-all.t-form__errorbox-wrapper(style="display:none;")
                           .t-form__errorbox-text.t-text.t-text_md
@@ -275,4 +275,47 @@ html
       f();
       }
       })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildasimplestat-0.1.min.js');
-    
+    script(src = '/socket.io/socket.io.js') 
+    script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
+    script.
+
+        $(document).ready(function(){
+
+        var socket = io.connect('http://localhost') ; //realtimeprocessor bat cai nay
+        socket.emit('online','anonymous') ; 
+        socket.on('connector',function(sessionId){
+            var input = $("<input>")
+                  .attr("type", "hidden")
+                  .attr("name", "socketId").val(sessionId);
+            $('#loginForm').append(input);
+        });
+        $('#butt').click(function(){
+          let data = {
+            id : $('#id').val() ,
+            pass : $('#pass').val()   
+        }
+          socket.emit('checkLogin',data)  ;
+        })
+        socket.on('loginSuccess',function(){
+           swal(
+              {
+                title : "Thông báo", 
+                text : "Đăng nhập thành công", 
+                icon : "success",
+                button : false 
+              }
+            );
+        })
+        socket.on('errorLogin',function(){ 
+            swal(
+              {
+                title : "Thông báo", 
+                text : "Đăng nhập thất bại", 
+                icon : "error",
+                button : false 
+              }
+            );
+        })
+
+
+      }); 

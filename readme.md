@@ -1,5 +1,6 @@
 # CONFIG : 
 unlock nodemailer, history in controllers/market.controllers.js (line 36 - 37)
+run redis server, https://github.com/ServiceStack/redis-windows for more detail if use windows
 node db.js
 
 # RUN :

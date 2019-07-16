@@ -2,7 +2,12 @@ var db = require('../db') ;
 var subFunction = require('./subFunction') ; 
 var shortid = require('shortid') ;  
 var md5 = require('md5') ; 
+/*const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
+setInterval(function(){
+  io.emit('time', new Date);
+}, 5000);*/
 module.exports.login = function(req,res){
+    res.clearCookie('id') ; 
     res.render('login.pug') ; 
 }
 module.exports.register = function(req,res){
@@ -92,24 +97,32 @@ module.exports.postRegister = function(req,res){
     }
 }
 module.exports.postLogin = function(req,res){
-    res.clearCookie('id') ; 
+    res.clearCookie('id') ;  
     let id = req.body.id ; 
     let pass = md5(md5(req.body.pass)) ; 
     let cmp = db.get('users').find({id,pass}).value() ; 
     if (!cmp){
         console.log('Sai mật khẩu hoặc tài khoản không tồn tại') ; 
-        res.redirect('/user/login') ; 
+        //io.to(`${req.body.socketId}`).emit('errorLogin') ;   // Khong hoat dong
+        setTimeout(function(){
+            res.redirect('/user/login')
+        },2000) ; 
         return ; 
     }
         console.log('Đăng nhập thành công') ; 
+        //io.to(`${req.body.socketId}`).emit('loginSuccess') ;   
         res.cookie('id',id,{
             signed : true 
         }) ; 
         if (id === 'admin') {
-            res.redirect('/admin') ;
+            setTimeout(function(){
+                res.redirect('/admin')
+            },2000) ; 
             return ; 
         } 
-        res.redirect('/market') ; 
+        setTimeout(function(){
+            res.redirect('/market/all')
+        },2000) ; 
 }
 module.exports.requestAdmin = function(req,res){
     let user = res.locals.user ; 

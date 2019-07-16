@@ -450,11 +450,11 @@ html
               br
               | Khi gỡ khoá thì điểm hành vi tự động về 3
              .t422__btn-wrapper()
-              a.t-btn.t-btn_sm(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href="/admin/unban/" + element.id target="" style="margin-right : 20px ; color:#ffc919;border:2px solid #ffc919;")
+              a.t-btn.t-btn_sm(id='unban' data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href="/admin/unban/" + element.id target="" style="margin-right : 20px ; color:#ffc919;border:2px solid #ffc919;")
                table(style="width:100%; height:100%;")
                 tr
                  td Gỡ khoá
-              a.t-btn.t-btn_sm(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href="/admin/eliminate/" + element.id target="" style="color:#ffc919;border:2px solid #ffc919;")
+              a.t-btn.t-btn_sm(id='eliminate' data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href="/admin/eliminate/" + element.id target="" style="color:#ffc919;border:2px solid #ffc919;")
                table(style="width:100%; height:100%;")
                 tr
                  td Loại bỏ
@@ -492,12 +492,33 @@ html
       f();
       }
       })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
     script.
       $(document).ready(function(){
         $('#searchForm').on("keyup",function(){
           let search = $(this).val().toLowerCase() ; 
            $("#users").children('#mark').filter(function() {
               $(this).toggle($(this).text().toLowerCase().indexOf(search) > -1) ; 
-        });
+           });
       }) ; 
+          $('#eliminate').click(function(){
+            swal(
+                  {
+                    title : "Thông báo", 
+                    text : "Loại bỏ thành công người dùng", 
+                    icon : "success",
+                    button : false 
+                  }
+            );
+          });
+          $('#unban').click(function(){
+            swal(
+                  {
+                    title : "Thông báo", 
+                    text : "Gỡ khoá thành công người dùng\n\t Điểm hành vi tự động về 3", 
+                    icon : "success",
+                    button : false 
+                  }
+            );
+          });
       });

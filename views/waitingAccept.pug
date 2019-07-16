@@ -413,8 +413,8 @@ html
                           | Giá : #{element.priceItem} vnđ
                           br
                           | Mô tả : #{element.desItem}
-                          //br
-                          //| Được đăng bởi : #{element.owner}                  
+                          br
+                          | Được đăng bởi : #{element.owner}                  
                           br
                           | Hạn cuối nhận giao hàng : #{element.dateItem}
                           br
@@ -423,6 +423,45 @@ html
                             table(style="width:100%; height:100%;")
                               tr
                                 td Gỡ
+      #rec112648153.r.t-rec.t-rec_pt_150.t-rec_pb_150(style="padding-top:150px;padding-bottom:150px; " data-record-type="510")
+        // t510
+        .t510
+          .t-section__container.t-container
+            .t-col.t-col_12
+              .t-section__topwrapper.t-align_center
+                .t-section__title.t-title.t-title_xs.t-animate(data-animate-style="fadein" data-animate-group="yes" field="btitle")
+                  div(style="color:#ffa530;" data-customstyle="yes") Thông tin chi tiết
+                .t-section__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinup" data-animate-group="yes" field="bdescr") Các mặt hàng
+          .t-container
+            - var dem = 0 ;
+            each element,index in waitingAcpt
+              - dem +=1 ;
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(dem)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.nameItem
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | Danh mục sản phẩm : #{element.type}
+                    br
+                    | Giá : #{element.priceItem} vnđ
+                    br
+                    | Mô tả : #{element.desItem}
+                    br
+                    | Số lượng: #{element.amount}                  
+                    br
+                    | Hạn cuối nhận giao hàng : #{element.dateItem}
+                    br
+                    //a(href=element.imgItem style="color:rgb(255, 145, 20) !important;" target ='_blank') Ảnh đầy đủ
+                  .t422__btn-wrapper
+                    a.t-btn.t-btn_sm(href=element.imgItem target="_blank" style="margin-right:10px ; color:#ffc919;border:2px solid #ffc919;")
+                      table(style="width:100%; height:100%;")
+                        tr
+                          td Ảnh
+                    a.t-btn.t-btn_sm(id='butt' href="/user/userRemoveRequest/"+ element.idItem target="" style="color:#ffc919;border:2px solid #ffc919;")
+                      table(style="width:100%; height:100%;")
+                        tr
+                          td Gỡ
         script(type="text/javascript").
           $(document).ready(function() {
           t422_setHeight('112230841');

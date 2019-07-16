@@ -407,7 +407,7 @@ html
           .t-container
             .t-col.t-col_8.t-prefix_2
               .t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="1")
-                form(name="form113049225" role="form" action="/admin/postFormStatus/" + user.id method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t678_onSuccess")
+                form(name="form113049225" role="form" id='formStatus' action="/admin/postFormStatus/" + user.id method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t678_onSuccess")
                   // NO ONE SERVICES CONNECTED
                   .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
                   .t-form__inputsbox
@@ -640,4 +640,17 @@ html
           $('#rec113049225 .t-btn[data-btneffects-first] .t-btn_wrap-effects, #rec113049225 .t-submit[data-btneffects-first] .t-btn_wrap-effects').addClass('t-btn_wrap-effects_lg');
           }
           });
-        script.
+    script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
+    script.
+      $(document).ready(function(){
+        $('#formStatus').submit(function(){
+            swal(
+                  {
+                    title : "Thông báo", 
+                    text : "Sửa thành công", 
+                    icon : "success",
+                    button : false 
+                  }
+            );
+        });
+      })

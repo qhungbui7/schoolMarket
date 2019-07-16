@@ -1,6 +1,11 @@
 var db = require('./db') ; 
 var subFunction = require('./controllers/subFunction') ; 
+var md5 = require('md5');
 //var cookieParser = require('cookie-parser') ; 
+/*const io = require('socket.io')(3000);
+const redis = require('socket.io-redis');
+io.adapter(redis({ host: 'localhost', port: 6379 }));*/
+
 module.exports = function(io){
     let mapList = [] ; 
     io.on('connection',function(socket){
@@ -10,6 +15,8 @@ module.exports = function(io){
                 customId : userId 
             }) ; 
             console.log(`${userId} connect`, socket.id) ;
+            socket.emit('connector',socket.id);
+            //socket.emit('errorLogin') ; 
         });
         socket.on('disconnect',function() {
             console.log(`${socket.id} disconnect`) ; 
@@ -22,7 +29,7 @@ module.exports = function(io){
         // Join item room
         socket.on('joinItemRoom',function(idItemClient){
             socket.join(`${idItemClient}`);
-            console.log(socket.id, 'join room' ,idItemClient)
+            console.log(socket.id, 'join room' ,idItemClient) ;
         });
 
         socket.on('checkOut',function(data,idItem,clientId){ 
@@ -96,6 +103,26 @@ module.exports = function(io){
                 });
                 io.to(`${admin.socketId}`).emit('displayNewRequest',waitingAccept) ; 
             },2000) ; 
+        });
+        socket.on('checkLogin',function(data){
+            var cmp = db.get('users').find(
+                {
+                    id : data.id, pass : md5(md5(data.pass))
+                }
+            ).value();
+            if (cmp){
+                socket.emit('loginSuccess') ; 
+            } else socket.emit('errorLogin') ; 
+        }); 
+        socket.on('profile',function(data){
+            var cmp = db.get('users').find(
+                {
+                    id : data.id, pass : md5(md5(data.pass))
+                }
+            ).value();
+            if (cmp){
+                socket.emit('changeSuccess') ; 
+            } else socket.emit('wrongPass') ; 
         });
     }) ; 
 }

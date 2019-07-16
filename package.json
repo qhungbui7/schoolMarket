@@ -1,7 +1,7 @@
 {
   "name": "schoolmarket",
   "version": "1.0.0",
-  "description": "INSTALL REDIS \r Windows : https://github.com/dmajkic/redis/downloads\r Linux : sudo apt install redis-server",
+  "description": "INSTALL REDIS \r Windows : https://github.com/dmajkic/redis/downloads\r Ubuntu : sudo apt install redis-server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
