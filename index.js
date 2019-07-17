@@ -54,9 +54,6 @@ app.get('/',function(req,res){
 app.get('/faqs',function(req,res){
     let isLog = req.signedCookies.id ; 
     let admin = db.get('users').find({id : 'admin'}).value() ; 
-<<<<<<< HEAD
-=======
->>>>>>> 4142ed1eb149b61e2a27b4d81af0d4410f0e2548
     res.render('faqs.pug',{admin,isLog}) ; 
 });
 //Terms

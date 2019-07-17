@@ -82,7 +82,7 @@ Always : check # CHECK for information
 
 
 1. Apply the github student pack again (X)
-2. Seach google to complete this timeline
+2. Seach google to complete this timeline (X)
 
 3. Create google form demo for admin
 4. Complete realtime part ( # NOTE for detail ) (X)
@@ -99,13 +99,13 @@ Always : check # CHECK for information
         Tech : this page only talk about advantage of nodejs, others write in the pp and speech
 7. Create page : contact to developer/admin  (X)
 8. Create page : about developer (X)
-9. Make alert in somewhere possible 
+9. Make alert in somewhere possible (X)
 10. Write FAQs, Terms  : (X)
     Content :
         FAQS : 
             Usage for user
             if it needs the video, creator should have some blank for the video and wait for the record video link to fill it
-11. Deploy to HEROKU, and test around sometime, create some item, account for the beta tester
+11. Deploy to HEROKU, and test around sometime, create some item, account for the beta tester (X)
 12. Buy domain, get the Https for the website
 13. Open Beta for tester : Nhat Huy *, Bro Hop *, Ninh, Khanh Huyen, Thao Quynh test (X)
 14. Fix bug and ask Nhat Huy to test the last time and edit the FAQs if need
