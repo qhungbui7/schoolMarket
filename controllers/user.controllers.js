@@ -14,8 +14,8 @@ module.exports.register = function(req,res){
     res.render('register.pug') ; 
 }
 module.exports.dashboard = function(req,res){
-    //let user = res.locals.user ; 
-    //res.render('dashboard.pug',{user}) ;
+    /*let user = res.locals.user ; 
+    res.render('dashboard.pug',{user}) ;*/
     res.redirect('/user/manage') ; 
 }
 module.exports.renderOnSaleItem = function(req,res){
@@ -71,7 +71,7 @@ module.exports.formRequestAdmin = function(req,res){
 }
 module.exports.logout  = function(req,res){
     res.clearCookie('id') ; 
-    res.redirect('/user/login') ; 
+    res.redirect('/') ; 
 }
 module.exports.postRegister = function(req,res){
     let id = req.body.id ; 
@@ -123,9 +123,13 @@ module.exports.postLogin = function(req,res){
             },2000) ; 
             return ; 
         } 
+<<<<<<< HEAD
         setTimeout(function(){
             res.redirect('/market/all')
         },2000) ; 
+=======
+        res.redirect('/market/all') ; 
+>>>>>>> 4142ed1eb149b61e2a27b4d81af0d4410f0e2548
 }
 module.exports.requestAdmin = function(req,res){
     let user = res.locals.user ; 

@@ -125,7 +125,7 @@ html
                         .t032__line(style="")
                     .t-row
                       .t-col.t-col_10.t-prefix_1
-                        .t032__descr.t-descr.t-descr_lg.t-animate(data-animate-style="fadeinright" data-animate-group="yes" style="" field="descr") Để truy cập bảng điều khiển
+                        .t032__descr.t-descr.t-descr_lg.t-animate(data-animate-style="fadeinright" data-animate-group="yes" style="" field="descr") Chào #{customer.id}, để truy cập bảng điẻu khiển
                     span.space                    
                     br
                     br
@@ -134,10 +134,16 @@ html
                     br
                     br
                     .t182__buttons
-                      a.t-btn.t-animate(href="/user/dashboard" target="" data-btneffects-first="btneffects-ripple" data-animate-style="fadeinleft" data-animate-group="yes" style="color:#000000;background-color:#ffffff;text-transform:uppercase;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);")
-                        table(style="width:100%; height:100%;")
-                          tr
-                            td Nhấn vào đây
+                      if (customer.id === 'admin')
+                        a.t-btn.t-animate(href="/admin" target="" data-btneffects-first="btneffects-ripple" data-animate-style="fadeinleft" data-animate-group="yes" style="color:#000000;background-color:#ffffff;text-transform:uppercase;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);")
+                          table(style="width:100%; height:100%;")
+                            tr
+                              td Nhấn vào đây
+                      else 
+                        a.t-btn.t-animate(href="/user/dashboard" target="" data-btneffects-first="btneffects-ripple" data-animate-style="fadeinleft" data-animate-group="yes" style="color:#000000;background-color:#ffffff;text-transform:uppercase;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);")
+                          table(style="width:100%; height:100%;")
+                            tr
+                              td Nhấn vào đây
         else 
           #recorddiv113686020.t-cover(bgimgfield="img" style="height:100vh; background-image:url('https://static.tildacdn.com/tild3038-6461-4437-b038-666638383566/-/resize/20x/coffee-cup-of-coffee.jpg');")
             #coverCarry113686020.t-cover__carrier(data-content-cover-id="113686020" data-content-cover-bg="https://static.tildacdn.com/tild3038-6461-4437-b038-666638383566/coffee-cup-of-coffee.jpg" data-content-cover-height="100vh" data-content-cover-parallax="" style="height:100vh;background-attachment:scroll; ")
