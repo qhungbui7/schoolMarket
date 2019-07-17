@@ -2,10 +2,6 @@ var db = require('../db') ;
 var subFunction = require('./subFunction') ; 
 var shortid = require('shortid') ;  
 var md5 = require('md5') ; 
-/*const io = require('socket.io-emitter')({ host: '127.0.0.1', port: 6379 });
-setInterval(function(){
-  io.emit('time', new Date);
-}, 5000);*/
 module.exports.login = function(req,res){
     res.clearCookie('id') ; 
     res.render('login.pug') ; 
@@ -14,8 +10,6 @@ module.exports.register = function(req,res){
     res.render('register.pug') ; 
 }
 module.exports.dashboard = function(req,res){
-    /*let user = res.locals.user ; 
-    res.render('dashboard.pug',{user}) ;*/
     res.redirect('/user/manage') ; 
 }
 module.exports.renderOnSaleItem = function(req,res){
@@ -26,7 +20,7 @@ module.exports.renderOnSaleItem = function(req,res){
 module.exports.waitingAccept = function(req,res){
     let user =  res.locals.user ;
     let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Waiting accept'}).value() ;  
-    res.render('waitingAccept.pug',{user,waitingAcpt/*,onSale*/}) ;
+    res.render('waitingAccept.pug',{user,waitingAcpt}) ;
 }
 module.exports.renderUserHistory = function(req,res){
     let date = req.params.date ;  
@@ -88,7 +82,6 @@ module.exports.postRegister = function(req,res){
     let cmp = db.get('users').find({id}).value() ;
     if (!cmp){
         db.get('users').push({id,pass,email,phone,fb,name,clas,status,rate,statusHistory,queue}).write() ;
-        console.log('Đăng kí thành công') ; 
         setTimeout(function(){
             res.redirect('/user/login') ;
         },2000) ; 
@@ -104,16 +97,12 @@ module.exports.postLogin = function(req,res){
     let id = req.body.id ; 
     let pass = md5(md5(req.body.pass)) ; 
     let cmp = db.get('users').find({id,pass}).value() ; 
-    if (!cmp){
-        console.log('Sai mật khẩu hoặc tài khoản không tồn tại') ; 
-        //io.to(`${req.body.socketId}`).emit('errorLogin') ;   // Khong hoat dong
+    if (!cmp){ 
         setTimeout(function(){
             res.redirect('/user/login')
         },2000) ; 
         return ; 
     }
-        console.log('Đăng nhập thành công') ; 
-        //io.to(`${req.body.socketId}`).emit('loginSuccess') ;   
         res.cookie('id',id,{
             signed : true 
         }) ; 
@@ -135,7 +124,6 @@ module.exports.requestAdmin = function(req,res){
 
     
     if (md5(md5(data.pass)) !== user.pass){
-        console.log('Wrong password') ;
         setTimeout(function(){
             res.redirect('/user/manage/formRequestAdmin') ; 
         },2000) ; 
@@ -168,7 +156,6 @@ module.exports.userRemoveRequest = function(req,res){
     setTimeout(function(){
             res.redirect('/user/manage/waitingAccept') ;
     },2000) ; 
-    //res.redirect('/user/manage/waitingAccept') ;
 }
 module.exports.userRemoveItem = function(req,res){
     let idItem = req.params.idItem ;
@@ -187,8 +174,6 @@ module.exports.userRemoveItem = function(req,res){
     db.get('items')
         .remove({ idItem })
         .write() ;
-
-        //res.redirect('/user/manage/onSaleItem') ;
         setTimeout(function(){
             res.redirect('/user/manage/onSaleItem') ;
         },2000) ; 
@@ -197,13 +182,11 @@ module.exports.editProfile = function(req,res){
     let user = res.locals.user ;
     let newProfile = req.body ; 
     if (user.pass !== md5(md5(newProfile.password))){
-        console.log('Sai mật khẩu') ; 
         setTimeout(function(){
             res.redirect('/user/manage/profile') ;
         },2000) ; 
         return ;
     }
-    ///user.email = newProfile.email
     db.get('users')
         .find({id : user.id})
         .assign({
@@ -220,8 +203,6 @@ module.exports.changePass = function(req,res){
     let user = res.locals.user ; 
     let info = req.body ; 
     if (user.pass !== md5(md5(info.oldpass))){
-        console.log('Sai mật khẩu') ; 
-        //res.redirect('/user/manage/profile') ;
         setTimeout(function(){
             res.redirect('/user/manage/profile') ;
         },2000) ; 
@@ -233,7 +214,6 @@ module.exports.changePass = function(req,res){
             pass : md5(md5(info.pass)) 
         })
         .write() ; 
-    //res.redirect('/user/manage/profile') ;
     setTimeout(function(){
         res.redirect('/user/manage/profile') ;
     },2000) ; 

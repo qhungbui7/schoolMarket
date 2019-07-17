@@ -25,7 +25,6 @@ module.exports.renderOnSale = function(req,res){
 module.exports.renderUsers = function(req,res){
     let admin = res.locals.user ; 
     let users = db.get('users').filter({status :'Normal'}).value() ;
-    //console.log(users) ;
     res.render('admin/userList.pug',{admin,users}) ; 
 }
 module.exports.renderUsage = function(req,res){
@@ -140,7 +139,6 @@ module.exports.changeProfile = function(req,res){
     let admin = res.locals.user ;
     let newProfile = req.body ; 
     if (admin.pass !== md5(md5(newProfile.password))){
-    console.log('Sai mật khẩu') ; 
         setTimeout(function(){
                 res.redirect('/admin/profile')
             }
@@ -166,7 +164,6 @@ module.exports.changePass = function(req,res){
     let admin = res.locals.user ; 
     let info = req.body ; 
     if (admin.pass !== md5(md5(info.oldpass))){
-        console.log('Sai mật khẩu') ; 
         setTimeout(function(){
             res.redirect('/admin/profile')
         }

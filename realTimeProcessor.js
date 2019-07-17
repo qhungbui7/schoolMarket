@@ -57,13 +57,10 @@ module.exports = function(io){
             //check date 
             let dateR = subFunction.convert(data.dateReceive).getTime() ; 
             let dateI = subFunction.convert(temp.dateItem).getTime() ; 
-            console.log(dateR,' ' ,dateI);
             if (dateR > dateI){
                 socket.emit('errorDate') ; 
                 return ; 
             }
-            
-            // decrease the amount of item and update new amount
             temp.amount -= data.amount
             db.get('items')
                 .find({id : idItem})
@@ -71,8 +68,6 @@ module.exports = function(io){
                 .write() ; 
             
             io.in(`${temp.idItem}`).emit('updateNewAmount',temp.idItem,temp.amount);
-
-            //push data to queue of user
             let queue = db.get('users').find({id : temp.owner}).value().queue ; 
             data.idItem = idItem ; 
             data.nameItem = temp.nameItem ; 
@@ -83,9 +78,6 @@ module.exports = function(io){
                 .find({id : temp.owner})
                 .assign({queue})
                 .write() ; 
-
-
-            // Check seller con online khong    
             let seller = mapList.find(function(element){
                 return element.customId === temp.owner ;
             });
@@ -125,7 +117,6 @@ module.exports = function(io){
             } else socket.emit('regSuccess') ; 
         }); 
         socket.on('profile',function(data){
-            console.log(data) ; 
             var cmp = db.get('users').find(
                 {
                     id : data.id, pass : md5(md5(data.pass))
@@ -136,7 +127,6 @@ module.exports = function(io){
             } else socket.emit('wrongPass') ; 
         });
         socket.on('requestAdmin',function(data){
-            console.log(data) ; 
             var cmp = db.get('users').find(
                 {
                     id : data.id, pass : md5(md5(data.pass))
@@ -148,18 +138,3 @@ module.exports = function(io){
         });
     }) ; 
 }
-
-
-
-
-
-/*
-//client
-script(src ='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js') ; 
-script(src = '/socket.io/socket.io.js') 
-script.
-    var socket = io.connect('http://localhost') ; //event connection bat cai nay
-    $(document).ready(function(){
-        alert('cc') ; 
-    });
-*/

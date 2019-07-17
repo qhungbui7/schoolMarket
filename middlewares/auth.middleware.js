@@ -23,18 +23,6 @@ module.exports.reqAuth = function(req,res,next){
         return ;  
     }
 
-    /*if (!cmp){
-        res.redirect('/user/login') ; 
-        return ; 
-    }
-    if ( path === 'admin' && cmp.id !=='admin'){
-        res.redirect('/user/login') ; 
-        return ; 
-    } 
-    if ( path !== 'admin' && cmp.id ==='admin'){
-        res.redirect('/user/login') ;
-        return ;
-    }*/
     if (cmp.status === 'Banned'){
         res.render('banned.pug',{statusHistory : cmp.statusHistory}) ; 
         return ; 
