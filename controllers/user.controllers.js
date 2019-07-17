@@ -123,13 +123,9 @@ module.exports.postLogin = function(req,res){
             },2000) ; 
             return ; 
         } 
-<<<<<<< HEAD
         setTimeout(function(){
             res.redirect('/market/all')
         },2000) ; 
-=======
-        res.redirect('/market/all') ; 
->>>>>>> 4142ed1eb149b61e2a27b4d81af0d4410f0e2548
 }
 module.exports.requestAdmin = function(req,res){
     let user = res.locals.user ; 

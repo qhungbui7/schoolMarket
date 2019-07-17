@@ -105,7 +105,7 @@ Always : check # CHECK for information
         FAQS : 
             Usage for user
             if it needs the video, creator should have some blank for the video and wait for the record video link to fill it
-11. Deploy to HEROKU, and test around sometime, create some item, account for the beta tester (X)
+11. Deploy to HEROKU, and test around sometime, create some item, account for the beta tester 
 12. Buy domain, get the Https for the website
 13. Open Beta for tester : Nhat Huy *, Bro Hop *, Ninh, Khanh Huyen, Thao Quynh test (X)
 14. Fix bug and ask Nhat Huy to test the last time and edit the FAQs if need

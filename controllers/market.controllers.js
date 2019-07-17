@@ -54,8 +54,7 @@ module.exports.postCheckOut = function(req,res){
         date , 
         time 
     }).write() ; 
-    //nodemailer.send(customer,item) ; 
-
+    nodemailer.send(customer,item) ; 
     setTimeout(function(){
         res.redirect('/market/checkOut/' + req.params.id) ; 
     }, 2000);

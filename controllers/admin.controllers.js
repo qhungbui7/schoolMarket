@@ -59,17 +59,12 @@ module.exports.unban = function(req,res){
         date , 
         time
     }).write();
-<<<<<<< HEAD
     db.get('users').find({id}).assign({rate: 3 , status : 'Normal'}).value() ; 
     setTimeout(function(){
         res.redirect('/admin/manageUsers') ; 
         }
     ,2000) ;
     
-=======
-    db.get('users').find({id}).assign({rate: 3 , status : 'Normal'}).write() ; 
-    res.redirect('/admin/manageUsers') ; 
->>>>>>> 4142ed1eb149b61e2a27b4d81af0d4410f0e2548
 
 }
 module.exports.acptItem = function(req,res){
