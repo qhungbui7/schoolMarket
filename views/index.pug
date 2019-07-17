@@ -53,15 +53,19 @@ html
               .t228__centercontainer
                 ul.t228__list
                   li.t228__list_item
-                    a.t-menu__link-item(href="/user/login" style="color:#000000;font-weight:600;" data-menu-item-number="1") Đăng nhập
+                    a.t-menu__link-item(href="/market/all" style="color:#000000;font-weight:600;" data-menu-item-number="1") Thị trường
                   li.t228__list_item
-                    a.t-menu__link-item(href="/user/register" style="color:#000000;font-weight:600;" data-menu-item-number="2") Đăng kí
+                    a.t-menu__link-item(href="/faqs" style="color:#000000;font-weight:600;" data-menu-item-number="2") FAQs
                   li.t228__list_item
-                    a.t-menu__link-item(href="/market/all" style="color:#000000;font-weight:600;" data-menu-item-number="3") Thị trường
-                  li.t228__list_item
-                    a.t-menu__link-item(href="/faqs" style="color:#000000;font-weight:600;" data-menu-item-number="4") FAQs
-                  li.t228__list_item
-                    a.t-menu__link-item(href="/terms" style="color:#000000;font-weight:600;" data-menu-item-number="5") Điều khoản
+                    a.t-menu__link-item(href="/terms" style="color:#000000;font-weight:600;" data-menu-item-number="3") Điều khoản
+                  if (isLog)  
+                    li.t228__list_item
+                      a.t-menu__link-item(href="/terms" style="color:#000000;font-weight:600;" data-menu-item-number="4") Bảng điều khiển
+                    li.t228__list_item
+                      a.t-menu__link-item(href="/user/logout" style="color:#000000;font-weight:600;" data-menu-item-number="5") Đăng xuất
+                  else
+                    li.t228__list_item
+                      a.t-menu__link-item(href="/user/login" style="color:#000000;font-weight:600;" data-menu-item-number="5") Đăng nhập
             .t228__rightside
               .t228__rightcontainer
                 .t228__right_social_links
@@ -355,65 +359,86 @@ html
                   .t-slds__item.t-slds__item_active(data-slide-index="1")
                     .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
                       .t-slds__wrapper.t-align_center
-                        meta(itemprop="image" content="https://static.tildacdn.com/tild6537-3864-4332-b534-366439663131/dashboard.PNG")
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild6238-3739-4064-b034-306436363534/1.png")
                         .t670__imgwrapper(bgimgfield="gi_img__0")
-                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6537-3864-4332-b534-366439663131/dashboard.PNG" style="background-image: url('https://static.tildacdn.com/tild6537-3864-4332-b534-366439663131/-/resizeb/20x/dashboard.PNG');")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6238-3739-4064-b034-306436363534/1.png" style="background-image: url('https://static.tildacdn.com/tild6238-3739-4064-b034-306436363534/-/resizeb/20x/1.png');")
                           .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
                   .t-slds__item(data-slide-index="2")
                     .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
                       .t-slds__wrapper.t-align_center
-                        meta(itemprop="image" content="https://static.tildacdn.com/tild6665-3632-4035-b932-376336303966/login.PNG")
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3661-6434-4164-a363-353139333335/2.png")
                         .t670__imgwrapper(bgimgfield="gi_img__1")
-                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6665-3632-4035-b932-376336303966/login.PNG" style="background-image: url('https://static.tildacdn.com/tild6665-3632-4035-b932-376336303966/-/resizeb/20x/login.PNG');")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3661-6434-4164-a363-353139333335/2.png" style="background-image: url('https://static.tildacdn.com/tild3661-6434-4164-a363-353139333335/-/resizeb/20x/2.png');")
                           .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
                   .t-slds__item(data-slide-index="3")
                     .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
                       .t-slds__wrapper.t-align_center
-                        meta(itemprop="image" content="https://static.tildacdn.com/tild3339-3631-4566-b130-306337353666/manage1.PNG")
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild6461-6435-4632-b233-663530366135/3.png")
                         .t670__imgwrapper(bgimgfield="gi_img__2")
-                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3339-3631-4566-b130-306337353666/manage1.PNG" style="background-image: url('https://static.tildacdn.com/tild3339-3631-4566-b130-306337353666/-/resizeb/20x/manage1.PNG');")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6461-6435-4632-b233-663530366135/3.png" style="background-image: url('https://static.tildacdn.com/tild6461-6435-4632-b233-663530366135/-/resizeb/20x/3.png');")
                           .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
                   .t-slds__item(data-slide-index="4")
                     .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
                       .t-slds__wrapper.t-align_center
-                        meta(itemprop="image" content="https://static.tildacdn.com/tild3066-6163-4665-a233-646564333034/manage2.PNG")
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild6265-6435-4864-a435-343036633431/4.png")
                         .t670__imgwrapper(bgimgfield="gi_img__3")
-                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3066-6163-4665-a233-646564333034/manage2.PNG" style="background-image: url('https://static.tildacdn.com/tild3066-6163-4665-a233-646564333034/-/resizeb/20x/manage2.PNG');")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6265-6435-4864-a435-343036633431/4.png" style="background-image: url('https://static.tildacdn.com/tild6265-6435-4864-a435-343036633431/-/resizeb/20x/4.png');")
                           .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
                   .t-slds__item(data-slide-index="5")
                     .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
                       .t-slds__wrapper.t-align_center
-                        meta(itemprop="image" content="https://static.tildacdn.com/tild6365-3031-4734-b138-303636393534/manage3.PNG")
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild6162-3231-4365-a363-613832613230/5.PNG")
                         .t670__imgwrapper(bgimgfield="gi_img__4")
-                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6365-3031-4734-b138-303636393534/manage3.PNG" style="background-image: url('https://static.tildacdn.com/tild6365-3031-4734-b138-303636393534/-/resizeb/20x/manage3.PNG');")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6162-3231-4365-a363-613832613230/5.PNG" style="background-image: url('https://static.tildacdn.com/tild6162-3231-4365-a363-613832613230/-/resizeb/20x/5.PNG');")
                           .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
                   .t-slds__item(data-slide-index="6")
                     .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
                       .t-slds__wrapper.t-align_center
-                        meta(itemprop="image" content="https://static.tildacdn.com/tild3832-3136-4436-b164-616330653363/market.PNG")
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3834-6135-4361-a338-383932613566/6.PNG")
                         .t670__imgwrapper(bgimgfield="gi_img__5")
-                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3832-3136-4436-b164-616330653363/market.PNG" style="background-image: url('https://static.tildacdn.com/tild3832-3136-4436-b164-616330653363/-/resizeb/20x/market.PNG');")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3834-6135-4361-a338-383932613566/6.PNG" style="background-image: url('https://static.tildacdn.com/tild3834-6135-4361-a338-383932613566/-/resizeb/20x/6.PNG');")
                           .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
                   .t-slds__item(data-slide-index="7")
                     .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
                       .t-slds__wrapper.t-align_center
-                        meta(itemprop="image" content="https://static.tildacdn.com/tild3731-3761-4338-a234-393463383535/market3.PNG")
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3065-3235-4337-b238-653964346439/7.PNG")
                         .t670__imgwrapper(bgimgfield="gi_img__6")
-                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3731-3761-4338-a234-393463383535/market3.PNG" style="background-image: url('https://static.tildacdn.com/tild3731-3761-4338-a234-393463383535/-/resizeb/20x/market3.PNG');")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3065-3235-4337-b238-653964346439/7.PNG" style="background-image: url('https://static.tildacdn.com/tild3065-3235-4337-b238-653964346439/-/resizeb/20x/7.PNG');")
                           .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
                   .t-slds__item(data-slide-index="8")
                     .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
                       .t-slds__wrapper.t-align_center
-                        meta(itemprop="image" content="https://static.tildacdn.com/tild3263-3739-4835-b166-383531303162/market4.PNG")
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3433-3132-4064-b034-343038633061/8.PNG")
                         .t670__imgwrapper(bgimgfield="gi_img__7")
-                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3263-3739-4835-b166-383531303162/market4.PNG" style="background-image: url('https://static.tildacdn.com/tild3263-3739-4835-b166-383531303162/-/resizeb/20x/market4.PNG');")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3433-3132-4064-b034-343038633061/8.PNG" style="background-image: url('https://static.tildacdn.com/tild3433-3132-4064-b034-343038633061/-/resizeb/20x/8.PNG');")
                           .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
                   .t-slds__item(data-slide-index="9")
                     .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
                       .t-slds__wrapper.t-align_center
-                        meta(itemprop="image" content="https://static.tildacdn.com/tild3033-3936-4765-b532-623064353837/market2.PNG")
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3463-3534-4962-b331-346566373334/9.PNG")
                         .t670__imgwrapper(bgimgfield="gi_img__8")
-                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3033-3936-4765-b532-623064353837/market2.PNG" style="background-image: url('https://static.tildacdn.com/tild3033-3936-4765-b532-623064353837/-/resizeb/20x/market2.PNG');")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3463-3534-4962-b331-346566373334/9.PNG" style="background-image: url('https://static.tildacdn.com/tild3463-3534-4962-b331-346566373334/-/resizeb/20x/9.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="10")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild6162-3239-4936-b135-373833373964/10.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__9")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild6162-3239-4936-b135-373833373964/10.PNG" style="background-image: url('https://static.tildacdn.com/tild6162-3239-4936-b135-373833373964/-/resizeb/20x/10.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="11")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3230-6337-4537-b330-333966626364/11.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__10")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3230-6337-4537-b330-333966626364/11.PNG" style="background-image: url('https://static.tildacdn.com/tild3230-6337-4537-b330-333966626364/-/resizeb/20x/11.PNG');")
+                          .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
+                  .t-slds__item(data-slide-index="12")
+                    .t-width.t-width_9.t-margin_auto(itemscope="" itemtype="http://schema.org/ImageObject")
+                      .t-slds__wrapper.t-align_center
+                        meta(itemprop="image" content="https://static.tildacdn.com/tild3830-3265-4431-b739-313434396432/12.PNG")
+                        .t670__imgwrapper(bgimgfield="gi_img__11")
+                          .t-slds__bgimg.t-bgimg(data-original="https://static.tildacdn.com/tild3830-3265-4431-b739-313434396432/12.PNG" style="background-image: url('https://static.tildacdn.com/tild3830-3265-4431-b739-313434396432/-/resizeb/20x/12.PNG');")
                           .t670__separator(data-slider-image-width="960" data-slider-image-height="500")
                 .t-slds__bullet_wrapper
                   .t-slds__bullet.t-slds__bullet_active(data-slide-bullet-for="1")
@@ -433,6 +458,12 @@ html
                   .t-slds__bullet(data-slide-bullet-for="8")
                     .t-slds__bullet_body(style="")
                   .t-slds__bullet(data-slide-bullet-for="9")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="10")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="11")
+                    .t-slds__bullet_body(style="")
+                  .t-slds__bullet(data-slide-bullet-for="12")
                     .t-slds__bullet_body(style="")
               .t-slds__arrow_container
                 .t-slds__arrow_wrapper.t-slds__arrow_wrapper-left(data-slide-direction="left")

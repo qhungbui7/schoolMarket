@@ -337,9 +337,6 @@ html
                 .t598__imgwrapper
                   .t598__bgimg.t598__img_circle.t-margin_auto.t-bgimg(bgimgfield="img" data-original="https://static.tildacdn.com/tild6233-6436-4535-a334-393931653636/7.svg" style=" background-image: url('https://static.tildacdn.com/tild6233-6436-4535-a334-393931653636/7.svg');")
                 .t598__title.t-name.t-name_xl(field="title" style=" color:#f5914f;") Chờ duyệt
-                .t598__descr.t-descr.t-descr_xs(field="descr" style=" ")
-                  ul
-                    li Không có thông báo mới
                 a.t598__btn.t-btn.t-btn_sm(href="/user/manage/waitingAccept" target="" style="color:#ffffff;background-color:#f5914f;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;")
                   table(style="width:100%; height:100%;")
                     tr
@@ -350,9 +347,6 @@ html
                 .t598__imgwrapper
                   .t598__bgimg.t598__img_circle.t-margin_auto.t-bgimg(bgimgfield="img2" data-original="https://static.tildacdn.com/tild3165-3839-4136-b538-333563333037/7.svg" style=" background-image: url('https://static.tildacdn.com/tild3165-3839-4136-b538-333563333037/7.svg');")
                 .t598__title.t-name.t-name_xl(field="title2" style=" color:#f5914f;") Đang bán
-                .t598__descr.t-descr.t-descr_xs(field="descr2" style=" ")
-                  ul
-                    li Danh sách những mặt hàng đang được bán bởi bạn
                 a.t598__btn.t-btn.t-btn_sm(href="/user/manage/onSaleItem" target="" style="color:#ffffff;background-color:#f5914f;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;")
                   table(style="width:100%; height:100%;")
                     tr
@@ -364,9 +358,6 @@ html
                 .t598__imgwrapper
                   .t598__bgimg.t598__img_circle.t-margin_auto.t-bgimg(bgimgfield="img3" data-original="https://static.tildacdn.com/tild3964-3761-4838-a161-656231343965/7.svg" style=" background-image: url('https://static.tildacdn.com/tild3964-3761-4838-a161-656231343965/7.svg');")
                 .t598__title.t-name.t-name_xl(field="title3" style=" color:#f5914f;") Đơn hàng
-                .t598__descr.t-descr.t-descr_xs(field="descr3" style=" ")
-                  ul
-                    li Thông báo mới
                 a.t598__btn.t-btn.t-btn_sm(href="/user/manage/queue" target="" style="color:#ffffff;background-color:#f5914f;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;")
                   table(style="width:100%; height:100%;")
                     tr
@@ -422,9 +413,9 @@ html
                       td Truy cập ngay
             .t599__col.t-col.t-col_4.t-align_center.t599__featured.t-animate(data-animate-style="fadeinup" data-animate-chain="yes")
               .t599__content(style="border: 1px solid #ffffff; border-radius: 9px;")
-                .t599__title.t-name.t-name_lg(field="title2" style="color:#f5914f;") Chợ
+                .t599__title.t-name.t-name_lg(field="title2" style="color:#f5914f;") Thị trường trực tuyến
                 .t599__subtitle.t-descr.t-descr_xxs(field="subtitle2" style="")
-                  | Truy cập chợ
+                  | Truy cập thị trường
                   br
                 a.t599__btn.t-btn.t-btn_sm(href="/market/all" target="" style="color:#ffffff;background-color:#f5914f;border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px;")
                   table(style="width:100%; height:100%;")
@@ -513,83 +504,12 @@ html
       var socket = io.connect('http://localhost');
       $(document).ready(function(){
         socket.emit('online',$('#userId').text()) ; 
-        $('#userRemoveRequest').click(function(){
-          socket.emit('userRemoveRequest') ; 
-        }); 
-        socket.on('customerSendData',function(queue){
+        socket.on('customerSendData',function(){
           swal(
             {
               title : "Thông báo" , 
               text : "Vừa có người đặt mua hàng của bạn"
             }
           );
-          $('#queue').append(`<div class="t-col t-col_8 t-prefix_2">
-                        <div class="t585__accordion">
-                            <div class="t585__wrapper">
-                                <div class="t585__header" style=" border-top: 1px solid #000000">
-                                    <div class="t585__title t-name t-name_xl" field="li_title__1480611044356">${queue.nameItem}</div>
-                                    <div class="t585__icon">
-                                        <div class="t585__lines">
-                                            <svg width="24px" height="24px" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square">
-                                                    <g transform="translate(1.000000, 1.000000)" stroke="#000000">
-                                                        <path d="M0,11 L22,11"></path>
-                                                        <path d="M11,0 L11,22"></path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="t585__circle" style="background-color: transparent;"></div>
-                                    </div>
-                                    <div class="t585__icon t585__icon-hover">
-                                        <div class="t585__lines">
-                                            <svg width="24px" height="24px" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                <g stroke="none" stroke-width="1px" fill="none" fill-rule="evenodd" stroke-linecap="square">
-                                                    <g transform="translate(1.000000, 1.000000)" stroke="#ffffff">
-                                                        <path d="M0,11 L22,11"></path>
-                                                        <path d="M11,0 L11,22"></path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="t585__circle" style="background-color: #ff2f00"></div>
-                                    </div>
-                                </div>
-                                <div class="t585__content">
-                                    <div class="t585__textwrapper">
-                                        <!--img.t585__img.t-img(imgfield="li_img__1480611044356" src="https://static.tildacdn.com/tild3165-3965-4639-b833-663538613434/-/empty/CYhSSvH.jpg" data-original="https://static.tildacdn.com/tild3165-3965-4639-b833-663538613434/CYhSSvH.jpg")-->
-                                        <div class="t585__text t-descr t-descr_xs" field="li_descr__1480611044356 " style=" ">Thành tiền : ${queue.cost}
-                                            <br>Số lượng mua :  ${queue.amount}
-                                            <br>Thời gian mong muốn : ${queue.dateReceive}
-                                            <br>ID người dùng : ${queue.id}
-                                            <br>Tên người dùng : ${queue.name}
-                                            <br>Email : ${queue.email}
-                                            <br>Phone : ${queue.phone}
-                                            <br>Facebook : ${queue.facebook}
-                                            <br>Một chấp thuận, một gỡ, khi đã chấp thuận thì sang confirm đã giao</div>
-                                        <a class="t-btn t-btn_sm t142A__marginleft20px t-animate" href="/user/manage" target="" data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="color:#000000;border:3px solid #000000;" data-btneffects-second="btneffects-light">
-                                            <table style="width:100%; height:100%;">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Giao đơn hàng</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </a>
-                                        <a class="t-btn t-btn_sm t142A__marginleft20px t-animate" href="/user/manage" target="" data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="color:#000000;border:3px solid #000000;" data-btneffects-second="btneffects-light">
-                                            <table style="width:100%; height:100%;">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Huỷ đơn hàng</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="t585__border" style="height: 1px; background-color: #000000"></div>
-                    </div>`)
         });
       });

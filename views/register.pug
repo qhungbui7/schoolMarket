@@ -52,14 +52,14 @@ html
                     .t696__title.t-title.t-title_xs.t-margin_auto.t-animate(data-animate-style="fadeinright" data-animate-group="yes" data-animate-order="1" style="color:#ffb514;" field="title") Đăng kí
                     .t696__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinleft" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" style="" field="descr") Điền đầy đủ thông tin
                   .t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="3" data-animate-delay="0.3")
-                    form(action = '/user/register' , method = 'POST' role="form" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t696_onSuccess")
+                    form(action = '/user/register' ,id='regForm', method = 'POST' role="form" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t696_onSuccess")
                       // NO ONE SERVICES CONNECTED
                       .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
                       .t-form__inputsbox
                         .t-input-group.t-input-group_in(data-input-lid="1562421448049")
                           .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1562421448049" style="") Tài khoản 
                           .t-input-block
-                            input.t-input.js-tilda-rule.t-input_bbonly(type='text' name='id' required style="color:#000000; border:1px solid #ffb514; ")
+                            input.t-input.js-tilda-rule.t-input_bbonly(type='text' id='id' name='id' required style="color:#000000; border:1px solid #ffb514; ")
                             .t-input-error
                         .t-input-group.t-input-group_in(data-input-lid="1562421494772")
                           .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1562421494772" style="") Email
@@ -155,6 +155,9 @@ html
                     | Đã có tài khoản ? 
                     a(href="/user/login" style="color:rgb(255, 145, 20) !important;") Đăng nhập
                     |  ngay
+                  br
+                  .t696__form-bottom-text.t-text.t-text_xs.t-align_center.t-animate(data-animate-style="fadeinleft" data-animate-group="yes" data-animate-order="4" data-animate-delay="0.3" field="text")
+                    a(href="/" style="color:rgb(255, 145, 20) !important;") Trở về trang chủ
         style.
           #rec114582773 .t-btn[data-btneffects-first],
           #rec114582773 .t-btn[data-btneffects-second],
@@ -301,15 +304,48 @@ html
       f();
       }
       })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildasimplestat-0.1.min.js');
+    script(src = '/socket.io/socket.io.js') 
+    script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
     script.
-      var password = document.getElementById("pass") ;
-      var confirm_password = document.getElementById("repass");
-      function validatePassword(){
-            if(password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords Don't Match");
-            } else {
-            confirm_password.setCustomValidity('');
-      }
-      }
-      password.onchange = validatePassword;
-      confirm_password.onkeyup = validatePassword;
+
+        $(document).ready(function(){
+        var password = document.getElementById("pass") ;
+        var confirm_password = document.getElementById("repass");
+        function validatePassword(){
+              if(password.value != confirm_password.value) {
+              confirm_password.setCustomValidity("Passwords Don't Match");
+              } else {
+              confirm_password.setCustomValidity('');
+        }
+        }
+        password.onchange = validatePassword;
+        confirm_password.onkeyup = validatePassword;
+        var socket = io.connect('http://localhost') ; //realtimeprocessor bat cai nay
+        $('#regForm').submit(function(){
+          let data = {
+            id : $('#id').val() ,
+            pass : $('#pass').val()   
+        }
+          socket.emit('checkReg',data)  ;
+        })
+        socket.on('regSuccess',function(){
+           swal(
+              {
+                title : "Thông báo", 
+                text : "Đăng kí thành công", 
+                icon : "success",
+                button : false 
+              }
+            );
+        })
+        socket.on('errorReg',function(){ 
+            swal(
+              {
+                title : "Lỗi", 
+                text : "Id đã được sử dụng", 
+                icon : "error",
+                button : false 
+              }
+            );
+        })
+      }); 

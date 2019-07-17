@@ -29,9 +29,7 @@ increase rate with time system
 Watch  again nodejs part in login form video to know how to emit warning
 
 
-Market render when admin accept request / remove request ( realtime)
-Market render when user remove request( realtime)
-Admin accept userRemove (realtime)
+
 Amount (X)
 
 
@@ -40,8 +38,9 @@ email noreply
 
 
 
-render index and faqs
-faqs : why my order is don't accept
+render index and faqs(X)
+faqs : why my order is don't accept(X)
+FAQs: notice when offline
 check ui,faqs content
 
 # NOTE
@@ -86,29 +85,29 @@ Always : check # CHECK for information
 2. Seach google to complete this timeline
 
 3. Create google form demo for admin
-4. Complete realtime part ( # NOTE for detail )
+4. Complete realtime part ( # NOTE for detail ) (X)
 5. Find icon no copyright for the website (X)
 
 
 2 weeks for last des ui page start :
 
-6. Create page : home School market ( index page )
+6. Create page : home School market ( index page ) (X)
     Content : For more, referent in google
         Introduce
         Feature
         Strong point
         Tech : this page only talk about advantage of nodejs, others write in the pp and speech
-7. Create page : contact to developer/admin  
-8. Create page : about developer
+7. Create page : contact to developer/admin  (X)
+8. Create page : about developer (X)
 9. Make alert in somewhere possible 
-10. Write FAQs, Terms  : 
+10. Write FAQs, Terms  : (X)
     Content :
         FAQS : 
             Usage for user
             if it needs the video, creator should have some blank for the video and wait for the record video link to fill it
 11. Deploy to HEROKU, and test around sometime, create some item, account for the beta tester
 12. Buy domain, get the Https for the website
-13. Open Beta for tester : Nhat Huy *, Bro Hop *, Ninh, Khanh Huyen, Thao Quynh test
+13. Open Beta for tester : Nhat Huy *, Bro Hop *, Ninh, Khanh Huyen, Thao Quynh test (X)
 14. Fix bug and ask Nhat Huy to test the last time and edit the FAQs if need
 
 2 weeks for last des ui page end :

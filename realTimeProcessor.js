@@ -114,7 +114,18 @@ module.exports = function(io){
                 socket.emit('loginSuccess') ; 
             } else socket.emit('errorLogin') ; 
         }); 
+        socket.on('checkReg',function(data){
+            var cmp = db.get('users').find(
+                {
+                    id : data.id
+                }
+            ).value();
+            if (cmp){
+                socket.emit('errorReg') ; 
+            } else socket.emit('regSuccess') ; 
+        }); 
         socket.on('profile',function(data){
+            console.log(data) ; 
             var cmp = db.get('users').find(
                 {
                     id : data.id, pass : md5(md5(data.pass))
@@ -122,6 +133,17 @@ module.exports = function(io){
             ).value();
             if (cmp){
                 socket.emit('changeSuccess') ; 
+            } else socket.emit('wrongPass') ; 
+        });
+        socket.on('requestAdmin',function(data){
+            console.log(data) ; 
+            var cmp = db.get('users').find(
+                {
+                    id : data.id, pass : md5(md5(data.pass))
+                }
+            ).value();
+            if (cmp){
+                socket.emit('requestSuccess') ; 
             } else socket.emit('wrongPass') ; 
         });
     }) ; 

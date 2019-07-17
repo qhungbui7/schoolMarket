@@ -392,37 +392,6 @@ html
         // T057
         .t057
           .t-container.t-align_center ~
-      #rec112230841.r.t-rec.t-rec_pt_75.t-rec_pb_75(style="padding-top:75px;padding-bottom:75px; " data-animationappear="off" data-record-type="422")
-        // T422
-        .t422
-          .t422__container.t-container
-            each element,index in waitingAcpt
-              .t422__wrapper.t-width_12.t422__prefix.t-prefix_1
-                .t422__img-mobile.t-col.t-bgimg(bgimgfield="img" data-original=element.imgItem)
-                .t422__img.t422__col.t422__col_5.t-col.t-bgimg(bgimgfield="img" data-original=element.imgItem)
-                .t422__text.t422__col.t422__col_6.t-col.t422__text_right(style="border-color: #e6e6e6; border-width: 1px; ")
-                  .t422__text_mobile.t-col(style="border-color: #e6e6e6; border-width: 1px;")
-                    .t422__textwrapper
-                      .t422__cell.t-cell
-                        .t422__title.t-heading.t-heading_md(field="title" style="color:#ffc919;")
-                          | #{element.nameItem}
-                          br
-                        .t422__descr.t-descr.t-descr_sm(field="descr" style="")
-                          | Danh mục sản phẩm : #{element.type}
-                          br
-                          | Giá : #{element.priceItem} vnđ
-                          br
-                          | Mô tả : #{element.desItem}
-                          br
-                          | Được đăng bởi : #{element.owner}                  
-                          br
-                          | Hạn cuối nhận giao hàng : #{element.dateItem}
-                          br
-                        .t422__btn-wrapper
-                          a.t-btn.t-btn_sm(href='/user/userRemoveRequest/' + element.idItem target="" style="color:#ffc919;border:2px solid #ffc919;")
-                            table(style="width:100%; height:100%;")
-                              tr
-                                td Gỡ
       #rec112648153.r.t-rec.t-rec_pt_150.t-rec_pb_150(style="padding-top:150px;padding-bottom:150px; " data-record-type="510")
         // t510
         .t510
@@ -431,7 +400,7 @@ html
               .t-section__topwrapper.t-align_center
                 .t-section__title.t-title.t-title_xs.t-animate(data-animate-style="fadein" data-animate-group="yes" field="btitle")
                   div(style="color:#ffa530;" data-customstyle="yes") Thông tin chi tiết
-                .t-section__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinup" data-animate-group="yes" field="bdescr") Các mặt hàng
+                .t-section__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinup" data-animate-group="yes" field="bdescr") Các yêu cầu
           .t-container
             - var dem = 0 ;
             each element,index in waitingAcpt
@@ -514,3 +483,28 @@ html
       f();
       }
       })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script(src = '/socket.io/socket.io.js') 
+    script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
+    script.
+        var socket = io.connect('http://localhost') ; 
+      $(document).ready(function(){
+          socket.emit('online','#{user.id}') ; 
+          socket.on('customerSendData',function(){
+          swal(
+            {
+              title : "Thông báo" , 
+              text : "Vừa có người đặt mua hàng của bạn"
+            }
+          );
+        });
+          $('#butt').click(function(){
+             swal(
+                {
+                  title : "Thông báo", 
+                  text : "Gỡ yêu cầu mở mặt hàng thành công", 
+                  icon : "success",
+                  button : false 
+                }
+              );
+          })
+      });

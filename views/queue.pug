@@ -426,7 +426,7 @@ html
                     br
                     | Facebook : #{element.facebook}
                   .t422__btn-wrapper
-                     a.t-btn.t-btn_sm(href='/user/manage/shipped/'+index target="" style="color:#ffc919;border:2px solid #ffc919;")
+                     a.t-btn.t-btn_sm(id='butt' href='/user/manage/shipped/'+index target="" style="color:#ffc919;border:2px solid #ffc919;")
                        table(style="width:100%; height:100%;")
                          tr
                            td Xác nhận đã giao
@@ -464,3 +464,28 @@ html
       f();
       }
       })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script(src = '/socket.io/socket.io.js') 
+    script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
+    script.
+        var socket = io.connect('http://localhost') ; 
+      $(document).ready(function(){
+          socket.emit('online','#{user.id}') ; 
+          socket.on('customerSendData',function(){
+          swal(
+            {
+              title : "Thông báo" , 
+              text : "Vừa có người đặt mua hàng của bạn"
+            }
+          );
+        });
+          $('#butt').click(function(){
+             swal(
+                {
+                  title : "Thông báo", 
+                  text : "Đã giao đơn hàng", 
+                  icon : "success",
+                  button : false 
+                }
+              );
+          })
+      });

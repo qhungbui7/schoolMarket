@@ -110,7 +110,7 @@ html
           .t-container
             .t-col.t-col_8.t-prefix_2
               .t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="1")
-                form(name="form112627834" role="form" action="/user/requestAdmin" method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t678_onSuccess")
+                form(name="form112627834" id='formRequest' role="form" action="/user/requestAdmin" method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t678_onSuccess")
                   // NO ONE SERVICES CONNECTED
                   .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
                   .t-form__inputsbox
@@ -228,7 +228,7 @@ html
                     .t-input-group.t-input-group_in(data-input-lid="1500457205522")
                       .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1500457205522" style="font-weight:600;") Password
                       .t-input-block
-                        input.t-input.js-tilda-rule.t-input_bbonly(type="password" name="pass" value="" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
+                        input.t-input.js-tilda-rule.t-input_bbonly(type="password" name="pass" id='pass' value="" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
                         .t-input-error
                     //if IE 8
                       style.
@@ -436,3 +436,41 @@ html
       f();
       }
       })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script(src = '/socket.io/socket.io.js') 
+    script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
+    script.
+        var socket = io.connect('http://localhost') ; 
+      $(document).ready(function(){
+          socket.emit('online','#{user.id}') ; 
+          socket.on('customerSendData',function(){
+          swal(
+            {
+              title : "Thông báo" , 
+              text : "Vừa có người đặt mua hàng của bạn"
+            }
+          );
+        });
+          $('#formRequest').submit(function(){
+            socket.emit('requestAdmin',{id : '#{user.id}' , pass : $('#pass').val()}) ; 
+          })
+          socket.on('requestSuccess',function(){
+            swal(
+                {
+                  title : "Thông báo", 
+                  text : "Gửi yêu cầu cho admin thành công", 
+                  icon : "success",
+                  button : false 
+                }
+              );
+          })
+          socket.on('wrongPass',function(){ 
+              swal(
+                {
+                  title : "Thông báo", 
+                  text : "Sai mật khẩu", 
+                  icon : "error",
+                  button : false 
+                }
+              );
+          })
+      });

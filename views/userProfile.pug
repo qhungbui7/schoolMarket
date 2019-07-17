@@ -118,7 +118,7 @@ html
           .t-container
             .t-col.t-col_8.t-prefix_2
               .t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="1")
-                form(name="form113048486" role="form" action="/user/manage/editProfile" method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t678_onSuccess")
+                form(name="form113048486" id='upperForm' role="form" action="/user/manage/editProfile" method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t678_onSuccess")
                   // NO ONE SERVICES CONNECTED
                   .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
                   .t-form__inputsbox
@@ -150,7 +150,7 @@ html
                     .t-input-group.t-input-group_in(data-input-lid="1500457205522")
                       .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1500457205522" style="font-weight:600;") Nhập mật khẩu để xác nhận
                       .t-input-block
-                        input.t-input.js-tilda-rule.t-input_bbonly(required type="password" name="password"  data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
+                        input.t-input.js-tilda-rule.t-input_bbonly(required type="password" id='upperPass' name="password"  data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
                         .t-input-error
                     .t-form__errorbox-middle
                       .js-errorbox-all.t-form__errorbox-wrapper(style="display:none;")
@@ -347,19 +347,19 @@ html
                   | để tăng tính bảo mật
           .t-container
             .t-col.t-col_10.t-prefix_1.t-animate(data-animate-style="fadein" data-animate-group="yes")
-              form(name="form113048950" role="form" action="/user/manage/changePass" method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t690_onSuccess")
+              form(name="form113048950" id='lowerForm' role="form" action="/user/manage/changePass" method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t690_onSuccess")
                 // NO ONE SERVICES CONNECTED
                 .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
                 .t-form__inputsbox
                   .t-input-group.t-input-group_in(data-input-lid="1494863045129")
                     .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1494863045129" style="") Mật khẩu cũ
                     .t-input-block
-                      input.t-input.js-tilda-rule(required type="password" name="oldpass" value="" placeholder="Mật khẩu cũ" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
+                      input.t-input.js-tilda-rule(required type="password" id='lowerPass' name="oldpass" value="" placeholder="Mật khẩu cũ" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
                       .t-input-error
                   .t-input-group.t-input-group_in(data-input-lid="1495122982159")
                     .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1495122982159" style="") Mật khẩu mới
                     .t-input-block
-                      input.t-input.js-tilda-rule(required type="password" name="pass" id ='pass' value="" placeholder="Mật khẩu mới" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
+                      input.t-input.js-tilda-rule(required type="password" minlength='6' name="pass" id ='pass' value="" placeholder="Mật khẩu mới" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
                       .t-input-error
                   .t-input-group.t-input-group_in(data-input-lid="1494867612478")
                     .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1494867612478" style="") Nhập lại mật khẩu mới
@@ -566,15 +566,58 @@ html
       f();
       }
       })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script(src = '/socket.io/socket.io.js') 
+    script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
     script.
-      var password = document.getElementById("pass")
-      , confirm_password = document.getElementById("repass");
-      function validatePassword(){
-      if(password.value != confirm_password.value) {
-      confirm_password.setCustomValidity("Passwords Don't Match");
-      } else {
-      confirm_password.setCustomValidity('');
-      }
-      }
-      password.onchange = validatePassword;
-      confirm_password.onkeyup = validatePassword;
+        var socket = io.connect('http://localhost') ; 
+      $(document).ready(function(){
+          socket.emit('online','#{user.id}') ; 
+          socket.on('customerSendData',function(){
+          swal(
+            {
+              title : "Thông báo" , 
+              text : "Vừa có người đặt mua hàng của bạn"
+            }
+          );
+        });
+          var password = document.getElementById("pass") ;
+          var confirm_password = document.getElementById("repass");
+          function validatePassword(){
+                if(password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+                } else {
+                confirm_password.setCustomValidity('');
+          }
+          }
+          password.onchange = validatePassword;
+          confirm_password.onkeyup = validatePassword;
+
+
+          $('#upperForm').submit(function(){
+            socket.emit('profile',{id : '#{user.id}' , pass : $('#upperPass').val()}) ; 
+          })
+          
+          $('#lowerForm').submit(function(){
+            socket.emit('profile',{id : '#{user.id}' , pass : $('#lowerPass').val()}) ; 
+          })
+          socket.on('changeSuccess',function(){
+            swal(
+                {
+                  title : "Thông báo", 
+                  text : "Đổi thành công", 
+                  icon : "success",
+                  button : false 
+                }
+              );
+          })
+          socket.on('wrongPass',function(){ 
+              swal(
+                {
+                  title : "Thông báo", 
+                  text : "Sai mật khẩu", 
+                  icon : "error",
+                  button : false 
+                }
+              );
+          })
+      });

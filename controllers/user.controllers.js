@@ -37,7 +37,7 @@ module.exports.renderUserHistory = function(req,res){
 }
 module.exports.renderProfile = function(req,res){
     let user = res.locals.user ; 
-    res.render('userProfile.pug',{user}) ; 
+    res.render('userProfile.pug',{user, id:user.id}) ; 
 }
 module.exports.findDayUserHistory = function(req,res){
     let dateFind = req.body.dateFind ; 
@@ -89,11 +89,14 @@ module.exports.postRegister = function(req,res){
     if (!cmp){
         db.get('users').push({id,pass,email,phone,fb,name,clas,status,rate,statusHistory,queue}).write() ;
         console.log('Đăng kí thành công') ; 
-        res.redirect('/user/login') ;
+        setTimeout(function(){
+            res.redirect('/user/login') ;
+        },2000) ; 
     }
     else {
-        console.log('Tài khoản đã tồn tại') ; 
-        res.redirect('/user/register') ; 
+        setTimeout(function(){
+            res.redirect('/user/register') ; 
+        },2000) ; 
     }
 }
 module.exports.postLogin = function(req,res){
@@ -133,12 +136,16 @@ module.exports.requestAdmin = function(req,res){
     
     if (md5(md5(data.pass)) !== user.pass){
         console.log('Wrong password') ;
-        res.redirect('/user/formRequestAdmin') ; 
+        setTimeout(function(){
+            res.redirect('/user/manage/formRequestAdmin') ; 
+        },2000) ; 
         return ; 
     } 
     data.owner = user.id ; 
     db.get('items').push(data).write() ; 
-    res.redirect('/user/manage') ;
+    setTimeout(function(){
+        res.redirect('/user/manage/formRequestAdmin') ; 
+    },2000) ; 
 }
 module.exports.userRemoveRequest = function(req,res){
     let idItem = req.params.idItem ;
@@ -158,8 +165,10 @@ module.exports.userRemoveRequest = function(req,res){
     db.get('items')
         .remove({ idItem })
         .write() ;
-
-    res.redirect('/user/manage/waitingAccept') ;
+    setTimeout(function(){
+            res.redirect('/user/manage/waitingAccept') ;
+    },2000) ; 
+    //res.redirect('/user/manage/waitingAccept') ;
 }
 module.exports.userRemoveItem = function(req,res){
     let idItem = req.params.idItem ;
@@ -179,14 +188,19 @@ module.exports.userRemoveItem = function(req,res){
         .remove({ idItem })
         .write() ;
 
-    res.redirect('/user/manage/onSaleItem') ;
+        //res.redirect('/user/manage/onSaleItem') ;
+        setTimeout(function(){
+            res.redirect('/user/manage/onSaleItem') ;
+        },2000) ; 
 }
 module.exports.editProfile = function(req,res){
     let user = res.locals.user ;
     let newProfile = req.body ; 
     if (user.pass !== md5(md5(newProfile.password))){
         console.log('Sai mật khẩu') ; 
-        res.redirect('/user/manage/profile') ;
+        setTimeout(function(){
+            res.redirect('/user/manage/profile') ;
+        },2000) ; 
         return ;
     }
     ///user.email = newProfile.email
@@ -197,14 +211,20 @@ module.exports.editProfile = function(req,res){
             fb : newProfile.fb , 
             phone : newProfile.phone , 
         }).write() ; 
-    res.redirect('/user/manage/profile') ;
+        setTimeout(function(){
+            res.redirect('/user/manage/profile') ;
+        },2000) ; 
+
 }
 module.exports.changePass = function(req,res){
     let user = res.locals.user ; 
     let info = req.body ; 
     if (user.pass !== md5(md5(info.oldpass))){
         console.log('Sai mật khẩu') ; 
-        res.redirect('/user/manage/profile') ;
+        //res.redirect('/user/manage/profile') ;
+        setTimeout(function(){
+            res.redirect('/user/manage/profile') ;
+        },2000) ; 
         return ; 
     }
     db.get('users')
@@ -213,7 +233,10 @@ module.exports.changePass = function(req,res){
             pass : md5(md5(info.pass)) 
         })
         .write() ; 
-    res.redirect('/user/manage/profile') ;
+    //res.redirect('/user/manage/profile') ;
+    setTimeout(function(){
+        res.redirect('/user/manage/profile') ;
+    },2000) ; 
 }   
 module.exports.shipped = function(req,res){
     let index = req.params.index ; 
@@ -227,5 +250,8 @@ module.exports.shipped = function(req,res){
             queue : user.queue
         })
         .write() ; 
-    res.redirect('/user/manage/queue') ; 
+        setTimeout(function(){
+            res.redirect('/user/manage/queue') ; 
+        },2000) ; 
+
 }
