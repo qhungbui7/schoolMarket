@@ -757,3 +757,18 @@ html
       f();
       }
       })(document, window, 'd22cbffae3a3cd388f2a6d5e68166cf3', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script(src = '/socket.io/socket.io.js') 
+    script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
+    script.
+        var socket = io.connect(window.location.hostname) ; 
+      $(document).ready(function(){
+          socket.emit('online','#{user.id}') ; 
+          socket.on('customerSendData',function(){
+          swal(
+            {
+              title : "Thông báo" , 
+              text : "Vừa có người đặt mua hàng của bạn"
+            }
+          );
+        });
+      });

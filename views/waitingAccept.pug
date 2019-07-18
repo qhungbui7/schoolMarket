@@ -486,7 +486,7 @@ html
     script(src = '/socket.io/socket.io.js') 
     script(src='https://unpkg.com/sweetalert/dist/sweetalert.min.js')
     script.
-        var socket = io.connect('http://localhost') ; 
+        var socket = io.connect(window.location.hostname) ; 
       $(document).ready(function(){
           socket.emit('online','#{user.id}') ; 
           socket.on('customerSendData',function(){

@@ -281,7 +281,7 @@ html
 
         $(document).ready(function(){
 
-        var socket = io.connect('http://localhost') ; //realtimeprocessor bat cai nay
+        var socket = io.connect(window.location.hostname) ; //realtimeprocessor bat cai nay
         socket.emit('online','anonymous') ; 
         socket.on('connector',function(sessionId){
             var input = $("<input>")

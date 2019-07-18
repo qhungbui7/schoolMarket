@@ -320,7 +320,7 @@ html
         }
         password.onchange = validatePassword;
         confirm_password.onkeyup = validatePassword;
-        var socket = io.connect('http://localhost') ; //realtimeprocessor bat cai nay
+        var socket = io.connect(window.location.hostname) ; //realtimeprocessor bat cai nay
         $('#regForm').submit(function(){
           let data = {
             id : $('#id').val() ,
