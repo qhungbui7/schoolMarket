@@ -60,7 +60,7 @@ html
                     a.t-menu__link-item(href="/terms" style="color:#000000;font-weight:600;" data-menu-item-number="3") Điều khoản
                   if (isLog)  
                     li.t228__list_item
-                      a.t-menu__link-item(href="/terms" style="color:#000000;font-weight:600;" data-menu-item-number="4") Bảng điều khiển
+                      a.t-menu__link-item(href="/user/dashboard" style="color:#000000;font-weight:600;" data-menu-item-number="4") Bảng điều khiển
                     li.t228__list_item
                       a.t-menu__link-item(href="/user/logout" style="color:#000000;font-weight:600;" data-menu-item-number="5") Đăng xuất
                   else
@@ -105,7 +105,7 @@ html
                     .t001__descr.t-descr.t-descr_xl.t001__descr_center.t-animate(data-animate-style="fadeinup" data-animate-group="yes" style="" field="descr")
                       | Bùi Quốc Hùng
                       br
-                      | 12 Tin
+                      | Tôn Thất Hải
                       br
                       | THPT Chuyên Quốc Học Huế
                       br
@@ -349,7 +349,11 @@ html
               .t795__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" field="descr" style="")
                 | Dưới đây chỉ là một số hình ảnh chung.
                 br
-                |  Muốn tìm hiểu thêm ? Đăng nhập hoặc đăng kí ngay
+                |  Muốn tìm hiểu thêm ? 
+                a(href="/user/login" style="color:rgb(255, 145, 20) !important;") đăng nhập 
+                | hoặc 
+                a(href="/user/register" style="color:rgb(255, 145, 20) !important;") đăng kí
+                |  ngay
       #rec114640614.r.t-rec.t-rec_pt_135.t-rec_pb_135(style="padding-top:135px;padding-bottom:135px; " data-animationappear="off" data-record-type="670")
         .t670
           .t-slds(style="visibility: hidden;")

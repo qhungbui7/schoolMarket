@@ -81,6 +81,7 @@ module.exports.postRegister = function(req,res){
     let statusHistory = [] ;
     let cmp = db.get('users').find({id}).value() ;
     if (!cmp){
+        //console.log({id,pass : req.body.pass ,email,phone,fb,name,clas,status,rate,statusHistory,queue})
         db.get('users').push({id,pass,email,phone,fb,name,clas,status,rate,statusHistory,queue}).write() ;
         setTimeout(function(){
             res.redirect('/user/login') ;
