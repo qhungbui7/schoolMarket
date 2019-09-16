@@ -199,11 +199,20 @@ html
               .t225__descr.t-descr.t-descr_xxl.t-animate(data-animate-style='fadeinup', data-animate-group='yes', field='descr', style='')
                 div(style='font-family:Georgia;', data-customstyle='yes')
       |         
+      #rec112234752.r.t-rec.t-rec_pt_120.t-rec_pb_120(style="padding-bottom:120px; " data-animationappear="off" data-record-type="838")
+        // t838
+        .t838
+          .t-container
+            .t-col.t-col_8.t-prefix_2
+              .t838__wrapper.t-site-search-input
+                .t838__blockinput
+                  input.t838__input.t-input(id = 'searchForm' type="text" placeholder="Nhập thông tin mặt hàng cần tìm" style="color:#000000; border:1px solid #000000; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;")
       #rec108820117.r.t-rec.t-rec_pt_0.t-rec_pb_180(style='padding-top:0px;padding-bottom:180px; ', data-animationappear='off', data-record-type='776')
         // t776
         .t776
-          .t-container
+          .t-container(id='items')
             each element,index in data
+             div(id='mark')
               .t776__col.t-col.t-col_8.t-prefix_2.t-align_left.t-item.js-product.t-animate(data-animate-style='fadeindown', data-animate-chain='yes', data-product-lid=index)
                 div
                   .t776__content
@@ -341,3 +350,12 @@ html
       f();
       }
       })(document, window, '589de8118390cf06dce5be0604916d94', 'script', 'https://stat.tildacdn.com/js/tildastat-0.2.min.js');
+    script.
+      $(document).ready(function(){
+        $('#searchForm').on("keyup",function(){
+          let search = $(this).val().toLowerCase() ; 
+           $("#items").children('#mark').filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(search) > -1) ; 
+        });
+      }) ; 
+      });
