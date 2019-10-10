@@ -147,7 +147,91 @@ html
               .t195__sectitle.t-descr.t-animate(data-animate-style='fadeindown', data-animate-group='yes', data-animate-order='3', data-animate-delay='0.5', style='', field='imgtitle', itemprop='name')
               |                         
               .t195__secdescr.t-descr.t-animate(data-animate-style='fadeinright', data-animate-group='yes', data-animate-order='4', data-animate-delay='0.5', style='', field='imgdescr', itemprop='description')
-      |         
+      if (customer)
+        #rec110776990.r.t-rec.t-rec_pt_60.t-rec_pb_105(style='padding-top:60px;padding-bottom:105px; ', data-animationappear='off', data-record-type='678')
+          // t678
+          .t678.t-input_nomargin
+            .t-section__container.t-container
+              .t-col.t-col_12
+                .t-section__topwrapper.t-align_center
+                  .t-section__title.t-title.t-title_xs.t-animate(data-animate-style='fadeinup', data-animate-group='yes', field='btitle') Nhận xét, đánh giá
+            | 
+          .t-container_8
+            .t-row
+              .t152__col.t-col.t-col_6.t152__wrapper
+                each i in item.comment
+                  .t152__textwrapper
+                    .t152__autor-title.t-name.t-name_sm(style='', field='title')=i.user
+                    br
+                    .t152__autor-descr.t-descr(style='', field='descr')=i.cmt
+                  br
+                  if (customer.id===i.user) 
+                    .t422__btn-wrapper()
+                      a.t-btn.t-btn_sm(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href="" target="" style="color:#ffc919;border:2px solid #ffc919;")
+                        table(style="width:100%; height:100%;")
+                          tr
+                          td Xoá
+                    br
+                    br 
+          #rec113048950.r.t-rec.t-rec_pt_120.t-rec_pb_120(style="padding-top:20px;padding-bottom:20px; " data-animationappear="off" data-record-type="690")
+            .t690
+              .t-container
+                .t-col.t-col_10.t-prefix_1.t-animate(data-animate-style="fadein" data-animate-group="yes")
+                  form(name="form113048950" role="form" id='form' action="/market/postComment/"+item.idItem+"/"+customer.id method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t690_onSuccess")
+                    // NO ONE SERVICES CONNECTED
+                    .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
+                    .t-form__inputsbox
+                      .t-input-group.t-input-group_in(data-input-lid="1494867612478")
+                        .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1494867612478" style="") Nhận xét tại đây
+                        .t-input-block
+                          input.t-input.js-tilda-rule(required type="text" name="comment" id='comment' value=customer.id placeholder="" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
+                          .t-input-error
+                      br 
+                      .t-form__submit
+                        button.t-submit(type="submit" style="color:#ffffff;background-color:#ffbc40;" data-btneffects-first="btneffects-flash") Đăng
+                    .t-form__errorbox-bottom
+                      .js-errorbox-all.t-form__errorbox-wrapper(style="display:none;")
+                        .t-form__errorbox-text.t-text.t-text_md
+                          p.t-form__errorbox-item.js-rule-error.js-rule-error-all
+                          p.t-form__errorbox-item.js-rule-error.js-rule-error-req
+                          p.t-form__errorbox-item.js-rule-error.js-rule-error-email
+                          p.t-form__errorbox-item.js-rule-error.js-rule-error-name
+                          p.t-form__errorbox-item.js-rule-error.js-rule-error-phone
+                          p.t-form__errorbox-item.js-rule-error.js-rule-error-minlength
+                          p.t-form__errorbox-item.js-rule-error.js-rule-error-string
+                style.
+                  #rec113048950 input::-webkit-input-placeholder {
+                  color: #000000;
+                  opacity: 0.5;
+                  }
+                  #rec113048950 input::-moz-placeholder {
+                  color: #000000;
+                  opacity: 0.5;
+                  }
+                  #rec113048950 input:-moz-placeholder {
+                  color: #000000;
+                  opacity: 0.5;
+                  }
+                  #rec113048950 input:-ms-input-placeholder {
+                  color: #000000;
+                  opacity: 0.5;
+                  }
+                  #rec113048950 textarea::-webkit-input-placeholder {
+                  color: #000000;
+                  opacity: 0.5;
+                  }
+                  #rec113048950 textarea::-moz-placeholder {
+                  color: #000000;
+                  opacity: 0.5;
+                  }
+                  #rec113048950 textarea:-moz-placeholder {
+                  color: #000000;
+                  opacity: 0.5;
+                  }
+                  #rec113048950 textarea:-ms-input-placeholder {
+                  color: #000000;
+                  opacity: 0.5;
+                  }         
       #rec110780903.r.t-rec.t-rec_pt_60.t-rec_pb_60(style='padding-top:60px;padding-bottom:60px; ', data-record-type='363')
         // T029
         .t029
@@ -524,7 +608,7 @@ html
               |                         
               .t678__form-bottom-text.t-text.t-text_xs.t-animate(data-animate-style='fadeinright', data-animate-group='yes', data-animate-order='2', data-animate-delay='0.3', field='text')
                 | Bằng cách nhấn vào nút trên, bạn đã đồng ý với
-                a(target="_blank" rel="noopener noreferrer" href = '/')  điều khoản, chính sách
+                a(target="_blank" rel="noopener noreferrer" href = '/terms')  điều khoản, chính sách
                 |  của chúng tôi
         |             
         style.
@@ -719,7 +803,7 @@ html
             swal(
               {
                 title : "Lỗi", 
-                text : "Hãy nhập ngày", 
+                text : "Hãy nhập đầy đủ", 
                 icon : "error",
                 button : false 
               }

@@ -122,7 +122,7 @@ module.exports.requestAdmin = function(req,res){
     let data = req.body ;
     data.idItem = shortid.generate() + shortid.generate() ; 
     data.status = 'Waiting accept' ;
-    data.vote = 0 ; 
+    data.comment = []  ;
 
     
     if (md5(md5(data.pass)) !== user.pass){

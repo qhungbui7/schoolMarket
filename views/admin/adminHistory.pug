@@ -622,7 +622,10 @@ html
                     br
                     | Người bán : #{element.subject}
                     br
-                    | Người mua : #{element.object}
+                    if (element.object === '' )
+                      p Người mua : anonymous
+                    else
+                      p Người mua : #{element.object}
                     br
                     | Số lượng mua : #{element.objectInfo.amount}
                     br

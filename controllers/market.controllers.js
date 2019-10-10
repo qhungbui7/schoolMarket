@@ -56,5 +56,10 @@ module.exports.postCheckOut = function(req,res){
         res.redirect('/market/checkOut/' + req.params.id) ; 
     }, 2000);
 
-
+}
+module.exports.postComment = function(req,res){
+    let comment = { cmt : req.body.comment , user : req.params.idUser }  ; 
+    let newCmt = db.get('items').find({idItem : req.params.id}).value().comment.push(comment) ; 
+    db.get('items').find({idItem : req.params.id}).assign({cmt : newCmt}).write() ; 
+    res.redirect('/market/checkOut/' + req.params.id) ; 
 }
