@@ -19,12 +19,14 @@ var io = require('socket.io')(server) ;
 // MODULES
 var bodyParser = require('body-parser') ; 
 var cookieParser = require('cookie-parser') ; 
+var clear = require('clear') ; 
 var db = require('./db.js') ; 
-
+var subFunction = require('./controllers/subFunction') ;
 //REQUIRE ROUTES
 var userRoute = require('./routes/user.route') ; 
 var adminRoute = require('./routes/admin.route') ; 
-var marketRoute = require('./routes/market.route') ; 
+var marketRoute = require('./routes/market.route') ;
+var rentRoute = require('./routes/rent.route') ;  
 //
 
 
@@ -43,6 +45,7 @@ app.use(cookieParser(ENCRYPTEDCOOKIE)) ;
 app.use('/user',userRoute) ;
 app.use('/admin',authMiddleware.reqAuth,adminRoute) ; 
 app.use('/market',authMiddleware.reqAuth,marketRoute) ; 
+app.use('/rent',authMiddleware.reqAuth,rentRoute) ; 
 
 
 //INDEX
@@ -70,7 +73,16 @@ app.use(function(req, res, next){
 // SOCKET PART
 require('./realTimeProcessor')(io) ; 
 
-
+//Time
+setInterval(function(){
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ; 
+    console.log(date) ;
+    console.log(time) ;  
+    setTimeout(function(){
+        clear() ; 
+    },900);
+},1000)
 
 server.listen(PORT,function(){
     console.log(`Server is listening on port ${PORT}`) ; 

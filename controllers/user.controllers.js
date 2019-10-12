@@ -63,6 +63,10 @@ module.exports.formRequestAdmin = function(req,res){
     let user = res.locals.user ; 
     res.render('formRequestAdmin.pug',{user}) ; 
 }
+module.exports.formRentAdmin = function(req,res){
+    let user = res.locals.user ; 
+    res.render('formRentAdmin.pug',{user}) ; 
+}
 module.exports.logout  = function(req,res){
     res.clearCookie('id') ; 
     res.redirect('/') ; 
@@ -135,6 +139,26 @@ module.exports.requestAdmin = function(req,res){
     db.get('items').push(data).write() ; 
     setTimeout(function(){
         res.redirect('/user/manage/formRequestAdmin') ; 
+    },2000) ; 
+}
+module.exports.requestRentAdmin = function(req,res){
+    let user = res.locals.user ; 
+    let data = req.body ;
+    data.idItem = shortid.generate() + shortid.generate() ; 
+    data.status = 'Waiting accept' ;
+    data.comment = []  ;
+
+    
+    if (md5(md5(data.pass)) !== user.pass){
+        setTimeout(function(){
+            res.redirect('/user/manage/formRentAdmin') ; 
+        },2000) ; 
+        return ; 
+    } 
+    data.owner = user.id ; 
+    db.get('rents').push(data).write() ; 
+    setTimeout(function(){
+        res.redirect('/user/manage/formRentAdmin') ; 
     },2000) ; 
 }
 module.exports.userRemoveRequest = function(req,res){
