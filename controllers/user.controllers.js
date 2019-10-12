@@ -146,6 +146,7 @@ module.exports.requestRentAdmin = function(req,res){
     let data = req.body ;
     data.idItem = shortid.generate() + shortid.generate() ; 
     data.status = 'Waiting accept' ;
+    data.avatar = req.file.path.split('/').slice(1).join('/') ; 
     data.comment = []  ;
 
     
