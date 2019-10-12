@@ -22,6 +22,11 @@ module.exports.waitingAccept = function(req,res){
     let waitingAcpt = db.get('items').filter({owner: user.id,status: 'Waiting accept'}).value() ;  
     res.render('waitingAccept.pug',{user,waitingAcpt}) ;
 }
+module.exports.waitingRent = function(req,res){
+    let user =  res.locals.user ;
+    let waitingAcpt = db.get('rents').filter({owner: user.id,status: 'Waiting accept'}).value() ;  
+    res.render('waitingRent.pug',{user,waitingAcpt}) ;
+}
 module.exports.renderUserHistory = function(req,res){
     let date = req.params.date ;  
     let dataLogin = res.locals.user ; 
@@ -146,7 +151,8 @@ module.exports.requestRentAdmin = function(req,res){
     let data = req.body ;
     data.idItem = shortid.generate() + shortid.generate() ; 
     data.status = 'Waiting accept' ;
-    data.avatar = req.file.path.split('/').slice(1).join('/') ; 
+    data.avatar = '/' + req.file.path.split('\\').slice(1).join('/') ; 
+    console.log(data.avatar) ; 
     data.comment = []  ;
 
     
@@ -182,6 +188,28 @@ module.exports.userRemoveRequest = function(req,res){
         .write() ;
     setTimeout(function(){
             res.redirect('/user/manage/waitingAccept') ;
+    },2000) ; 
+}
+module.exports.userRemoveRentRequest = function(req,res){
+    let idItem = req.params.idItem ;
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ; 
+
+    db.get('history').push({
+        action : 'User remove request',
+        item : db.get('rents').find({idItem}).value(),
+        subject : res.locals.user.id,        
+        object : '',
+        objectInfo :'',
+        date , 
+        time
+    }).write();
+    
+    db.get('rents')
+        .remove({ idItem })
+        .write() ;
+    setTimeout(function(){
+            res.redirect('/user/manage/waitingRentAccept') ;
     },2000) ; 
 }
 module.exports.userRemoveItem = function(req,res){

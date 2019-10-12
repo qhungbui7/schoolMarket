@@ -74,7 +74,7 @@ app.use(function(req, res, next){
 require('./realTimeProcessor')(io) ; 
 
 //Time
-setInterval(function(){
+/*setInterval(function(){
     let date = subFunction.getDay() ; 
     let time = subFunction.getTime() ; 
     console.log(date) ;
@@ -82,7 +82,7 @@ setInterval(function(){
     setTimeout(function(){
         clear() ; 
     },900);
-},1000)
+},1000)*/
 
 server.listen(PORT,function(){
     console.log(`Server is listening on port ${PORT}`) ; 
