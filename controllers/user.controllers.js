@@ -88,10 +88,17 @@ module.exports.postRegister = function(req,res){
     let rate = '10' ;  
     let queue = [] ;
     let statusHistory = [] ;
+    let front = '/' + req.files[0].path.split('\\').slice(1).join('/') ; 
+    let back = '/' + req.files[1].path.split('\\').slice(1).join('/') ; 
+    let contract = '/' + req.files[2].path.split('\\').slice(1).join('/') ; 
     let cmp = db.get('users').find({id}).value() ;
-    if (!cmp){
+    let cmd = db.get('unvalidatedUsers').find({id}).value() ;
+    if (!cmp || !cmd){
         //console.log({id,pass : req.body.pass ,email,phone,fb,name,clas,status,rate,statusHistory,queue})
-        db.get('users').push({id,pass,email,phone,fb,name,clas,status,rate,statusHistory,queue}).write() ;
+        let temp = new Date() ; 
+        let today = temp.getTime() ; 
+        let range = today + 24*60*60*1000 ; 
+        db.get('unvalidatedUsers').push({info : {id,pass,email,phone,fb,name,clas,status,rate,statusHistory,queue,front,back,contract}, die : today + range}).write() ;
         setTimeout(function(){
             res.redirect('/user/login') ;
         },2000) ; 

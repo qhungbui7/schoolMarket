@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
 })
 
 var upload = multer({ storage: storage });
-//var upload = multer({ dest: './public/uploads/' });
+
 var db = require('../db') ; 
 var controller = require('../controllers/user.controllers') ; 
 var authMiddleware = require('../middlewares/auth.middleware') ; 
@@ -54,7 +54,7 @@ router.get('/manage/profile',authMiddleware.reqAuth,controller.renderProfile) ;
 
 
 router.post('/login',controller.postLogin) ; 
-router.post('/register',controller.postRegister) ;  
+router.post('/register', upload.array('avatar', 12), controller.postRegister) ;  
 router.post('/requestAdmin',authMiddleware.reqAuth,controller.requestAdmin) ;
 router.post('/requestRentAdmin',authMiddleware.reqAuth,upload.single('avatar'),controller.requestRentAdmin) ;
 router.post('/manage/findDayUserHistory',authMiddleware.reqAuth,controller.findDayUserHistory) ; 

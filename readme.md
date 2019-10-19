@@ -11,6 +11,10 @@ create folder uploads in public
 
 node db.js
 
+# Put by
+Rents interface
+Bao hanh, Xuat su
+quen mat khau : nhan tin voi admin de dat lai mat khau
 # RUN :
 npm start / node index.js
 

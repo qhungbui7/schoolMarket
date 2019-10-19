@@ -21,6 +21,7 @@ var bodyParser = require('body-parser') ;
 var cookieParser = require('cookie-parser') ; 
 var clear = require('clear') ; 
 var db = require('./db.js') ; 
+var intervalPro = require('./intervalTimeProcessor') ; 
 var subFunction = require('./controllers/subFunction') ;
 //REQUIRE ROUTES
 var userRoute = require('./routes/user.route') ; 
@@ -74,15 +75,9 @@ app.use(function(req, res, next){
 require('./realTimeProcessor')(io) ; 
 
 //Time
-/*setInterval(function(){
-    let date = subFunction.getDay() ; 
-    let time = subFunction.getTime() ; 
-    console.log(date) ;
-    console.log(time) ;  
-    setTimeout(function(){
-        clear() ; 
-    },900);
-},1000)*/
+setInterval(function(){
+    intervalPro.refreshUnvalidatedUser() ; 
+},10000)
 
 server.listen(PORT,function(){
     console.log(`Server is listening on port ${PORT}`) ; 
