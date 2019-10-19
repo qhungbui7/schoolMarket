@@ -14,7 +14,7 @@ module.exports.reqAuth = function(req,res,next){
         path+=url[i] ; 
     } 
 
-    if (path ==='market' || path ===''){
+    if (path ==='market' || path ==='' || path ==='rent'){
         next() ; 
         return ;
     }

@@ -31,6 +31,16 @@ module.exports.market = function(req,res){
 module.exports.checkOut = function(req,res){
     let customer = res.locals.user ; 
     let item = db.get('items').find({idItem : req.params.id}).value() ; 
+    let cmts = [] ; 
+    
+    item.comment.forEach(function(temp){
+        let userStt = db.get('users').find({id : temp.user}).value().status ; 
+        if ( userStt === 'Normal') {
+            cmts.push(temp) ; 
+        }
+    });
+    console.log(cmts) ; 
+    
     let user = db.get('users').find({id : item.owner}).value() ; 
     res.render('market/checkOut.pug',{item,user,customer}) ; 
 }

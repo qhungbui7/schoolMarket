@@ -33,7 +33,8 @@ module.exports.renderUsage = function(req,res){
 module.exports.renderWaitingAccept = function(req,res){
     let user = res.locals.user ;
     let waitingAcpt = db.get('items').filter({status: 'Waiting accept'}).value() ;  
-    res.render('admin/waitingAccept.pug',{user,waitingAcpt}) ;
+    let waitingAcptRent = db.get('rents').filter({status: 'Waiting accept'}).value() ;  
+    res.render('admin/waitingAccept.pug',{user,waitingAcpt,waitingAcptRent}) ;
 }
 module.exports.renderBanned = function(req,res){
     let bannedUser = db.get('users').filter({status : 'Banned'}).value() ; 
@@ -67,9 +68,10 @@ module.exports.unban = function(req,res){
 
 }
 module.exports.acptItem = function(req,res){
-    let idItem = req.params.id ; 
-    let item = db.get('items').find({idItem}).value() ; 
-    db.get('items')
+    let idItem = req.params.id ;
+    let type = req.params.type ;  
+    let item = db.get(type).find({idItem}).value() ; 
+    db.get(type)
         .find({idItem})
         .assign({ status : 'On sale'}) 
         .write() ; 
@@ -78,6 +80,7 @@ module.exports.acptItem = function(req,res){
     db.get('history').push({
         action : 'Admin accept request',
         item  ,
+        type , 
         subject : 'admin',
         obj : item.owner,
         objInfo : '',        
@@ -92,8 +95,9 @@ module.exports.acptItem = function(req,res){
 }
 module.exports.decItem = function(req,res){
     let idItem = req.params.id ; 
-    let item = db.get('items').find({idItem}).value() ; 
-    db.get('items')
+    let type = req.params.type ;  
+    let item = db.get(type).find({idItem}).value() ; 
+    db.get(type)
         .remove({idItem})
         .write() ; 
     let date = subFunction.getDay() ; 

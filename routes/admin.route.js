@@ -12,8 +12,8 @@ router.get('/logout',controllers.logout) ;
 
 // Waiting accept item
 router.get('/waitingAccept',controllers.renderWaitingAccept) ;
-router.get('/accept/:id',controllers.acptItem) ; 
-router.get('/decline/:id',controllers.decItem) ; 
+router.get('/accept/:type/:id',controllers.acptItem) ; 
+router.get('/decline/:type/:id',controllers.decItem) ; 
 
 // Profile
 router.get('/profile',controllers.renderProfile) ; 

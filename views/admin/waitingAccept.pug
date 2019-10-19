@@ -413,6 +413,8 @@ html
                   .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
                     | Danh mục sản phẩm : #{element.type}
                     br
+                    | Dạng : bán
+                    br
                     | Giá : #{element.priceItem} vnđ
                     br
                     | Mô tả : #{element.desItem}
@@ -423,15 +425,49 @@ html
                     br
                     //a(href=element.imgItem style="color:rgb(255, 145, 20) !important;" target ='_blank') Ảnh đầy đủ
                   .t422__btn-wrapper
-                    a.t-btn.t-btn_sm(href=element.imgItem target="_blank" style="margin-right:10px ; color:#ffc919;border:2px solid #ffc919;")
+                    a.t-btn.t-btn_sm(href=element.avatar target="_blank" style="margin-right:10px ; color:#ffc919;border:2px solid #ffc919;")
                       table(style="width:100%; height:100%;")
                         tr
                           td Ảnh
-                    a.t-btn.t-btn_sm(id ='acpt' href="/admin/accept/" + element.idItem target="" style="margin-right : 10px ;color:#ffc919;border:2px solid #ffc919;")
+                    a.t-btn.t-btn_sm(id ='acpt' href="/admin/accept/items/" + element.idItem target="" style="margin-right : 10px ;color:#ffc919;border:2px solid #ffc919;")
                       table(style="width:100%; height:100%;")
                         tr
                           td Chấp nhận
-                    a.t-btn.t-btn_sm(id ='dec' href="/admin/decline/" + element.idItem target="" style="color:#ffc919;border:2px solid #ffc919;")
+                    a.t-btn.t-btn_sm(id ='dec' href="/admin/decline/items/" + element.idItem target="" style="color:#ffc919;border:2px solid #ffc919;")
+                      table(style="width:100%; height:100%;")
+                        tr
+                          td Từ chối     
+            each element,index in waitingAcptRent
+              - dem +=1 ;
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(dem)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.nameItem
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | Danh mục sản phẩm : #{element.type}
+                    br
+                    | Dạng : thuê
+                    br
+                    | Giá : #{element.priceItem} vnđ
+                    br
+                    | Mô tả : #{element.desItem}
+                    br
+                    | Số lượng: #{element.amount}                  
+                    br
+                    | Hạn cuối nhận giao hàng : #{element.dateItem}
+                    br
+                    //a(href=element.imgItem style="color:rgb(255, 145, 20) !important;" target ='_blank') Ảnh đầy đủ
+                  .t422__btn-wrapper
+                    a.t-btn.t-btn_sm(href=element.avatar target="_blank" style="margin-right:10px ; color:#ffc919;border:2px solid #ffc919;")
+                      table(style="width:100%; height:100%;")
+                        tr
+                          td Ảnh
+                    a.t-btn.t-btn_sm(id ='acpt' href="/admin/accept/rents/" + element.idItem target="" style="margin-right : 10px ;color:#ffc919;border:2px solid #ffc919;")
+                      table(style="width:100%; height:100%;")
+                        tr
+                          td Chấp nhận
+                    a.t-btn.t-btn_sm(id ='dec' href="/admin/decline/rents/" + element.idItem target="" style="color:#ffc919;border:2px solid #ffc919;")
                       table(style="width:100%; height:100%;")
                         tr
                           td Từ chối     
