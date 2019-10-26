@@ -417,18 +417,29 @@ html
           $('.t422').bind('displayChanged', function() {
           t422_setHeight('112230841');
           });
-      #rec112648153.r.t-rec.t-rec_pt_150.t-rec_pb_150(style="padding-top:150px;padding-bottom:150px; " data-record-type="510")
+      #rec112234752.r.t-rec.t-rec_pt_120.t-rec_pb_120(style="padding-top:120px;padding-bottom:120px; " data-animationappear="off" data-record-type="838")
+        // t838
+        .t838
+          .t-container
+            .t-col.t-col_8.t-prefix_2
+              .t838__wrapper.t-site-search-input
+                .t838__blockinput
+                  input.t838__input.t-input(id = 'searchForm' type="text" placeholder="Nhập thông tin người dùng cần tìm" style="color:#000000; border:1px solid #000000; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;")
+                  svg.t838__search-icon(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 88 88")
+                    path(fill="#b6b6b6" d="M85 31.1c-.5-8.7-4.4-16.6-10.9-22.3C67.6 3 59.3 0 50.6.6c-8.7.5-16.7 4.4-22.5 11-11.2 12.7-10.7 31.7.6 43.9l-5.3 6.1-2.5-2.2-17.8 20 9 8.1 17.8-20.2-2.1-1.8 5.3-6.1c5.8 4.2 12.6 6.3 19.3 6.3 9 0 18-3.7 24.4-10.9 5.9-6.6 8.8-15 8.2-23.7zM72.4 50.8c-9.7 10.9-26.5 11.9-37.6 2.3-10.9-9.8-11.9-26.6-2.3-37.6 4.7-5.4 11.3-8.5 18.4-8.9h1.6c6.5 0 12.7 2.4 17.6 6.8 5.3 4.7 8.5 11.1 8.9 18.2.5 7-1.9 13.8-6.6 19.2z")
+      #rec112648153.r.t-rec.t-rec_pt_150.t-rec_pb_150(style="padding-top:150px;padding-bottom:50px; " data-record-type="510")
         // t510
         .t510
-          .t-section__container.t-container
+          //.t-section__container.t-container
             .t-col.t-col_12
               .t-section__topwrapper.t-align_center
-                .t-section__title.t-title.t-title_xs.t-animate(data-animate-style="fadein" data-animate-group="yes" field="btitle")
-                  div(style="color:#ffa530;" data-customstyle="yes") Thông tin chi tiết
-                .t-section__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinup" data-animate-group="yes" field="bdescr") Các mặt hàng
-          .t-container
+                //.t-section__title.t-title.t-title_xs.t-animate(data-animate-style="fadein" data-animate-group="yes" field="btitle")
+                  //div(style="color:#ffa530;" data-customstyle="yes") Thông tin chi tiết
+                //.t-section__descr.t-descr.t-descr_xl.t-margin_auto.t-animate(data-animate-style="fadeinup" data-animate-group="yes" field="bdescr") Các mặt hàng
+          .t-container(id='items')
             - var dem = 0 ;
             each element,index in onSale
+             div(id = 'mark')
               - dem +=1 ;
               .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
                 .t-cell.t-valign_top
@@ -437,6 +448,8 @@ html
                   .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.nameItem
                   .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
                     | Danh mục sản phẩm : #{element.type}
+                    br
+                    | Loại : Bán
                     br
                     | Giá : #{element.priceItem} vnđ
                     br
@@ -455,6 +468,42 @@ html
                         tr
                           td Ảnh
                     a.t-btn.t-btn_sm(id='butt' href="/admin/removeItem/"+ element.idItem target="" style="color:#ffc919;border:2px solid #ffc919;")
+                      table(style="width:100%; height:100%;")
+                        tr
+                          td Gỡ
+                    br
+                    br
+                    br
+            each element,index in onSaleRents
+             div(id = 'mark')
+              - dem +=1 ;
+              .t-col.t-col_8.t-prefix_2.t-item.t-animate(data-animate-style="fadeindown" data-animate-chain="yes")
+                .t-cell.t-valign_top
+                  .t510__circle.t-heading.t-valign_top(style=" color:#ffa530;; border: 2px solid #ffa530; ")=(dem)
+                .t510__textwrapper.t-cell.t-valign_top(style="")
+                  .t-name.t-name_md.t510__bottommargin(style="color:#ffa530;" field="li_title__1476966581869")=element.nameItem
+                  .t-descr.t-descr_sm(style="" field="li_descr__1476966581869")
+                    | Danh mục sản phẩm : #{element.type}
+                    br
+                    | Loại : Cho thuê
+                    br
+                    | Giá : #{element.priceItem} vnđ
+                    br
+                    | Mô tả : #{element.desItem}
+                    br
+                    | Còn lại : #{element.amount}                  
+                    br
+                    | Hạn cuối nhận giao hàng : #{element.dateItem}
+                    br
+                    | Chủ sở hữu : #{element.owner} 
+                    br
+                    //a(href=element.imgItem style="color:rgb(255, 145, 20) !important;" target ='_blank') Ảnh đầy đủ
+                  .t422__btn-wrapper
+                    a.t-btn.t-btn_sm(href=element.imgItem target="_blank" style="margin-right:10px ; color:#ffc919;border:2px solid #ffc919;")
+                      table(style="width:100%; height:100%;")
+                        tr
+                          td Ảnh
+                    a.t-btn.t-btn_sm(id='butt' href="/admin/removeRents/"+ element.idItem target="" style="color:#ffc919;border:2px solid #ffc919;")
                       table(style="width:100%; height:100%;")
                         tr
                           td Gỡ
@@ -504,3 +553,12 @@ html
           );
       });
       })
+    script.
+      $(document).ready(function(){
+        $('#searchForm').on("keyup",function(){
+          let search = $(this).val().toLowerCase() ; 
+           $("#items").children('#mark').filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(search) > -1) ; 
+        });
+      }) ; 
+      });

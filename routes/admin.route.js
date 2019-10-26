@@ -40,6 +40,7 @@ router.post('/postFormStatus/:id',controllers.postFormStatus) ;
 // On sale
 router.get('/onSale',controllers.renderOnSale) ; 
 router.get('/removeItem/:idItem',controllers.removeItem) ;
+router.get('/removeRents/:idItem',controllers.removeRents) ;
 
 
 

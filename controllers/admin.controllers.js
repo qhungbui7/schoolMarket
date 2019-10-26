@@ -20,7 +20,8 @@ module.exports.renderHistory = function(req,res){
 module.exports.renderOnSale = function(req,res){
     let admin =  res.locals.user ;
     let onSale = db.get('items').filter({status: 'On sale'}).value() ;   
-    res.render('admin/onSale.pug',{admin,onSale}) ;
+    let onSaleRents = db.get('rents').filter({status: 'On sale'}).value() ; 
+    res.render('admin/onSale.pug',{admin,onSale,onSaleRents}) ;
 }
 module.exports.renderUsers = function(req,res){
     let admin = res.locals.user ; 
@@ -163,7 +164,29 @@ module.exports.removeItem = function(req,res){
         res.redirect('/admin/onSale') ; 
         }
     ,2000) ;
-
+}
+module.exports.removeRents = function(req,res){
+    let idItem = req.params.idItem ;
+    let item = db.get('rents').find({idItem}).value() ;
+    //console.log(item) ; 
+    let date = subFunction.getDay() ; 
+    let time = subFunction.getTime() ;
+    db.get('history').push({
+        action : 'Admin remove item',
+        item ,
+        subject : 'admin',
+        obj : item.owner,
+        objInfo : '',        
+        date , 
+        time
+    }).write();
+    db.get('rents')
+        .remove({idItem})
+        .write() ; 
+    setTimeout(function(){
+        res.redirect('/admin/onSale') ; 
+        }
+    ,2000) ;
 }
 module.exports.changeProfile = function(req,res){
     let admin = res.locals.user ;
