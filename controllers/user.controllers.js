@@ -98,7 +98,7 @@ module.exports.postRegister = function(req,res){
         let temp = new Date() ; 
         let today = temp.getTime() ; 
         let range = today + 24*60*60*1000 ; 
-        db.get('unvalidatedUsers').push({info : {id,pass,email,phone,fb,name,clas,status,rate,statusHistory,queue,front,back,contract}, die : today + range}).write() ;
+        db.get('unvalidatedUsers').push({info : {id,pass,email,phone,fb,name,clas,status,rate,statusHistory,queue,front,back,contract}, die : today + range,id}).write() ;
         setTimeout(function(){
             res.redirect('/user/login') ;
         },2000) ; 

@@ -179,12 +179,12 @@ html
                     .t182__wrapper
                       .t182__title.t-title.t-title_xl.t-animate(data-animate-style="fadeinup" data-animate-group="yes" style="" field="title") Danh sách
                       .t182__descr.t-descr.t-descr_lg.t-animate(data-animate-style="fadeindown" data-animate-group="yes" style="" field="descr") Tất cả các user trên toàn máy chủ
-                      .t182__buttons
+                      //.t182__buttons
                         a.t-btn.t-animate(href="/admin/banned" target="" data-btneffects-first="btneffects-ripple" data-animate-style="fadeinleft" data-animate-group="yes" style="color:#ffffff;background-color:#f5914f;text-transform:uppercase;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);")
                           table(style="width:100%; height:100%;")
                             tr
                               td Những tài khoản tạm khoá
-                      .t182__buttons
+                      //.t182__buttons
                         a.t-btn.t-animate(href="/admin/waitreg" target="" data-btneffects-first="btneffects-ripple" data-animate-style="fadeinleft" data-animate-group="yes" style="color:#000000;background-color:#ffffff;text-transform:uppercase;box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);")
                           table(style="width:100%; height:100%;")
                             tr
@@ -439,24 +439,38 @@ html
             .t-col.t-col_4.t013__centeredsection
              img.t013__img.t-img.t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" src="https://static.tildacdn.com/tild6238-6165-4338-b861-643639356163/17004.svg" imgfield="img" data-tu-max-width="320" data-tu-max-height="320" data-tu-cover="c")
              br
-             .t013__autor-title.t-descr.t-animate(data-animate-style="fadeinleft" data-animate-group="yes" data-animate-order="3" data-animate-delay="0.3" style="" field="imgtitle") #{element.name}
-             .t013__autor-descr.t-descr.t-animate(data-animate-style="fadeinright" data-animate-group="yes" data-animate-order="4" data-animate-delay="0.3" style="" field="imgdescr") #{element.id}
+             .t013__autor-title.t-descr.t-animate(data-animate-style="fadeinleft" data-animate-group="yes" data-animate-order="3" data-animate-delay="0.3" style="" field="imgtitle") #{element.info.name}
+             .t013__autor-descr.t-descr.t-animate(data-animate-style="fadeinright" data-animate-group="yes" data-animate-order="4" data-animate-delay="0.3" style="" field="imgdescr") #{element.info.id}
             .t-col.t-col_7
              .t013__text.t-text.t-text_md.t-animate(data-animate-style="fadein" data-animate-group="yes" data-animate-order="1" style="" field="text")
-              | Lớp : #{element.clas}
+              | Lớp : #{element.info.clas}
               br
-              | Email : #{element.email}
+              | Email : #{element.info.email}
               br
-              | Số điện thoại : #{element.phone}
+              | Số điện thoại : #{element.info.phone}
               br
-              | Địa chỉ facebook : #{element.fb}
-              br 
-              | Điểm hành vi : #{element.rate}
+              | Địa chỉ facebook : #{element.info.fb}
+              br
+              a(href=element.info.front style="color:rgb(255, 145, 20) !important;") Chứng minh nhân dân mặt trước
+              br
+              a(href=element.info.back style="color:rgb(255, 145, 20) !important;") Chứng minh nhân dân mặt sau
+              br
+              a(href=element.info.contract style="color:rgb(255, 145, 20) !important;") Bản cam kết
+              //br 
+              //| Điểm hành vi : #{element.info.rate}
              .t422__btn-wrapper()
-              a.t-btn.t-btn_sm(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href="/admin/editStatus/" + element.id target="" style="color:#ffc919;border:2px solid #ffc919;")
+              //a.t-btn.t-btn_sm(href='/admin/view/'+ element.info.id data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3"  target="" style="margin : 10px ;color:#ffc919;border:2px solid #ffc919;")
                table(style="width:100%; height:100%;")
                 tr
-                 td Sửa trạng thái
+                 td Thông tin
+              a.t-btn.t-btn_sm(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href='/admin/ok/'+element.info.id target="" style="margin : 10px ;color:#ffc919;border:2px solid #ffc919;")
+               table(style="width:100%; height:100%;")
+                tr
+                 td Chấp nhận
+              a.t-btn.t-btn_sm(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href='/admin/nook/'+element.info.id target="" style="margin : 10px ;color:#ffc919;border:2px solid #ffc919;")
+               table(style="width:100%; height:100%;")
+                tr
+                 td Loại bỏ
               br
               br
       #rec112237279.r.t-rec.t-rec_pt_90.t-rec_pb_90(style="padding-top:90px;padding-bottom:90px; " data-record-type="71")

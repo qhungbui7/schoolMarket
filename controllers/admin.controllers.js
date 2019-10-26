@@ -64,8 +64,23 @@ module.exports.unban = function(req,res){
         res.redirect('/admin/manageUsers') ; 
         }
     ,2000) ;
-    
 
+}
+module.exports.waitReg = function(req,res){
+    let users = db.get('unvalidatedUsers').value() ; 
+    res.render('admin/waitReg.pug',{users}) ; 
+}
+module.exports.view = function(req,res){
+    let users = db.get('unvalidatedUsers').value() ; 
+    console.log(users) ; 
+    for (let i = 0 ; i < users.length ; i++){
+        console.log(users[i]) ; 
+        if (users[i].info.id === req.params.id) { 
+            console.log(users[i].info.front) ; 
+            res.render('admin/view.pug',{user : users[i]} ) ; 
+            return ; 
+        }
+    }
 }
 module.exports.acptItem = function(req,res){
     let idItem = req.params.id ;
@@ -92,6 +107,17 @@ module.exports.acptItem = function(req,res){
         res.redirect('/admin/waitingAccept') ;
         }
     ,2000) ;
+}
+module.exports.ok = function(req,res){
+    let users = db.get('unvalidatedUsers').value() ; 
+    let temp =db.get('unvalidatedUsers').find({id : req.params.id}).value().info ; 
+    db.get('unvalidatedUsers').remove({id : req.params.id}).write() ; 
+    db.get('users').push(temp).write() ; 
+    res.redirect('/admin/waitreg') ; 
+}
+module.exports.nook = function(req,res){
+    db.get('unvalidatedUsers').remove({id : req.params.id}).write() ; 
+    res.redirect('/admin/waitreg') ; 
 }
 module.exports.decItem = function(req,res){
     let idItem = req.params.id ; 

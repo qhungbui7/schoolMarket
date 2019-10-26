@@ -28,6 +28,10 @@ router.get('/clearAllHistory',controllers.clearAllHistory) ;
 
 // Manage users 
 router.get('/manageUsers',controllers.renderUsers) ; 
+router.get('/waitReg',controllers.waitReg) ; 
+router.get('/view/:id',controllers.view) ; 
+router.get('/ok/:id',controllers.ok) ; 
+router.get('/nook/:id',controllers.nook) ; 
 router.get('/banned',controllers.renderBanned) ; 
 router.get('/eliminate/:id',controllers.eliminate) ; 
 router.get('/unban/:id',controllers.unban) ; 

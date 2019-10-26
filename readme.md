@@ -7,8 +7,10 @@ SERVICEEMAIL=gmail
 IDEMAIL=notice.schoolmarket@gmail.com
 PASSWORDMAIL=notice.schoolmarket127
 
+bug admin login
 create folder uploads in public
-
+cloudfare 
+https
 node db.js
 
 # Put by
