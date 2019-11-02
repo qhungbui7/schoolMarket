@@ -475,7 +475,18 @@ html
                             input.t-input.t-inputquantity.js-tilda-rule.t-input_bbonly(required type='text', id='amount' name='amount', value='1', data-tilda-req='1', data-tilda-rule='number', style='color:#000000; border:1px solid #000000; ')
                             |  
                             span.t-inputquantity__btn.t-inputquantity__btn-plus +
-                          |                                             
+                          |                                                        |                                     
+                      .t-input-group.t-input-group_qn(data-input-lid='1500477576412')
+                        .t-input-title.t-descr.t-descr_md(id ='amountDesForm' data-redactor-toolbar='no', field='li_title__1500477576412', style='') Số ngày cần thuê
+                        |                                         
+                        .t-input-block
+                          .t-inputquantity__wrapper
+                            span.t-inputquantity__btn.t-inputquantity__btn-minus &ndash;
+                            |                                                 
+                            input.t-input.t-inputquantity.js-tilda-rule.t-input_bbonly(required type='text', id='range' name='range', value='1', data-tilda-req='1', data-tilda-rule='number', style='color:#000000; border:1px solid #000000; ')
+                            |  
+                            span.t-inputquantity__btn.t-inputquantity__btn-plus +
+                          |                    
                           script.
                             $(document).ready(function() {
                             function t_input_quantity_init(recid, lid) {
@@ -509,7 +520,7 @@ html
                           .t-input-error
                       |                                     
                       .t-input-group.t-input-group_da(data-input-lid='1500477709808')
-                        .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1500477709808', style='') Ngày giao hàng (Hạn cuối giao hàng :  #{item.dateItem} )
+                        .t-input-title.t-descr.t-descr_md(data-redactor-toolbar='no', field='li_title__1500477709808', style='') Ngày nhận hàng 
                         |                                         
                         .t-input-block
                           .t-datepicker__wrapper
