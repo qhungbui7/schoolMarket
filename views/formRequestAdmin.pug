@@ -110,7 +110,7 @@ html
           .t-container
             .t-col.t-col_8.t-prefix_2
               .t-animate(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="1")
-                form(name="form112627834" id='formRequest' role="form" action="/user/requestAdmin" method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t678_onSuccess")
+                form(enctype='multipart/form-data' name="form112627834" id='formRequest' role="form" action="/user/requestAdmin" method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t678_onSuccess")
                   // NO ONE SERVICES CONNECTED
                   .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
                   .t-form__inputsbox
@@ -203,11 +203,11 @@ html
                         .t-input-error
                     .t-input-group.t-input-group_in(data-input-lid="1500457170140")
                       .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1500457170140" style="font-weight:600;")
-                        | LINK ẢNH của sản phẩm (Khuyến khích sử dụng 
-                        a(href="https://imgur.com" target="_blank" style="color:rgb(255, 145, 20) !important;") https://imgur.com
-                        |  để upload ảnh)
+                        | Ảnh sản phẩm
+                        //a(href="https://imgur.com" target="_blank" style="color:rgb(255, 145, 20) !important;") https://imgur.com
+                        //|  để upload ảnh)
                       .t-input-block
-                        input.t-input.js-tilda-rule.t-input_bbonly(type="text" name="imgItem" placeholder = 'example : https://i.imgur.com/OWAGmZu.jpg' value="" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
+                        input.t-input.js-tilda-rule.t-input_bbonly(required type="file" name="avatar" placeholder = 'example : https://i.imgur.com/OWAGmZu.jpg' value="" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
                         .t-input-error
                     .t-input-group.t-input-group_da(data-input-lid="1500533184608")
                       .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1500533184608" style="font-weight:600;") Hạn cuối nhận giao hàng / nhận mua

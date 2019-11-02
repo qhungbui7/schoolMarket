@@ -139,8 +139,8 @@ module.exports.requestAdmin = function(req,res){
     data.idItem = shortid.generate() + shortid.generate() ; 
     data.status = 'Waiting accept' ;
     data.comment = []  ;
-
-    
+    data.avatar = '/' + req.file.path.split('\\').slice(1).join('/') ; 
+    console.log(data.avatar) ; 
     if (md5(md5(data.pass)) !== user.pass){
         setTimeout(function(){
             res.redirect('/user/manage/formRequestAdmin') ; 

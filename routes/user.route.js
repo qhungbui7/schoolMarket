@@ -55,7 +55,7 @@ router.get('/manage/profile',authMiddleware.reqAuth,controller.renderProfile) ;
 
 router.post('/login',controller.postLogin) ; 
 router.post('/register', upload.array('avatar', 12), controller.postRegister) ;  
-router.post('/requestAdmin',authMiddleware.reqAuth,controller.requestAdmin) ;
+router.post('/requestAdmin',authMiddleware.reqAuth,upload.single('avatar'),controller.requestAdmin) ;
 router.post('/requestRentAdmin',authMiddleware.reqAuth,upload.single('avatar'),controller.requestRentAdmin) ;
 router.post('/manage/findDayUserHistory',authMiddleware.reqAuth,controller.findDayUserHistory) ; 
 router.post('/manage/editProfile',authMiddleware.reqAuth,controller.editProfile) ; 

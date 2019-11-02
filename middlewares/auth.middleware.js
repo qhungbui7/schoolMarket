@@ -14,11 +14,15 @@ module.exports.reqAuth = function(req,res,next){
         path+=url[i] ; 
     } 
 
-    if (path ==='market' || path ==='' || path ==='rent'){
+    if (path ==='market' || path ===''){
         next() ; 
         return ;
     }
-    if ((!req.signedCookies) || (!cmp) || (path === 'admin' && cmp.id !=='admin') || (path !== 'admin' && cmp.id ==='admin')){
+    if (path==='user' && cmp.id==='admin') {
+        res.redirect('/admin') ; 
+        return ; 
+    }
+    if ((!req.signedCookies) || (!cmp) || (path === 'admin' && cmp.id !=='admin') /*|| (path !== 'admin' && cmp.id ==='admin')*/){
         res.redirect('/user/login') ;
         return ;  
     }
