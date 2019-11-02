@@ -1,22 +1,7 @@
 # CONFIG : 
-add .env file, include 
-PORT=80
-HOST=localhost
-ENCRYPTEDCOOKIE=#!czx$$!@ER@23123c348XZCr3cbt2resvxer$23^52#41212$23%^@23412
-SERVICEEMAIL=gmail
-IDEMAIL=notice.schoolmarket@gmail.com
-PASSWORDMAIL=notice.schoolmarket127
+add .env file
 
-bug admin login
-create folder uploads in public
-cloudfare 
-https
-node db.js
 
-# Put by
-Rents interface
-Bao hanh, Xuat su
-quen mat khau : nhan tin voi admin de dat lai mat khau
 # RUN :
 npm start / node index.js
 
