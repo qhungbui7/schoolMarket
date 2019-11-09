@@ -1,6 +1,6 @@
 # CONFIG : 
 add .env file
-
+https://drive.google.com/file/d/1YhRWKjvhZxAH7nzIcZGps-8e7ueeZBth/view
 
 # RUN :
 npm start / node index.js

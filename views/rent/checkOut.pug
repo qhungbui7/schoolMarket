@@ -127,17 +127,17 @@ html
                 | Mô tả : #{item.desItem}
                 br
                 | Người đăng : #{item.owner}                         
-                br
-                | Giá : #{item.priceItem} đ     
-                br
-                | Địa chỉ faceboook để trao đổi : 
-                a(href = user.fb target="_blank" rel="noopener noreferrer") #{user.fb}                                                
+                //br
+                //| Giá : #{item.priceItem} đ     
+                //br
+                //| Địa chỉ faceboook để trao đổi : 
+                //a(href = user.fb target="_blank" rel="noopener noreferrer") #{user.fb}                                                
                 br
                 | Địa chỉ email để trao đổi : #{user.email}                                
-                br
-                | Hạn cuối nhận giao hàng : #{item.dateItem}
+                //br
+                //| Hạn cuối nhận giao hàng : #{item.dateItem}
             |                     
-            .t-col.t-col_6.t195__imgsection(itemscope='', itemtype='http://schema.org/ImageObject')
+            //.t-col.t-col_6.t195__imgsection(itemscope='', itemtype='http://schema.org/ImageObject')
               meta(itemprop='image', content=item.imgItem)
               |  
               img.t195__img.t-img.t-animate(data-animate-style='fadeinup', data-animate-group='yes', data-animate-order='2', data-animate-delay='0.5', data-tu-max-width='1200', data-tu-max-height='1200', src='https://static.tildacdn.com/tild3564-3265-4232-b735-336666346532/-/empty/60233633_24814651085.jpg', data-original=item.imgItem, imgfield='img')
@@ -154,37 +154,46 @@ html
             .t-section__container.t-container
               .t-col.t-col_12
                 .t-section__topwrapper.t-align_center
-                  .t-section__title.t-title.t-title_xs.t-animate(data-animate-style='fadeinup', data-animate-group='yes', field='btitle') Nhận xét, đánh giá
+                  .t-section__title.t-title.t-title_xs.t-animate(data-animate-style='fadeinup', data-animate-group='yes', field='btitle') Bình luận
             | 
           .t-container_8
             .t-row
               .t152__col.t-col.t-col_6.t152__wrapper
-                each i in item.comment
-                  .t152__textwrapper
-                    .t152__autor-title.t-name.t-name_sm(style='', field='title')=i.user
+                .t195__text.t-text.t-text_md.t-animate(data-animate-style='fadein', data-animate-group='yes', data-animate-order='1', style='', field='text')
+                  each i in item.comment
+                    .t152__textwrapper
+                      if (i.user == customer.id) 
+                        .t152__autor-title.t-name.t-name_sm(style='color:#ffc919;b', field='title')=i.user
+                      else 
+                        .t152__autor-title.t-name.t-name_sm(style='', field='title')=i.user
+                      br
+                      .t152__autor-descr.t-descr(style='', field='descr')=i.cmt
                     br
-                    .t152__autor-descr.t-descr(style='', field='descr')=i.cmt
-                  br
-                  if (customer.id===i.user) 
-                    .t422__btn-wrapper()
-                      a.t-btn.t-btn_sm(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href="" target="" style="color:#ffc919;border:2px solid #ffc919;")
-                        table(style="width:100%; height:100%;")
-                          tr
-                          td Xoá
-                    br
-                    br 
+                    #rec114703943.r.t-rec.t-rec_pt_30.t-rec_pb_30(style="padding-top:30px;padding-bottom:30px; " data-record-type="219")
+                      // T191
+                      .t191
+                        .t-align_center
+                          hr.t191__line.t-width.t-width_2(style="background-color:#000000;opacity:0.2;")  
+                    //if (customer.id===i.user) 
+                      .t422__btn-wrapper()
+                        a.t-btn.t-btn_sm(data-animate-style="fadeindown" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" href="" target="" style="color:#ffc919;border:2px solid #ffc919;")
+                          table(style="width:100%; height:100%;")
+                            tr
+                            td Xoá
+                      br
+                      br 
           #rec113048950.r.t-rec.t-rec_pt_120.t-rec_pb_120(style="padding-top:20px;padding-bottom:20px; " data-animationappear="off" data-record-type="690")
             .t690
               .t-container
                 .t-col.t-col_10.t-prefix_1.t-animate(data-animate-style="fadein" data-animate-group="yes")
-                  form(name="form113048950" role="form" id='form' action="/market/postComment/"+item.idItem+"/"+customer.id method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t690_onSuccess")
+                  form(name="form113048950" role="form" id='form' action="/rent/postComment/"+item.idItem+"/"+customer.id method="POST" data-formactiontype="0" data-inputbox=".t-input-group" data-success-callback="t690_onSuccess")
                     // NO ONE SERVICES CONNECTED
                     .js-successbox.t-form__successbox.t-text.t-text_md(style="display:none;")
                     .t-form__inputsbox
                       .t-input-group.t-input-group_in(data-input-lid="1494867612478")
-                        .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1494867612478" style="") Nhận xét tại đây
+                        .t-input-title.t-descr.t-descr_md(data-redactor-toolbar="no" field="li_title__1494867612478" style="") Bình luận tại đây
                         .t-input-block
-                          input.t-input.js-tilda-rule(required type="text" name="comment" id='comment' value=customer.id placeholder="" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
+                          input.t-input.js-tilda-rule(required type="text" name="comment" id='comment' placeholder="" data-tilda-req="1" style="color:#000000; border:1px solid #000000; ")
                           .t-input-error
                       br 
                       .t-form__submit
@@ -244,7 +253,7 @@ html
                 |                             
                 .t029__opacity.t029__opacity_right(style='background-image: -moz-linear-gradient(left, #000000, rgba(0,0,0,0)); background-image: -webkit-linear-gradient(left, #000000, rgba(0,0,0,0)); background-image: -o-linear-gradient(left, #000000, rgba(0,0,0,0)); background-image: -ms-linear-gradient(left, #000000, rgba(0,0,0,0));')
       |         
-      #rec110776990.r.t-rec.t-rec_pt_60.t-rec_pb_105(style='padding-top:60px;padding-bottom:105px; ', data-animationappear='off', data-record-type='678')
+      //#rec110776990.r.t-rec.t-rec_pt_60.t-rec_pb_105(style='padding-top:60px;padding-bottom:105px; ', data-animationappear='off', data-record-type='678')
         // t678
         .t678.t-input_nomargin
           .t-section__container.t-container

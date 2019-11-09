@@ -4,5 +4,6 @@ var controller = require('../controllers/rent.controllers') ;
 router.get('/:tab',controller.rent) ; 
 router.get('/checkOut/:id',controller.checkOut) ; 
 router.post('/checkOut/:id',controller.postCheckOut) ; 
+router.post('/post',controller.post)
 router.post('/postComment/:id/:idUser',controller.postComment) ; 
 module.exports = router ; 
