@@ -3,9 +3,14 @@ require('dotenv').config() ;
 
 
 //CONSTANT
-const PORT = process.env.PORT ; 
+/*const PORT = process.env.PORT ; 
 const HOST = process.env.HOST ;
 const ENCRYPTEDCOOKIE = process.env.ENCRYPTEDCOOKIE ; 
+*/
+const PORT=80 ;
+const HOST='localhost'
+const ENCRYPTEDCOOKIE='#!czx$$!@ER@23123c348XZCr3cbt2resvxer$23^52#41212$23%^@23412';
+
 
 //EXPRESS
 var express = require('express') ;

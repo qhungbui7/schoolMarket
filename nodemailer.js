@@ -1,14 +1,16 @@
 var nodemailer = require('nodemailer');
-
+const SERVICEEMAIL='gmail';
+const IDEMAIL='notice.schoolmarket@gmail.com';
+const PASSWORDMAIL='notice.schoolmarket127';
 module.exports.send = function(customer,item){
     var transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,
-        service: process.env.SERVICE,
+        service: SERVICEEMAIL,
         auth: {
-            user: process.env.IDEMAIL,
-            pass: process.env.PASSWORDMAIL
+            user: IDEMAIL,
+            pass: PASSWORDMAIL
         }
     });
 
