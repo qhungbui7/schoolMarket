@@ -8,7 +8,7 @@ const HOST = process.env.HOST ;
 const ENCRYPTEDCOOKIE = process.env.ENCRYPTEDCOOKIE ; 
 */
 const PORT=80 ;
-const HOST='localhost'
+const HOST='167.179.89.227'
 const ENCRYPTEDCOOKIE='#!czx$$!@ER@23123c348XZCr3cbt2resvxer$23^52#41212$23%^@23412';
 
 

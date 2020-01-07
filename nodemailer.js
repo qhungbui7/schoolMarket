@@ -15,7 +15,7 @@ module.exports.send = function(customer,item){
     });
 
     var mailOptions = {
-        from: process.env.IDEMAIL,
+        from: IDEMAIL,
         to: customer.email,
         subject: 'Có người vừa đặt hàng của bạn',
         text: `
